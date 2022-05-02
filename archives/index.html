@@ -10,7 +10,7 @@
 <meta name="description" content="archives">
 <meta name="author" content="">
 <link rel="canonical" href="https://10cks.top/archives/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.f511a56c906ccb72e2773eca8ba50540d23959d6b0b8b5e6112b0d01c276be9c.css" integrity="sha256-9RGlbJBsy3Lidz7Ki6UFQNI5WdawuLXmESsNAcJ2vpw=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.3dfce0e9ec849d4eb72892b21e14838581edc8143a8a58cb083ce664fa70ed32.css" integrity="sha256-Pfzg6eyEnU63KJKyHhSDhYHtyBQ6iljLCDzmZPpw7TI=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://10cks.top/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://10cks.top/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://10cks.top/favicon-32x32.png">
@@ -23,7 +23,7 @@
         if(''){
             if (prompt('请输入文章密码') !== ''){
                 alert('密码错误！');
-                history.back();
+
             }
         }
     })();
@@ -72,7 +72,8 @@
         }
 
     </style>
-</noscript><script
+</noscript><link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css'>
+<script
     src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
     integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
     crossorigin="anonymous"
@@ -222,21 +223,94 @@
     </nav>
 </header>
 <main class="main">
-
 <header class="page-header">
   <h1>Archive</h1>
 </header>
+
 <div class="archive-year">
-  <h2 class="archive-year-header">2022<sup class="archive-count">&nbsp;&nbsp;3</sup>
+  <h2 class="archive-year-header">2022<sup class="archive-count">&nbsp;&nbsp;5</sup>
+<body style="height: 200%; margin: 0">
+  <div calss="echarts" id="container" style="height: 300%"></div> 
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.2/dist/echarts.min.js"></script>
+      <script type="text/javascript">
+
+    
+    var dom = document.getElementById("container");
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    var option;
+    var k= [];
+    k.push({ value:  3 , name: "Apr" },);
+    console.log(k);
+    k.push({ value:  1 , name: "Mar" },);
+    console.log(k);
+    k.push({ value:  1 , name: "Feb" },);
+    console.log(k);
+
+    option = {
+    tooltip: {
+      trigger: 'item'
+    },
+    legend: {
+      right:0
+    },
+    series: [
+      {
+        name: 'Month:',
+        type: 'pie',
+        radius: ['40%', '70%'],
+        avoidLabelOverlap: false,
+        itemStyle: {
+          borderRadius: 10,
+          borderColor: '#fff',
+          borderWidth: 2
+        },
+        label: {
+          show: true,
+          position: 'top',
+          fontSize: '20',
+
+        },
+        emphasis: {
+          label: {
+            fontSize: '20',
+            fontWeight: 'bold',
+            color:"rgb(236, 100, 9)"
+
+          }
+        },
+        labelLine: {
+          show: false
+        },
+        data: k,
+      }
+    ]
+    };
+    
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+          </script>
+</body>
   </h2>
+ 
   <div class="archive-month">
     <h3 class="archive-month-header">April<sup class="archive-count">&nbsp;&nbsp;3</sup></h3>
     <div class="archive-posts">
       <div class="archive-entry">
-        <h3 class="archive-entry-title">加密测试<sup><span class="entry-isdraft">&nbsp;&nbsp;[该文章由密码保护]</span></sup>
+        <h3 class="archive-entry-title">加密测试
         </h3>
         <div class="archive-meta"><span title='2022-04-03 14:41:48 +0800 CST'>April 3, 2022</span></div>
         <a class="entry-link" aria-label="post link to 加密测试" href="https://10cks.top/posts/%E6%B5%8B%E8%AF%95/"></a>
+      </div>
+      <div class="archive-entry">
+        <h3 class="archive-entry-title">markdown里写代码块
+        </h3>
+        <div class="archive-meta"><span title='2022-04-01 14:49:48 +0800 CST'>April 1, 2022</span></div>
+        <a class="entry-link" aria-label="post link to markdown里写代码块" href="https://10cks.top/posts/markdown%E9%87%8C%E5%86%99%E4%BB%A3%E7%A0%81%E5%9D%97/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title">Hugo博客自定义shortcodes<sup><span class="entry-isdraft">&nbsp;&nbsp;[置顶]</span></sup>
@@ -244,15 +318,38 @@
         <div class="archive-meta"><span title='2022-04-01 14:41:48 +0800 CST'>April 1, 2022</span></div>
         <a class="entry-link" aria-label="post link to Hugo博客自定义shortcodes" href="https://10cks.top/posts/hugo%E5%8D%9A%E5%AE%A2%E8%87%AA%E5%AE%9A%E4%B9%89shortcodes/"></a>
       </div>
+    </div>
+  </div>
+  
+  </div>
+ 
+  <div class="archive-month">
+    <h3 class="archive-month-header">March<sup class="archive-count">&nbsp;&nbsp;1</sup></h3>
+    <div class="archive-posts">
       <div class="archive-entry">
         <h3 class="archive-entry-title">Github_page搭建指南
         </h3>
-        <div class="archive-meta"><span title='2022-04-01 14:41:48 +0800 CST'>April 1, 2022</span></div>
+        <div class="archive-meta"><span title='2022-03-01 14:41:48 +0800 CST'>March 1, 2022</span></div>
         <a class="entry-link" aria-label="post link to Github_page搭建指南" href="https://10cks.top/posts/github_page%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/"></a>
       </div>
     </div>
   </div>
-</div>
+  
+  </div>
+ 
+  <div class="archive-month">
+    <h3 class="archive-month-header">February<sup class="archive-count">&nbsp;&nbsp;1</sup></h3>
+    <div class="archive-posts">
+      <div class="archive-entry">
+        <h3 class="archive-entry-title">echarts测试
+        </h3>
+        <div class="archive-meta"><span title='2022-02-01 14:41:48 +0800 CST'>February 1, 2022</span></div>
+        <a class="entry-link" aria-label="post link to echarts测试" href="https://10cks.top/posts/echarts%E6%B5%8B%E8%AF%95/"></a>
+      </div>
+    </div>
+  </div>
+  
+  </div>
     </main>
     
 <footer class="footer">
@@ -318,6 +415,7 @@
     })
 
 </script>
+
 </body>
 
 </html>

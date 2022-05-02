@@ -15,7 +15,7 @@
 1 2 3  fn main(){println!(&#34;Hello, world!&#34;);}  对应的 markdown 写法：">
 <meta name="author" content="">
 <link rel="canonical" href="https://10cks.top/posts/markdown%E9%87%8C%E5%86%99%E4%BB%A3%E7%A0%81%E5%9D%97/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.f511a56c906ccb72e2773eca8ba50540d23959d6b0b8b5e6112b0d01c276be9c.css" integrity="sha256-9RGlbJBsy3Lidz7Ki6UFQNI5WdawuLXmESsNAcJ2vpw=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.3dfce0e9ec849d4eb72892b21e14838581edc8143a8a58cb083ce664fa70ed32.css" integrity="sha256-Pfzg6eyEnU63KJKyHhSDhYHtyBQ6iljLCDzmZPpw7TI=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.4dcb3c4f38462f66c6b6137227726f5543cb934cca9788f041c087e374491df2.js" integrity="sha256-Tcs8TzhGL2bGthNyJ3JvVUPLk0zKl4jwQcCH43RJHfI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://10cks.top/favicon.ico">
@@ -30,7 +30,7 @@
         if(''){
             if (prompt('请输入文章密码') !== ''){
                 alert('密码错误！');
-                history.back();
+
             }
         }
     })();
@@ -79,7 +79,8 @@
         }
 
     </style>
-</noscript><script
+</noscript><link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css'>
+<script
     src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
     integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
     crossorigin="anonymous"
@@ -105,8 +106,8 @@
 1 2 3  fn main(){println!(&#34;Hello, world!&#34;);}  对应的 markdown 写法：" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://10cks.top/posts/markdown%E9%87%8C%E5%86%99%E4%BB%A3%E7%A0%81%E5%9D%97/" /><meta property="og:image" content="https://10cks.top/papermod-cover.png"/><meta property="article:section" content="posts" />
-
-
+<meta property="article:published_time" content="2022-04-01T14:49:48&#43;08:00" />
+<meta property="article:modified_time" content="2022-04-01T14:49:48&#43;08:00" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://10cks.top/papermod-cover.png"/>
@@ -153,8 +154,8 @@
   "articleBody": "markdown 里写代码块 这部分用直观的对照一个一个例子来呈现，先展示代码块渲染在页面上的样子，紧接着展示 markdown 源码怎么写。\n1. 最普通的用法 渲染效果：\n1 2 3  fn main(){println!(\"Hello, world!\");}  markdown 写法：\n1 2 3 4 5  ```rust fn main() { println!(\"Hello, world!\"); } ```   对于不带行号的代码块，默认的样式布局可能会显得有些局促，调整一下文章的 CSS：\n1 2 3 4 5  /* 不带行号的代码块 */ .highlightpre { padding: 10px; /* 适当留出边距 */ overflow: auto; /* 代码行太长向右滚动 */ }   2. 带行号的 渲染效果：\n1 2 3  fn main(){println!(\"Hello, world!\");}  对应的 markdown 写法：\n1 2 3 4 5  ```rust {linenos=table} fn main() { println!(\"Hello, world!\"); } ```   上面代码中用到了扩展语法，也就是紧跟在 rust 后、花括号内的部分。\n这里用到的参数是 lineos，有以下两种取值：\n inline：代码行号内联在代码块里，鼠标框选代码时会选中行号 table：鼠标框选代码时不会选中行号，方便复制粘贴 table 目前有个小瑕疵就是行号和代码对不齐，需要在文章的 CSS 中设置一下 line-height：  1 2 3 4  .highlight{ /* 统一行高，让行号和代码能对齐 */ line-height: 18px; }   3. 自定义起始行号 渲染效果：\n21 22 23  fn main(){println!(\"Hello, world!\");}  对应的 markdown 写法：\n1 2 3 4 5  ```rust {linenos=table, linenostart=21} fn main() { println!(\"Hello, world!\"); } ```   linenostart=21 表示代码块从第 21 行开始计数。典型的使用场景是，在一大段代码中单摘出一小段，为保留原有的代码行号，就可以这么来用。\n4. 行高亮 我们有时候会有把某些行高亮，用来强调突出，像下面这样：\n渲染效果：\n1 2 3 4 5 6 7  fn main(){another_function(5);}fn another_function(x: i32){println!(\"The value of x is: {}\",x);}  对应的 markdown 写法：\n1 2 3 4 5 6 7 8 9  ```rust {linenos=table, hl_lines=[2 \"5-6\"]} fn main() { another_function(5); } fn another_function(x: i32) { println!(\"The value of x is: {}\", x); } ```   这里 hl_lines 就表示有哪些行高亮，它的值是一个集合，上面的例子中有两部分做了高亮。首先是第 2 行，接下来是第 5-6 行，当连续多行高亮时，可以用 ”起始行号-截止行号“ 的写法。其中「起始行号」和「截止行号」并非指左侧的代码行号，而是从这个代码块中的第一行开始数起。例如下面这段：\n渲染效果：\n21 22 23  fn main(){another_function(5);}  对应的 markdown 写法：\n1 2 3 4 5  ```rust {linenos=table, linenostart=21, hl_lines=[2]} fn main() { another_function(5); } ```   代码行号从第 21 行开始，高亮的是本代码块的第 2 行，于是实际是第 22 行高亮。\n",
   "wordCount" : "226",
   "inLanguage": "en",
-  "datePublished": "0001-01-01T00:00:00Z",
-  "dateModified": "0001-01-01T00:00:00Z",
+  "datePublished": "2022-04-01T14:49:48+08:00",
+  "dateModified": "2022-04-01T14:49:48+08:00",
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://10cks.top/posts/markdown%E9%87%8C%E5%86%99%E4%BB%A3%E7%A0%81%E5%9D%97/"
@@ -252,7 +253,7 @@
     <h1 class="post-title">
       markdown里写代码块
     </h1>
-    <div class="post-meta">
+    <div class="post-meta"><span title='2022-04-01 14:49:48 +0800 CST'>April 1, 2022</span>
 
 </div>
   </header> <aside id="toc-container" class="toc-container wide">
@@ -559,16 +560,17 @@
   </div>
 
   <footer class="post-footer">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 <nav class="paginav">
-  <a class="prev" href="https://10cks.top/posts/echarts%E6%B5%8B%E8%AF%95/">
+  <a class="prev" href="https://10cks.top/posts/%E6%B5%8B%E8%AF%95/">
     <span class="title">« Prev Page</span>
     <br>
-    <span>echarts测试</span>
+    <span>加密测试</span>
   </a>
-  <a class="next" href="https://10cks.top/posts/%E6%9C%AC%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E7%9A%84css/">
+  <a class="next" href="https://10cks.top/posts/github_page%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/">
     <span class="title">Next Page »</span>
     <br>
-    <span>本博客使用的css</span>
+    <span>Github_page搭建指南</span>
   </a>
 </nav>
 
@@ -704,6 +706,7 @@
         if (document.readyState === "complete") NProgress.done();
     });
 </script>
+
 </body>
 
 </html>

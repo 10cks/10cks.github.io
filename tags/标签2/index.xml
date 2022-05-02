@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>标签2 on 10cks</title>
+    <link>https://10cks.top/tags/%E6%A0%87%E7%AD%BE2/</link>
+    <description>Recent content in 标签2 on 10cks</description>
+    <image>
+      <url>https://10cks.top/papermod-cover.png</url>
+      <link>https://10cks.top/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 03 Apr 2022 14:41:48 +0800</lastBuildDate><atom:link href="https://10cks.top/tags/%E6%A0%87%E7%AD%BE2/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>加密测试</title>
+      <link>https://10cks.top/posts/%E6%B5%8B%E8%AF%95/</link>
+      <pubDate>Sun, 03 Apr 2022 14:41:48 +0800</pubDate>
+      
+      <guid>https://10cks.top/posts/%E6%B5%8B%E8%AF%95/</guid>
+      <description>1 2 3 4  #include &amp;#34;stdio.h&amp;#34;int main(){ }   1  import numpy   1 2 3 4 5 6 7 8  #!/bin/bash set -Eeuxo pipefail fetch v8 pushd v8 git checkout 568979f4d891bafec875fab20f608ff9392f4f29 gclient sync ./tools/dev/gm.py x64.release popd   </description>
+    </item>
+    
+  </channel>
+</rss>
