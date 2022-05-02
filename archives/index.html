@@ -233,7 +233,24 @@
   <div calss="echarts" id="container" style="height: 300%"></div> 
       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.3.2/dist/echarts.min.js"></script>
       <script type="text/javascript">
+        var themes_key = "";
+        if (localStorage.getItem("pref-theme") === "dark") {
+          themes_key = "white";
+      } else
+      {
+        themes_key = "black";
+      }
 
+        document.getElementById("theme-toggle").addEventListener("click", () => {
+          if (document.body.className.includes("dark")) {
+            themes_key = "white";
+            location.reload();
+          } else {
+            themes_key = "black";
+            location.reload();
+          }
+      })
+      
     
     var dom = document.getElementById("container");
     var myChart = echarts.init(dom, null, {
@@ -255,7 +272,10 @@
       trigger: 'item'
     },
     legend: {
-      right:0
+      right:0,
+      textStyle: {
+        color: themes_key
+      }
     },
     series: [
       {
@@ -271,7 +291,10 @@
         label: {
           show: true,
           position: 'top',
-          fontSize: '20',
+          fontSize: '20',     
+          textStyle: {
+            color: themes_key
+          }
 
         },
         emphasis: {
