@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>markdown里写代码块 | 10cks</title>
+<meta name="keywords" content="" />
+<meta name="description" content="markdown 里写代码块 这部分用直观的对照一个一个例子来呈现，先展示代码块渲染在页面上的样子，紧接着展示 markdown 源码怎么写。
+1. 最普通的用法 渲染效果：
+1 2 3  fn main(){println!(&#34;Hello, world!&#34;);}  markdown 写法：
+1 2 3 4 5  ```rust fn main() { println!(&#34;Hello, world!&#34;); } ```   对于不带行号的代码块，默认的样式布局可能会显得有些局促，调整一下文章的 CSS：
+1 2 3 4 5  /* 不带行号的代码块 */ .highlight&gt;pre { padding: 10px; /* 适当留出边距 */ overflow: auto; /* 代码行太长向右滚动 */ }   2. 带行号的 渲染效果：
+1 2 3  fn main(){println!(&#34;Hello, world!&#34;);}  对应的 markdown 写法：">
+<meta name="author" content="">
+<link rel="canonical" href="https://10cks.top/posts/markdown%E9%87%8C%E5%86%99%E4%BB%A3%E7%A0%81%E5%9D%97/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.f511a56c906ccb72e2773eca8ba50540d23959d6b0b8b5e6112b0d01c276be9c.css" integrity="sha256-9RGlbJBsy3Lidz7Ki6UFQNI5WdawuLXmESsNAcJ2vpw=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.4dcb3c4f38462f66c6b6137227726f5543cb934cca9788f041c087e374491df2.js" integrity="sha256-Tcs8TzhGL2bGthNyJ3JvVUPLk0zKl4jwQcCH43RJHfI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://10cks.top/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://10cks.top/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://10cks.top/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://10cks.top/apple-touch-icon.png">
+<link rel="mask-icon" href="https://10cks.top/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+            .post-entry:hover {
+				transition: transform 0.5s;
+				-webkit-transform: scale(1.2);
+				-moz-transform: scale(1.2);
+				-ms-transform: scale(1.2);
+				-o-transform: scale(1.2);
+				transform: scale(1.03) translateZ(0) translate3d(0, 0, 0) rotate(0.01deg);
+			}
+        }
+
+    </style>
+</noscript><script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
+    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
+    crossorigin="anonymous"
+></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
+    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
+    crossorigin="anonymous"
+/>
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script><meta property="og:title" content="markdown里写代码块" />
+<meta property="og:description" content="markdown 里写代码块 这部分用直观的对照一个一个例子来呈现，先展示代码块渲染在页面上的样子，紧接着展示 markdown 源码怎么写。
+1. 最普通的用法 渲染效果：
+1 2 3  fn main(){println!(&#34;Hello, world!&#34;);}  markdown 写法：
+1 2 3 4 5  ```rust fn main() { println!(&#34;Hello, world!&#34;); } ```   对于不带行号的代码块，默认的样式布局可能会显得有些局促，调整一下文章的 CSS：
+1 2 3 4 5  /* 不带行号的代码块 */ .highlight&gt;pre { padding: 10px; /* 适当留出边距 */ overflow: auto; /* 代码行太长向右滚动 */ }   2. 带行号的 渲染效果：
+1 2 3  fn main(){println!(&#34;Hello, world!&#34;);}  对应的 markdown 写法：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://10cks.top/posts/markdown%E9%87%8C%E5%86%99%E4%BB%A3%E7%A0%81%E5%9D%97/" /><meta property="og:image" content="https://10cks.top/papermod-cover.png"/><meta property="article:section" content="posts" />
+
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://10cks.top/papermod-cover.png"/>
+
+<meta name="twitter:title" content="markdown里写代码块"/>
+<meta name="twitter:description" content="markdown 里写代码块 这部分用直观的对照一个一个例子来呈现，先展示代码块渲染在页面上的样子，紧接着展示 markdown 源码怎么写。
+1. 最普通的用法 渲染效果：
+1 2 3  fn main(){println!(&#34;Hello, world!&#34;);}  markdown 写法：
+1 2 3 4 5  ```rust fn main() { println!(&#34;Hello, world!&#34;); } ```   对于不带行号的代码块，默认的样式布局可能会显得有些局促，调整一下文章的 CSS：
+1 2 3 4 5  /* 不带行号的代码块 */ .highlight&gt;pre { padding: 10px; /* 适当留出边距 */ overflow: auto; /* 代码行太长向右滚动 */ }   2. 带行号的 渲染效果：
+1 2 3  fn main(){println!(&#34;Hello, world!&#34;);}  对应的 markdown 写法："/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://10cks.top/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "markdown里写代码块",
+      "item": "https://10cks.top/posts/markdown%E9%87%8C%E5%86%99%E4%BB%A3%E7%A0%81%E5%9D%97/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "markdown里写代码块",
+  "name": "markdown里写代码块",
+  "description": "markdown 里写代码块 这部分用直观的对照一个一个例子来呈现，先展示代码块渲染在页面上的样子，紧接着展示 markdown 源码怎么写。\n1. 最普通的用法 渲染效果：\n1 2 3  fn main(){println!(\u0026#34;Hello, world!\u0026#34;);}  markdown 写法：\n1 2 3 4 5  ```rust fn main() { println!(\u0026#34;Hello, world!\u0026#34;); } ```   对于不带行号的代码块，默认的样式布局可能会显得有些局促，调整一下文章的 CSS：\n1 2 3 4 5  /* 不带行号的代码块 */ .highlight\u0026gt;pre { padding: 10px; /* 适当留出边距 */ overflow: auto; /* 代码行太长向右滚动 */ }   2. 带行号的 渲染效果：\n1 2 3  fn main(){println!(\u0026#34;Hello, world!\u0026#34;);}  对应的 markdown 写法：",
+  "keywords": [
+    
+  ],
+  "articleBody": "markdown 里写代码块 这部分用直观的对照一个一个例子来呈现，先展示代码块渲染在页面上的样子，紧接着展示 markdown 源码怎么写。\n1. 最普通的用法 渲染效果：\n1 2 3  fn main(){println!(\"Hello, world!\");}  markdown 写法：\n1 2 3 4 5  ```rust fn main() { println!(\"Hello, world!\"); } ```   对于不带行号的代码块，默认的样式布局可能会显得有些局促，调整一下文章的 CSS：\n1 2 3 4 5  /* 不带行号的代码块 */ .highlightpre { padding: 10px; /* 适当留出边距 */ overflow: auto; /* 代码行太长向右滚动 */ }   2. 带行号的 渲染效果：\n1 2 3  fn main(){println!(\"Hello, world!\");}  对应的 markdown 写法：\n1 2 3 4 5  ```rust {linenos=table} fn main() { println!(\"Hello, world!\"); } ```   上面代码中用到了扩展语法，也就是紧跟在 rust 后、花括号内的部分。\n这里用到的参数是 lineos，有以下两种取值：\n inline：代码行号内联在代码块里，鼠标框选代码时会选中行号 table：鼠标框选代码时不会选中行号，方便复制粘贴 table 目前有个小瑕疵就是行号和代码对不齐，需要在文章的 CSS 中设置一下 line-height：  1 2 3 4  .highlight{ /* 统一行高，让行号和代码能对齐 */ line-height: 18px; }   3. 自定义起始行号 渲染效果：\n21 22 23  fn main(){println!(\"Hello, world!\");}  对应的 markdown 写法：\n1 2 3 4 5  ```rust {linenos=table, linenostart=21} fn main() { println!(\"Hello, world!\"); } ```   linenostart=21 表示代码块从第 21 行开始计数。典型的使用场景是，在一大段代码中单摘出一小段，为保留原有的代码行号，就可以这么来用。\n4. 行高亮 我们有时候会有把某些行高亮，用来强调突出，像下面这样：\n渲染效果：\n1 2 3 4 5 6 7  fn main(){another_function(5);}fn another_function(x: i32){println!(\"The value of x is: {}\",x);}  对应的 markdown 写法：\n1 2 3 4 5 6 7 8 9  ```rust {linenos=table, hl_lines=[2 \"5-6\"]} fn main() { another_function(5); } fn another_function(x: i32) { println!(\"The value of x is: {}\", x); } ```   这里 hl_lines 就表示有哪些行高亮，它的值是一个集合，上面的例子中有两部分做了高亮。首先是第 2 行，接下来是第 5-6 行，当连续多行高亮时，可以用 ”起始行号-截止行号“ 的写法。其中「起始行号」和「截止行号」并非指左侧的代码行号，而是从这个代码块中的第一行开始数起。例如下面这段：\n渲染效果：\n21 22 23  fn main(){another_function(5);}  对应的 markdown 写法：\n1 2 3 4 5  ```rust {linenos=table, linenostart=21, hl_lines=[2]} fn main() { another_function(5); } ```   代码行号从第 21 行开始，高亮的是本代码块的第 2 行，于是实际是第 22 行高亮。\n",
+  "wordCount" : "226",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://10cks.top/posts/markdown%E9%87%8C%E5%86%99%E4%BB%A3%E7%A0%81%E5%9D%97/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "10cks",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://10cks.top/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://10cks.top/" accesskey="h" title="10cks (Alt + H)">10cks</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://10cks.top/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/index.xml" title="Rss">
+                    <span>Rss</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://10cks.top/">Home</a>&nbsp;»&nbsp;<a href="https://10cks.top/posts/">Posts</a></div>
+    <h1 class="post-title">
+      markdown里写代码块
+    </h1>
+    <div class="post-meta">
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#markdown-%e9%87%8c%e5%86%99%e4%bb%a3%e7%a0%81%e5%9d%97" aria-label="markdown 里写代码块">markdown 里写代码块</a><ul>
+                            
+                    <li>
+                        <a href="#1-%e6%9c%80%e6%99%ae%e9%80%9a%e7%9a%84%e7%94%a8%e6%b3%95" aria-label="1. 最普通的用法">1. 最普通的用法</a></li>
+                    <li>
+                        <a href="#2-%e5%b8%a6%e8%a1%8c%e5%8f%b7%e7%9a%84" aria-label="2. 带行号的">2. 带行号的</a></li>
+                    <li>
+                        <a href="#3-%e8%87%aa%e5%ae%9a%e4%b9%89%e8%b5%b7%e5%a7%8b%e8%a1%8c%e5%8f%b7" aria-label="3. 自定义起始行号">3. 自定义起始行号</a></li>
+                    <li>
+                        <a href="#4-%e8%a1%8c%e9%ab%98%e4%ba%ae" aria-label="4. 行高亮">4. 行高亮</a>
+                    </li>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content"><h2 id="markdown-里写代码块">markdown 里写代码块<a hidden class="anchor" aria-hidden="true" href="#markdown-里写代码块">#</a></h2>
+<p>这部分用直观的对照一个一个例子来呈现，先展示代码块渲染在页面上的样子，紧接着展示 markdown 源码怎么写。</p>
+<h3 id="1-最普通的用法">1. 最普通的用法<a hidden class="anchor" aria-hidden="true" href="#1-最普通的用法">#</a></h3>
+<p>渲染效果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;Hello, world!&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>markdown 写法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">```rust
+</span></span><span class="line"><span class="cl">fn main() {
+</span></span><span class="line"><span class="cl">    println!(&#34;Hello, world!&#34;);
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">```
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>对于不带行号的代码块，默认的样式布局可能会显得有些局促，调整一下文章的 CSS：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="c">/* 不带行号的代码块 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">.</span><span class="nc">highlight</span><span class="o">&gt;</span><span class="nt">pre</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">padding</span><span class="p">:</span> <span class="mi">10</span><span class="kt">px</span><span class="p">;</span>  <span class="c">/* 适当留出边距 */</span>
+</span></span><span class="line"><span class="cl">  <span class="k">overflow</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span> <span class="c">/* 代码行太长向右滚动 */</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="2-带行号的">2. 带行号的<a hidden class="anchor" aria-hidden="true" href="#2-带行号的">#</a></h3>
+<p>渲染效果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;Hello, world!&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>对应的 markdown 写法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">```rust {linenos=table}
+</span></span><span class="line"><span class="cl">fn main() {
+</span></span><span class="line"><span class="cl">    println!(&#34;Hello, world!&#34;);
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">```
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面代码中用到了扩展语法，也就是紧跟在 rust 后、花括号内的部分。</p>
+<p>这里用到的参数是 lineos，有以下两种取值：</p>
+<ul>
+<li>inline：代码行号内联在代码块里，鼠标框选代码时会选中行号</li>
+<li>table：鼠标框选代码时不会选中行号，方便复制粘贴 table 目前有个小瑕疵就是行号和代码对不齐，需要在文章的 CSS 中设置一下 line-height：</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="p">.</span><span class="nc">highlight</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c">/* 统一行高，让行号和代码能对齐 */</span>
+</span></span><span class="line"><span class="cl">  <span class="k">line-height</span><span class="p">:</span> <span class="mi">18</span><span class="kt">px</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="3-自定义起始行号">3. 自定义起始行号<a hidden class="anchor" aria-hidden="true" href="#3-自定义起始行号">#</a></h3>
+<p>渲染效果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;Hello, world!&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>对应的 markdown 写法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">```rust {linenos=table, linenostart=21}
+</span></span><span class="line"><span class="cl">fn main() {
+</span></span><span class="line"><span class="cl">    println!(&#34;Hello, world!&#34;);
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">```
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><code>linenostart=21</code> 表示代码块从第 21 行开始计数。典型的使用场景是，在一大段代码中单摘出一小段，为保留原有的代码行号，就可以这么来用。</p>
+<h3 id="4-行高亮">4. 行高亮<a hidden class="anchor" aria-hidden="true" href="#4-行高亮">#</a></h3>
+<p>我们有时候会有把某些行高亮，用来强调突出，像下面这样：</p>
+<p>渲染效果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="hl"><span class="lnt">2
+</span></span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="hl"><span class="lnt">5
+</span></span><span class="hl"><span class="lnt">6
+</span></span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">    </span><span class="n">another_function</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w"></span><span class="k">fn</span> <span class="nf">another_function</span><span class="p">(</span><span class="n">x</span>: <span class="kt">i32</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">    </span><span class="fm">println!</span><span class="p">(</span><span class="s">&#34;The value of x is: {}&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>对应的 markdown 写法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">```rust {linenos=table, hl_lines=[2 &#34;5-6&#34;]}
+</span></span><span class="line"><span class="cl">fn main() {
+</span></span><span class="line"><span class="cl">    another_function(5);
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">fn another_function(x: i32) {
+</span></span><span class="line"><span class="cl">    println!(&#34;The value of x is: {}&#34;, x);
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">```
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里 hl_lines 就表示有哪些行高亮，它的值是一个集合，上面的例子中有两部分做了高亮。首先是第 2 行，接下来是第 5-6 行，当连续多行高亮时，可以用 <code>”起始行号-截止行号“</code> 的写法。其中「起始行号」和「截止行号」并非指左侧的代码行号，而是从这个代码块中的第一行开始数起。例如下面这段：</p>
+<p>渲染效果：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">21
+</span><span class="hl"><span class="lnt">22
+</span></span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="k">fn</span> <span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line hl"><span class="cl"><span class="w">    </span><span class="n">another_function</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="p">}</span><span class="w">
+</span></span></span></code></pre></td></tr></table>
+</div>
+</div><p>对应的 markdown 写法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-text" data-lang="text"><span class="line"><span class="cl">```rust {linenos=table, linenostart=21, hl_lines=[2]}
+</span></span><span class="line"><span class="cl">fn main() {
+</span></span><span class="line"><span class="cl">    another_function(5);
+</span></span><span class="line"><span class="cl">}
+</span></span><span class="line"><span class="cl">```
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>代码行号从第 21 行开始，高亮的是本代码块的第 2 行，于是实际是第 22 行高亮。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+<nav class="paginav">
+  <a class="prev" href="https://10cks.top/posts/echarts%E6%B5%8B%E8%AF%95/">
+    <span class="title">« Prev Page</span>
+    <br>
+    <span>echarts测试</span>
+  </a>
+  <a class="next" href="https://10cks.top/posts/%E6%9C%AC%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E7%9A%84css/">
+    <span class="title">Next Page »</span>
+    <br>
+    <span>本博客使用的css</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://10cks.top/">10cks</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
+    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
+    crossorigin="anonymous"
+></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
+    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
+    crossorigin="anonymous"
+/>
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script>
+</body>
+
+</html>
