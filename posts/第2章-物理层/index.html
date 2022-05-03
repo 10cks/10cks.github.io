@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>第 2 章  物理层 | 10cks</title>
+<meta name="keywords" content=", " />
+<meta name="description" content="物理层的基本概念 物理层的主要任务描述为确定与传输媒体的接口的一些特性   机械特性 指明接口所用接线器的形状和尺寸、引线数目和排列、固定和锁定装置等等。
+  电气特性 指明在接口电缆的各条线上出现的电压的范围。
+  功能特性 指明某条线上出现的某一电平的电压表示何种意义。
+  过程特性 指明对于不同功能的各种可能事件的出现顺序。
+数据通信的基础知识 数据通信系统的模型   有关信道的几个基本概念   单向通信（单工通信）——只能有一个方向的通信而没有反方向的交互。
+  双向交替通信（半双工通信）——通信的双方都可以发送信息，但不能双方同时发送(当然也就不能同时接收)。
+  双向同时通信（全双工通信）——通信的双方可以同时发送和接收信息。
+  几种最基本的调制方法
+  调幅(AM)：载波的振幅随基带数字信号而变化。
+  调频(FM)：载波的频率随基带数字信号而变化。
+  调相(PM) ：载波的初始相位随基带数字信号而变化。
+  概要: 图片
+信道的极限容量     信道能够通过的频率范围
+ 1924 年，奈奎斯特(Nyquist)就推导出了著名的奈氏准则。他给出了在假定的理想条件下，为了避免码间串扰，码元的传输速率的上限值    信噪比
+  香农(Shannon)用信息论的理论推导出了带宽受限且有高斯白噪声干扰的信道的极限、无差错的信息传输速率。 信道的极限信息传输速率 C 可表达为 C = W log2(1&#43;S/N) b/s W 为信道的带宽（以 Hz 为单位）； S 为信道内所传信号的平均功率； N 为信道内部的高斯噪声功率。">
+<meta name="author" content="">
+<link rel="canonical" href="https://10cks.top/posts/%E7%AC%AC2%E7%AB%A0-%E7%89%A9%E7%90%86%E5%B1%82/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.614c578e9f3a0d96e577bc6e656ce49997ce576f755a65caaa5defab0078a7b7.css" integrity="sha256-YUxXjp86DZbld7xuZWzkmZfOV291WmXKql3vqwB4p7c=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.4dcb3c4f38462f66c6b6137227726f5543cb934cca9788f041c087e374491df2.js" integrity="sha256-Tcs8TzhGL2bGthNyJ3JvVUPLk0zKl4jwQcCH43RJHfI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://10cks.top/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://10cks.top/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://10cks.top/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://10cks.top/apple-touch-icon.png">
+<link rel="mask-icon" href="https://10cks.top/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+
+            }
+        }
+    })();
+</script>
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+            .post-entry:hover {
+				transition: transform 0.5s;
+				-webkit-transform: scale(1.2);
+				-moz-transform: scale(1.2);
+				-ms-transform: scale(1.2);
+				-o-transform: scale(1.2);
+				transform: scale(1.03) translateZ(0) translate3d(0, 0, 0) rotate(0.01deg);
+			}
+        }
+
+    </style>
+</noscript><link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css'>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
+    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
+    crossorigin="anonymous"
+></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
+    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
+    crossorigin="anonymous"
+/>
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script><meta property="og:title" content="第 2 章  物理层" />
+<meta property="og:description" content="物理层的基本概念 物理层的主要任务描述为确定与传输媒体的接口的一些特性   机械特性 指明接口所用接线器的形状和尺寸、引线数目和排列、固定和锁定装置等等。
+  电气特性 指明在接口电缆的各条线上出现的电压的范围。
+  功能特性 指明某条线上出现的某一电平的电压表示何种意义。
+  过程特性 指明对于不同功能的各种可能事件的出现顺序。
+数据通信的基础知识 数据通信系统的模型   有关信道的几个基本概念   单向通信（单工通信）——只能有一个方向的通信而没有反方向的交互。
+  双向交替通信（半双工通信）——通信的双方都可以发送信息，但不能双方同时发送(当然也就不能同时接收)。
+  双向同时通信（全双工通信）——通信的双方可以同时发送和接收信息。
+  几种最基本的调制方法
+  调幅(AM)：载波的振幅随基带数字信号而变化。
+  调频(FM)：载波的频率随基带数字信号而变化。
+  调相(PM) ：载波的初始相位随基带数字信号而变化。
+  概要: 图片
+信道的极限容量     信道能够通过的频率范围
+ 1924 年，奈奎斯特(Nyquist)就推导出了著名的奈氏准则。他给出了在假定的理想条件下，为了避免码间串扰，码元的传输速率的上限值    信噪比
+  香农(Shannon)用信息论的理论推导出了带宽受限且有高斯白噪声干扰的信道的极限、无差错的信息传输速率。 信道的极限信息传输速率 C 可表达为 C = W log2(1&#43;S/N) b/s W 为信道的带宽（以 Hz 为单位）； S 为信道内所传信号的平均功率； N 为信道内部的高斯噪声功率。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://10cks.top/posts/%E7%AC%AC2%E7%AB%A0-%E7%89%A9%E7%90%86%E5%B1%82/" /><meta property="og:image" content="https://10cks.top/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-03T14:41:48&#43;08:00" />
+<meta property="article:modified_time" content="2022-05-03T14:41:48&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://10cks.top/papermod-cover.png"/>
+
+<meta name="twitter:title" content="第 2 章  物理层"/>
+<meta name="twitter:description" content="物理层的基本概念 物理层的主要任务描述为确定与传输媒体的接口的一些特性   机械特性 指明接口所用接线器的形状和尺寸、引线数目和排列、固定和锁定装置等等。
+  电气特性 指明在接口电缆的各条线上出现的电压的范围。
+  功能特性 指明某条线上出现的某一电平的电压表示何种意义。
+  过程特性 指明对于不同功能的各种可能事件的出现顺序。
+数据通信的基础知识 数据通信系统的模型   有关信道的几个基本概念   单向通信（单工通信）——只能有一个方向的通信而没有反方向的交互。
+  双向交替通信（半双工通信）——通信的双方都可以发送信息，但不能双方同时发送(当然也就不能同时接收)。
+  双向同时通信（全双工通信）——通信的双方可以同时发送和接收信息。
+  几种最基本的调制方法
+  调幅(AM)：载波的振幅随基带数字信号而变化。
+  调频(FM)：载波的频率随基带数字信号而变化。
+  调相(PM) ：载波的初始相位随基带数字信号而变化。
+  概要: 图片
+信道的极限容量     信道能够通过的频率范围
+ 1924 年，奈奎斯特(Nyquist)就推导出了著名的奈氏准则。他给出了在假定的理想条件下，为了避免码间串扰，码元的传输速率的上限值    信噪比
+  香农(Shannon)用信息论的理论推导出了带宽受限且有高斯白噪声干扰的信道的极限、无差错的信息传输速率。 信道的极限信息传输速率 C 可表达为 C = W log2(1&#43;S/N) b/s W 为信道的带宽（以 Hz 为单位）； S 为信道内所传信号的平均功率； N 为信道内部的高斯噪声功率。"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://10cks.top/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "第 2 章  物理层",
+      "item": "https://10cks.top/posts/%E7%AC%AC2%E7%AB%A0-%E7%89%A9%E7%90%86%E5%B1%82/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "第 2 章  物理层",
+  "name": "第 2 章  物理层",
+  "description": "物理层的基本概念 物理层的主要任务描述为确定与传输媒体的接口的一些特性   机械特性 指明接口所用接线器的形状和尺寸、引线数目和排列、固定和锁定装置等等。\n  电气特性 指明在接口电缆的各条线上出现的电压的范围。\n  功能特性 指明某条线上出现的某一电平的电压表示何种意义。\n  过程特性 指明对于不同功能的各种可能事件的出现顺序。\n数据通信的基础知识 数据通信系统的模型   有关信道的几个基本概念   单向通信（单工通信）——只能有一个方向的通信而没有反方向的交互。\n  双向交替通信（半双工通信）——通信的双方都可以发送信息，但不能双方同时发送(当然也就不能同时接收)。\n  双向同时通信（全双工通信）——通信的双方可以同时发送和接收信息。\n  几种最基本的调制方法\n  调幅(AM)：载波的振幅随基带数字信号而变化。\n  调频(FM)：载波的频率随基带数字信号而变化。\n  调相(PM) ：载波的初始相位随基带数字信号而变化。\n  概要: 图片\n信道的极限容量     信道能够通过的频率范围\n 1924 年，奈奎斯特(Nyquist)就推导出了著名的奈氏准则。他给出了在假定的理想条件下，为了避免码间串扰，码元的传输速率的上限值    信噪比\n  香农(Shannon)用信息论的理论推导出了带宽受限且有高斯白噪声干扰的信道的极限、无差错的信息传输速率。 信道的极限信息传输速率 C 可表达为 C = W log2(1+S/N) b/s W 为信道的带宽（以 Hz 为单位）； S 为信道内所传信号的平均功率； N 为信道内部的高斯噪声功率。",
+  "keywords": [
+    "", ""
+  ],
+  "articleBody": "物理层的基本概念 物理层的主要任务描述为确定与传输媒体的接口的一些特性   机械特性 指明接口所用接线器的形状和尺寸、引线数目和排列、固定和锁定装置等等。\n  电气特性 指明在接口电缆的各条线上出现的电压的范围。\n  功能特性 指明某条线上出现的某一电平的电压表示何种意义。\n  过程特性 指明对于不同功能的各种可能事件的出现顺序。\n数据通信的基础知识 数据通信系统的模型   有关信道的几个基本概念   单向通信（单工通信）——只能有一个方向的通信而没有反方向的交互。\n  双向交替通信（半双工通信）——通信的双方都可以发送信息，但不能双方同时发送(当然也就不能同时接收)。\n  双向同时通信（全双工通信）——通信的双方可以同时发送和接收信息。\n  几种最基本的调制方法\n  调幅(AM)：载波的振幅随基带数字信号而变化。\n  调频(FM)：载波的频率随基带数字信号而变化。\n  调相(PM) ：载波的初始相位随基带数字信号而变化。\n  概要: 图片\n信道的极限容量     信道能够通过的频率范围\n 1924 年，奈奎斯特(Nyquist)就推导出了著名的奈氏准则。他给出了在假定的理想条件下，为了避免码间串扰，码元的传输速率的上限值    信噪比\n  香农(Shannon)用信息论的理论推导出了带宽受限且有高斯白噪声干扰的信道的极限、无差错的信息传输速率。 信道的极限信息传输速率 C 可表达为 C = W log2(1+S/N) b/s W 为信道的带宽（以 Hz 为单位）； S 为信道内所传信号的平均功率； N 为信道内部的高斯噪声功率。\n  香农公式表明\n  信道的带宽或信道中的信噪比越大，则信息的极限传输速率就越高。\n  只要信息传输速率低于信道的极限信息传输速率，就一定可以找到某种办法来实现无差错的传输。\n  若信道带宽 W 或信噪比 S/N 没有上限（当然实际信道不可能是这样的），则信道的极限信息传输速率 C 也就没有上限。\n  实际信道上能够达到的信息传输速率要比香农的极限传输速率低不少。\n信道的极限信息传输速率 物理层下面的传输媒体 导向传输媒体         双绞线\n 屏蔽双绞线 STP (Shielded Twisted Pair) 无屏蔽双绞线 UTP (Unshielded Twisted Pair)    同轴电缆\n 50 Ω同轴电缆 75 Ω 同轴电缆    光缆\n  光纤的工作原理\n  光线在纤芯中传输的方式是不断地全反射\n非导向传输媒体       无线传输所使用的频段很广。\n  短波通信主要是靠电离层的反射，但短波信道的通信质量较差。\n  微波在空间主要是直线传播。\n  卫星通信\n  地面微波接力通信\n信道复用技术 频分复用、时分复用和统计时分复用     频分复用 FDM(Frequency Division Multiplexing)\n 用户在分配到一定的频带后，在通信过程中自始至终都占用这个频带。  示意图      时分复用TDM(Time Division Multiplexing)\n 时分复用则是将时间划分为一段段等长的时分复用帧（TDM 帧）。每一个时分复用的用户在每一个 TDM 帧中占用固定序号的时隙。  示意图      统计时分复用 STDM\u000b(Statistic TDM)\n  是对时分复用的一种改进，不固定每个用户在时分复用帧中的位置，只要有数据就集中起来组成统计时分复用帧然后发送。\n  示意图\n波分复用       波分复用 WDM(Wavelength Division Multiplexing)\n  光的频分复用。由于光的频率很高，因此习惯上用波长而不是频率来表示所使用的光载波。\n码分复用     码分复用 CDM(Code Division Multiplexing)\n 常用的名词是码分多址 CDMA (Code Division Multiple Access)。 各用户使用经过特殊挑选的不同码型，因此彼此不会造成干扰。 这种系统发送的信号有很强的抗干扰能力，其频谱类似于白噪声，不易被敌人发现。 每一个比特时间划分为 m 个短的间隔，称为码片(chip)。 具体内容  1.为每个用户分配 m bit 的码片，并且所有的码片正交，对于任意两个码片 S 和 T 有 2.为了讨论方便，取 m=8，设码片 s 为 00011011。在拥有该码片的用户发送比特 1 时就发送该码片，发送比特 0 时就发送该码片的反码 11100100。      在计算时将 00011011 记作 (-1 -1 -1 +1 +1 -1 +1 +1)，可以得到(其中 S’ 为 S 的反码。) * 3.利用上面的式子我们知道，当接收端使用码片 对接收到的数据进行内积运算时，结果为 0 的是其它用户发送的数据，结果为 1 的是用户发送的比特 1，结果为 -1 的是用户发送的比特 0。 * 码分复用需要发送的数据量为原先的 m 倍。\n数字传输系统 脉码调制 PCM 体制 同步光纤网 SONET 和同步数字系列 SDH 宽带接入技术 xDSL技术   xDSL 技术就是用数字技术对现有的模拟电话用户线进行改造，使它能够承载宽带业务。把 0~4 kHz 低端频谱留给传统电话使用，而把原来没有被利用的高端频谱留给用户上网使用。\n光纤同轴混合网（HFC 网）   HFC 网是在目前覆盖面很广的有线电视网 CATV 的基础上开发的一种居民宽带接入网。HFC 网除可传送 CATV 外，还提供电话、数据和其他宽带交互型业务。\nFTTx 技术   FTTx（光纤到……）也是一种实现宽带居民接入网的方案。这里字母 x 可代表不同意思。\n 光纤到家 FTTH (Fiber To The Home)：光纤一直铺设到用户家庭可能是居民接入网最后的解决方法。 光纤到大楼 FTTB (Fiber To The Building)：光纤进入大楼后就转换为电信号，然后用电缆或双绞线分配到各用户。 光纤到路边 FTTC (Fiber To The Curb)：从路边到各用户可使用星形结构双绞线作为传输媒体。    ",
+  "wordCount" : "225",
+  "inLanguage": "en",
+  "datePublished": "2022-05-03T14:41:48+08:00",
+  "dateModified": "2022-05-03T14:41:48+08:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://10cks.top/posts/%E7%AC%AC2%E7%AB%A0-%E7%89%A9%E7%90%86%E5%B1%82/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "10cks",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://10cks.top/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://10cks.top/" accesskey="h" title="10cks (Alt + H)">10cks</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://10cks.top/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/index.xml" title="Rss">
+                    <span>Rss</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://10cks.top/">Home</a>&nbsp;»&nbsp;<a href="https://10cks.top/posts/">Posts</a></div>
+    <h1 class="post-title">
+      第 2 章  物理层
+    </h1>
+    <div class="post-meta"><span title='2022-05-03 14:41:48 +0800 CST'>May 3, 2022</span>
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e7%89%a9%e7%90%86%e5%b1%82%e7%9a%84%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5" aria-label="物理层的基本概念">物理层的基本概念</a><ul>
+                            
+                    <li>
+                        <a href="#%e7%89%a9%e7%90%86%e5%b1%82%e7%9a%84%e4%b8%bb%e8%a6%81%e4%bb%bb%e5%8a%a1%e6%8f%8f%e8%bf%b0%e4%b8%ba%e7%a1%ae%e5%ae%9a%e4%b8%8e%e4%bc%a0%e8%be%93%e5%aa%92%e4%bd%93%e7%9a%84%e6%8e%a5%e5%8f%a3%e7%9a%84%e4%b8%80%e4%ba%9b%e7%89%b9%e6%80%a7" aria-label="物理层的主要任务描述为确定与传输媒体的接口的一些特性">物理层的主要任务描述为确定与传输媒体的接口的一些特性</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%95%b0%e6%8d%ae%e9%80%9a%e4%bf%a1%e7%9a%84%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86" aria-label="数据通信的基础知识">数据通信的基础知识</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%95%b0%e6%8d%ae%e9%80%9a%e4%bf%a1%e7%b3%bb%e7%bb%9f%e7%9a%84%e6%a8%a1%e5%9e%8b" aria-label="数据通信系统的模型">数据通信系统的模型</a></li>
+                    <li>
+                        <a href="#%e6%9c%89%e5%85%b3%e4%bf%a1%e9%81%93%e7%9a%84%e5%87%a0%e4%b8%aa%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5" aria-label="有关信道的几个基本概念">有关信道的几个基本概念</a></li>
+                    <li>
+                        <a href="#%e4%bf%a1%e9%81%93%e7%9a%84%e6%9e%81%e9%99%90%e5%ae%b9%e9%87%8f" aria-label="信道的极限容量">信道的极限容量</a></li>
+                    <li>
+                        <a href="#%e4%bf%a1%e9%81%93%e7%9a%84%e6%9e%81%e9%99%90%e4%bf%a1%e6%81%af%e4%bc%a0%e8%be%93%e9%80%9f%e7%8e%87" aria-label="信道的极限信息传输速率">信道的极限信息传输速率</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e7%89%a9%e7%90%86%e5%b1%82%e4%b8%8b%e9%9d%a2%e7%9a%84%e4%bc%a0%e8%be%93%e5%aa%92%e4%bd%93" aria-label="物理层下面的传输媒体">物理层下面的传输媒体</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%af%bc%e5%90%91%e4%bc%a0%e8%be%93%e5%aa%92%e4%bd%93" aria-label="导向传输媒体">导向传输媒体</a></li>
+                    <li>
+                        <a href="#%e9%9d%9e%e5%af%bc%e5%90%91%e4%bc%a0%e8%be%93%e5%aa%92%e4%bd%93" aria-label="非导向传输媒体">非导向传输媒体</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e4%bf%a1%e9%81%93%e5%a4%8d%e7%94%a8%e6%8a%80%e6%9c%af" aria-label="信道复用技术">信道复用技术</a><ul>
+                            
+                    <li>
+                        <a href="#%e9%a2%91%e5%88%86%e5%a4%8d%e7%94%a8%e6%97%b6%e5%88%86%e5%a4%8d%e7%94%a8%e5%92%8c%e7%bb%9f%e8%ae%a1%e6%97%b6%e5%88%86%e5%a4%8d%e7%94%a8" aria-label="频分复用、时分复用和统计时分复用">频分复用、时分复用和统计时分复用</a></li>
+                    <li>
+                        <a href="#%e6%b3%a2%e5%88%86%e5%a4%8d%e7%94%a8" aria-label="波分复用">波分复用</a></li>
+                    <li>
+                        <a href="#%e7%a0%81%e5%88%86%e5%a4%8d%e7%94%a8" aria-label="码分复用">码分复用</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%95%b0%e5%ad%97%e4%bc%a0%e8%be%93%e7%b3%bb%e7%bb%9f" aria-label="数字传输系统">数字传输系统</a><ul>
+                            
+                    <li>
+                        <a href="#%e8%84%89%e7%a0%81%e8%b0%83%e5%88%b6-pcm-%e4%bd%93%e5%88%b6" aria-label="脉码调制 PCM 体制">脉码调制 PCM 体制</a></li>
+                    <li>
+                        <a href="#%e5%90%8c%e6%ad%a5%e5%85%89%e7%ba%a4%e7%bd%91-sonet-%e5%92%8c%e5%90%8c%e6%ad%a5%e6%95%b0%e5%ad%97%e7%b3%bb%e5%88%97-sdh" aria-label="同步光纤网 SONET 和同步数字系列 SDH">同步光纤网 SONET 和同步数字系列 SDH</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e5%ae%bd%e5%b8%a6%e6%8e%a5%e5%85%a5%e6%8a%80%e6%9c%af" aria-label="宽带接入技术">宽带接入技术</a><ul>
+                            
+                    <li>
+                        <a href="#xdsl%e6%8a%80%e6%9c%af" aria-label="xDSL技术">xDSL技术</a></li>
+                    <li>
+                        <a href="#%e5%85%89%e7%ba%a4%e5%90%8c%e8%bd%b4%e6%b7%b7%e5%90%88%e7%bd%91hfc-%e7%bd%91" aria-label="光纤同轴混合网（HFC 网）">光纤同轴混合网（HFC 网）</a></li>
+                    <li>
+                        <a href="#fttx-%e6%8a%80%e6%9c%af" aria-label="FTTx 技术">FTTx 技术</a>
+                    </li>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content"><h2 id="物理层的基本概念">物理层的基本概念<a hidden class="anchor" aria-hidden="true" href="#物理层的基本概念">#</a></h2>
+<h3 id="物理层的主要任务描述为确定与传输媒体的接口的一些特性">物理层的主要任务描述为确定与传输媒体的接口的一些特性<a hidden class="anchor" aria-hidden="true" href="#物理层的主要任务描述为确定与传输媒体的接口的一些特性">#</a></h3>
+<ul>
+<li>
+<p>机械特性    指明接口所用接线器的形状和尺寸、引线数目和排列、固定和锁定装置等等。</p>
+</li>
+<li>
+<p>电气特性    指明在接口电缆的各条线上出现的电压的范围。</p>
+</li>
+<li>
+<p>功能特性    指明某条线上出现的某一电平的电压表示何种意义。</p>
+</li>
+<li>
+<p>过程特性    指明对于不同功能的各种可能事件的出现顺序。</p>
+<h2 id="数据通信的基础知识">数据通信的基础知识<a hidden class="anchor" aria-hidden="true" href="#数据通信的基础知识">#</a></h2>
+<h3 id="数据通信系统的模型">数据通信系统的模型<a hidden class="anchor" aria-hidden="true" href="#数据通信系统的模型">#</a></h3>
+</li>
+<li>
+<h3 id="有关信道的几个基本概念">有关信道的几个基本概念<a hidden class="anchor" aria-hidden="true" href="#有关信道的几个基本概念">#</a></h3>
+</li>
+<li>
+<p>单向通信（单工通信）——只能有一个方向的通信而没有反方向的交互。</p>
+</li>
+<li>
+<p>双向交替通信（半双工通信）——通信的双方都可以发送信息，但不能双方同时发送(当然也就不能同时接收)。</p>
+</li>
+<li>
+<p>双向同时通信（全双工通信）——通信的双方可以同时发送和接收信息。</p>
+</li>
+<li>
+<p>几种最基本的调制方法</p>
+<ul>
+<li>
+<p>调幅(AM)：载波的振幅随基带数字信号而变化。</p>
+</li>
+<li>
+<p>调频(FM)：载波的频率随基带数字信号而变化。</p>
+</li>
+<li>
+<p>调相(PM) ：载波的初始相位随基带数字信号而变化。</p>
+</li>
+<li>
+<p>概要: 图片</p>
+<h3 id="信道的极限容量">信道的极限容量<a hidden class="anchor" aria-hidden="true" href="#信道的极限容量">#</a></h3>
+</li>
+</ul>
+</li>
+<li>
+<p>信道能够通过的频率范围</p>
+<ul>
+<li>1924 年，奈奎斯特(Nyquist)就推导出了著名的奈氏准则。他给出了在假定的理想条件下，为了避免码间串扰，码元的传输速率的上限值</li>
+</ul>
+</li>
+<li>
+<p>信噪比</p>
+<ul>
+<li>
+<p>香农(Shannon)用信息论的理论推导出了带宽受限且有高斯白噪声干扰的信道的极限、无差错的信息传输速率。
+信道的极限信息传输速率 C 可表达为
+C = W log2(1+S/N)  b/s 
+W 为信道的带宽（以 Hz 为单位）；
+S 为信道内所传信号的平均功率；
+N 为信道内部的高斯噪声功率。</p>
+<ul>
+<li>
+<p>香农公式表明</p>
+<ul>
+<li>
+<p>信道的带宽或信道中的信噪比越大，则信息的极限传输速率就越高。</p>
+</li>
+<li>
+<p>只要信息传输速率低于信道的极限信息传输速率，就一定可以找到某种办法来实现无差错的传输。</p>
+</li>
+<li>
+<p>若信道带宽 W 或信噪比 S/N 没有上限（当然实际信道不可能是这样的），则信道的极限信息传输速率 C 也就没有上限。</p>
+</li>
+<li>
+<p>实际信道上能够达到的信息传输速率要比香农的极限传输速率低不少。</p>
+<h3 id="信道的极限信息传输速率">信道的极限信息传输速率<a hidden class="anchor" aria-hidden="true" href="#信道的极限信息传输速率">#</a></h3>
+<h2 id="物理层下面的传输媒体">物理层下面的传输媒体<a hidden class="anchor" aria-hidden="true" href="#物理层下面的传输媒体">#</a></h2>
+<h3 id="导向传输媒体">导向传输媒体<a hidden class="anchor" aria-hidden="true" href="#导向传输媒体">#</a></h3>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>双绞线</p>
+<ul>
+<li>屏蔽双绞线 STP (Shielded Twisted Pair)</li>
+<li>无屏蔽双绞线 UTP (Unshielded Twisted Pair)</li>
+</ul>
+</li>
+<li>
+<p>同轴电缆</p>
+<ul>
+<li>50 Ω同轴电缆</li>
+<li>75 Ω 同轴电缆</li>
+</ul>
+</li>
+<li>
+<p>光缆</p>
+<ul>
+<li>
+<p>光纤的工作原理</p>
+<ul>
+<li>
+<p>光线在纤芯中传输的方式是不断地全反射</p>
+<h3 id="非导向传输媒体">非导向传输媒体<a hidden class="anchor" aria-hidden="true" href="#非导向传输媒体">#</a></h3>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>无线传输所使用的频段很广。</p>
+</li>
+<li>
+<p>短波通信主要是靠电离层的反射，但短波信道的通信质量较差。</p>
+</li>
+<li>
+<p>微波在空间主要是直线传播。</p>
+<ul>
+<li>
+<p>卫星通信</p>
+</li>
+<li>
+<p>地面微波接力通信</p>
+<h2 id="信道复用技术">信道复用技术<a hidden class="anchor" aria-hidden="true" href="#信道复用技术">#</a></h2>
+<h3 id="频分复用时分复用和统计时分复用">频分复用、时分复用和统计时分复用<a hidden class="anchor" aria-hidden="true" href="#频分复用时分复用和统计时分复用">#</a></h3>
+</li>
+</ul>
+</li>
+<li>
+<p>频分复用 FDM(Frequency Division Multiplexing)</p>
+<ul>
+<li>用户在分配到一定的频带后，在通信过程中自始至终都占用这个频带。
+<ul>
+<li>示意图</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>时分复用TDM(Time Division Multiplexing)</p>
+<ul>
+<li>时分复用则是将时间划分为一段段等长的时分复用帧（TDM 帧）。每一个时分复用的用户在每一个 TDM 帧中占用固定序号的时隙。
+<ul>
+<li>示意图</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>统计时分复用 STDM(Statistic TDM)</p>
+<ul>
+<li>
+<p>是对时分复用的一种改进，不固定每个用户在时分复用帧中的位置，只要有数据就集中起来组成统计时分复用帧然后发送。</p>
+<ul>
+<li>
+<p>示意图</p>
+<h3 id="波分复用">波分复用<a hidden class="anchor" aria-hidden="true" href="#波分复用">#</a></h3>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>波分复用 WDM(Wavelength Division Multiplexing)</p>
+<ul>
+<li>
+<p>光的频分复用。由于光的频率很高，因此习惯上用波长而不是频率来表示所使用的光载波。</p>
+<h3 id="码分复用">码分复用<a hidden class="anchor" aria-hidden="true" href="#码分复用">#</a></h3>
+</li>
+</ul>
+</li>
+<li>
+<p>码分复用 CDM(Code Division Multiplexing)</p>
+<ul>
+<li>常用的名词是码分多址 CDMA     (Code Division Multiple Access)。</li>
+<li>各用户使用经过特殊挑选的不同码型，因此彼此不会造成干扰。</li>
+<li>这种系统发送的信号有很强的抗干扰能力，其频谱类似于白噪声，不易被敌人发现。</li>
+<li>每一个比特时间划分为 m 个短的间隔，称为码片(chip)。</li>
+<li>具体内容
+<ul>
+<li>1.为每个用户分配 m bit 的码片，并且所有的码片正交，对于任意两个码片 S 和 T 有</li>
+<li>2.为了讨论方便，取 m=8，设码片 s 为 00011011。在拥有该码片的用户发送比特 1 时就发送该码片，发送比特 0 时就发送该码片的反码 11100100。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>在计算时将 00011011 记作 (-1 -1 -1 +1 +1 -1 +1 +1)，可以得到(其中 S&rsquo; 为 S 的反码。)
+* 3.利用上面的式子我们知道，当接收端使用码片  对接收到的数据进行内积运算时，结果为 0 的是其它用户发送的数据，结果为 1 的是用户发送的比特 1，结果为 -1 的是用户发送的比特 0。
+* 码分复用需要发送的数据量为原先的 m 倍。</p>
+<h2 id="数字传输系统">数字传输系统<a hidden class="anchor" aria-hidden="true" href="#数字传输系统">#</a></h2>
+<h3 id="脉码调制-pcm-体制">脉码调制 PCM 体制<a hidden class="anchor" aria-hidden="true" href="#脉码调制-pcm-体制">#</a></h3>
+<h3 id="同步光纤网-sonet-和同步数字系列-sdh">同步光纤网 SONET 和同步数字系列 SDH<a hidden class="anchor" aria-hidden="true" href="#同步光纤网-sonet-和同步数字系列-sdh">#</a></h3>
+<h2 id="宽带接入技术">宽带接入技术<a hidden class="anchor" aria-hidden="true" href="#宽带接入技术">#</a></h2>
+<h3 id="xdsl技术">xDSL技术<a hidden class="anchor" aria-hidden="true" href="#xdsl技术">#</a></h3>
+<ul>
+<li>
+<p>xDSL 技术就是用数字技术对现有的模拟电话用户线进行改造，使它能够承载宽带业务。把 0~4 kHz 低端频谱留给传统电话使用，而把原来没有被利用的高端频谱留给用户上网使用。</p>
+<h3 id="光纤同轴混合网hfc-网">光纤同轴混合网（HFC 网）<a hidden class="anchor" aria-hidden="true" href="#光纤同轴混合网hfc-网">#</a></h3>
+</li>
+<li>
+<p>HFC 网是在目前覆盖面很广的有线电视网 CATV 的基础上开发的一种居民宽带接入网。HFC 网除可传送 CATV 外，还提供电话、数据和其他宽带交互型业务。</p>
+<h3 id="fttx-技术">FTTx 技术<a hidden class="anchor" aria-hidden="true" href="#fttx-技术">#</a></h3>
+</li>
+<li>
+<p>FTTx（光纤到……）也是一种实现宽带居民接入网的方案。这里字母 x 可代表不同意思。</p>
+<ul>
+<li>光纤到家 FTTH (Fiber To The Home)：光纤一直铺设到用户家庭可能是居民接入网最后的解决方法。</li>
+<li>光纤到大楼 FTTB (Fiber To The Building)：光纤进入大楼后就转换为电信号，然后用电缆或双绞线分配到各用户。</li>
+<li>光纤到路边 FTTC (Fiber To The Curb)：从路边到各用户可使用星形结构双绞线作为传输媒体。</li>
+</ul>
+</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://10cks.top/posts/%E7%AC%AC1%E7%AB%A0-%E6%A6%82%E8%BF%B0/">
+    <span class="title">« Prev Page</span>
+    <br>
+    <span>第 1 章 概述</span>
+  </a>
+  <a class="next" href="https://10cks.top/posts/%E7%AC%AC3%E7%AB%A0-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
+    <span class="title">Next Page »</span>
+    <br>
+    <span>第 3 章  数据链路层</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://10cks.top/">10cks</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
+    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
+    crossorigin="anonymous"
+></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
+    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
+    crossorigin="anonymous"
+/>
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script>
+
+</body>
+
+</html>
