@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>PT 下载从入门到养老篇一：站点介绍及生存指南 | 10cks</title>
+<meta name="keywords" content="PT" />
+<meta name="description" content="本文最后更新于 2022 年 2 月。PT 站的前世今生，新手入门指南和概念扫盲。
+专题文章目录  PT 下载从入门到养老篇一：站点介绍及生存指南 PT 下载从入门到养老篇二：隐匿的地下通讯 PT 下载从入门到养老篇三：NAS 存储服务器及硬盘选购  介绍 PT (Private Tracker) 是一种基于私有 BT Tracker 服务器的资源传播形式，经授权的用户使用受允许的客户端进行种子制作与下载。相较于传统 BT 和 emule，PT 站往往采取了严格的邀请制度以及免责制度来规避法律风险，同时要求用户客户端开启传输加密以绕过运营商的检测策略。当然，从实际上来说 PT 站的运营、使用仍然是违背了各国版权法的。
+许多高清爱好者聚集在 PT 站，发布翻录的蓝光原盘、CD 资源以及录制的高清卫星电视讯号；得益于 Netflix、HBO、Apple TV 等高清流媒体在线视频平台的发展，近年也出现了一些 WEB-DL (Download from Web) 资源。
+目前国内使用的 PT 站源码大部分为基于浙江大学 xiazuojie 团队所开发的开源整站项目 NexusPHP，基于 PHP &#43; MySQL &#43; memcached。部分站点使用 Discuz! 进行二次开发。
+日前，@burpheart 基于上游项目，开发了新版的 NexuxPHP Safe。其修复了一些已知的安全漏洞，并加入了一些增强用户体验的小功能。
+2022 年更新：@burpheart 似乎逐步淡出了项目维护。目前项目迁移至 xiaomlove/nexusphp，由 @xiaomlove 为主的开发者继续维护。
+国内 PT 站可以划分为两个系别：教育网 PT 站 与 公网 PT 站。">
+<meta name="author" content="">
+<link rel="canonical" href="https://10cks.top/posts/pt-%E4%B8%8B%E8%BD%BD%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%BB%E8%80%81%E7%AF%87%E4%B8%80%E7%AB%99%E7%82%B9%E4%BB%8B%E7%BB%8D%E5%8F%8A%E7%94%9F%E5%AD%98%E6%8C%87%E5%8D%97/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.614c578e9f3a0d96e577bc6e656ce49997ce576f755a65caaa5defab0078a7b7.css" integrity="sha256-YUxXjp86DZbld7xuZWzkmZfOV291WmXKql3vqwB4p7c=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.4dcb3c4f38462f66c6b6137227726f5543cb934cca9788f041c087e374491df2.js" integrity="sha256-Tcs8TzhGL2bGthNyJ3JvVUPLk0zKl4jwQcCH43RJHfI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://10cks.top/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://10cks.top/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://10cks.top/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://10cks.top/apple-touch-icon.png">
+<link rel="mask-icon" href="https://10cks.top/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+
+            }
+        }
+    })();
+</script>
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+            .post-entry:hover {
+				transition: transform 0.5s;
+				-webkit-transform: scale(1.2);
+				-moz-transform: scale(1.2);
+				-ms-transform: scale(1.2);
+				-o-transform: scale(1.2);
+				transform: scale(1.03) translateZ(0) translate3d(0, 0, 0) rotate(0.01deg);
+			}
+        }
+
+    </style>
+</noscript><link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css'>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
+    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
+    crossorigin="anonymous"
+></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
+    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
+    crossorigin="anonymous"
+/>
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script><meta property="og:title" content="PT 下载从入门到养老篇一：站点介绍及生存指南" />
+<meta property="og:description" content="本文最后更新于 2022 年 2 月。PT 站的前世今生，新手入门指南和概念扫盲。
+专题文章目录  PT 下载从入门到养老篇一：站点介绍及生存指南 PT 下载从入门到养老篇二：隐匿的地下通讯 PT 下载从入门到养老篇三：NAS 存储服务器及硬盘选购  介绍 PT (Private Tracker) 是一种基于私有 BT Tracker 服务器的资源传播形式，经授权的用户使用受允许的客户端进行种子制作与下载。相较于传统 BT 和 emule，PT 站往往采取了严格的邀请制度以及免责制度来规避法律风险，同时要求用户客户端开启传输加密以绕过运营商的检测策略。当然，从实际上来说 PT 站的运营、使用仍然是违背了各国版权法的。
+许多高清爱好者聚集在 PT 站，发布翻录的蓝光原盘、CD 资源以及录制的高清卫星电视讯号；得益于 Netflix、HBO、Apple TV 等高清流媒体在线视频平台的发展，近年也出现了一些 WEB-DL (Download from Web) 资源。
+目前国内使用的 PT 站源码大部分为基于浙江大学 xiazuojie 团队所开发的开源整站项目 NexusPHP，基于 PHP &#43; MySQL &#43; memcached。部分站点使用 Discuz! 进行二次开发。
+日前，@burpheart 基于上游项目，开发了新版的 NexuxPHP Safe。其修复了一些已知的安全漏洞，并加入了一些增强用户体验的小功能。
+2022 年更新：@burpheart 似乎逐步淡出了项目维护。目前项目迁移至 xiaomlove/nexusphp，由 @xiaomlove 为主的开发者继续维护。
+国内 PT 站可以划分为两个系别：教育网 PT 站 与 公网 PT 站。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://10cks.top/posts/pt-%E4%B8%8B%E8%BD%BD%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%BB%E8%80%81%E7%AF%87%E4%B8%80%E7%AB%99%E7%82%B9%E4%BB%8B%E7%BB%8D%E5%8F%8A%E7%94%9F%E5%AD%98%E6%8C%87%E5%8D%97/" /><meta property="og:image" content="https://10cks.top/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-04T14:49:48&#43;08:00" />
+<meta property="article:modified_time" content="2022-05-04T14:49:48&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://10cks.top/papermod-cover.png"/>
+
+<meta name="twitter:title" content="PT 下载从入门到养老篇一：站点介绍及生存指南"/>
+<meta name="twitter:description" content="本文最后更新于 2022 年 2 月。PT 站的前世今生，新手入门指南和概念扫盲。
+专题文章目录  PT 下载从入门到养老篇一：站点介绍及生存指南 PT 下载从入门到养老篇二：隐匿的地下通讯 PT 下载从入门到养老篇三：NAS 存储服务器及硬盘选购  介绍 PT (Private Tracker) 是一种基于私有 BT Tracker 服务器的资源传播形式，经授权的用户使用受允许的客户端进行种子制作与下载。相较于传统 BT 和 emule，PT 站往往采取了严格的邀请制度以及免责制度来规避法律风险，同时要求用户客户端开启传输加密以绕过运营商的检测策略。当然，从实际上来说 PT 站的运营、使用仍然是违背了各国版权法的。
+许多高清爱好者聚集在 PT 站，发布翻录的蓝光原盘、CD 资源以及录制的高清卫星电视讯号；得益于 Netflix、HBO、Apple TV 等高清流媒体在线视频平台的发展，近年也出现了一些 WEB-DL (Download from Web) 资源。
+目前国内使用的 PT 站源码大部分为基于浙江大学 xiazuojie 团队所开发的开源整站项目 NexusPHP，基于 PHP &#43; MySQL &#43; memcached。部分站点使用 Discuz! 进行二次开发。
+日前，@burpheart 基于上游项目，开发了新版的 NexuxPHP Safe。其修复了一些已知的安全漏洞，并加入了一些增强用户体验的小功能。
+2022 年更新：@burpheart 似乎逐步淡出了项目维护。目前项目迁移至 xiaomlove/nexusphp，由 @xiaomlove 为主的开发者继续维护。
+国内 PT 站可以划分为两个系别：教育网 PT 站 与 公网 PT 站。"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://10cks.top/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "PT 下载从入门到养老篇一：站点介绍及生存指南",
+      "item": "https://10cks.top/posts/pt-%E4%B8%8B%E8%BD%BD%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%BB%E8%80%81%E7%AF%87%E4%B8%80%E7%AB%99%E7%82%B9%E4%BB%8B%E7%BB%8D%E5%8F%8A%E7%94%9F%E5%AD%98%E6%8C%87%E5%8D%97/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "PT 下载从入门到养老篇一：站点介绍及生存指南",
+  "name": "PT 下载从入门到养老篇一：站点介绍及生存指南",
+  "description": "本文最后更新于 2022 年 2 月。PT 站的前世今生，新手入门指南和概念扫盲。\n专题文章目录  PT 下载从入门到养老篇一：站点介绍及生存指南 PT 下载从入门到养老篇二：隐匿的地下通讯 PT 下载从入门到养老篇三：NAS 存储服务器及硬盘选购  介绍 PT (Private Tracker) 是一种基于私有 BT Tracker 服务器的资源传播形式，经授权的用户使用受允许的客户端进行种子制作与下载。相较于传统 BT 和 emule，PT 站往往采取了严格的邀请制度以及免责制度来规避法律风险，同时要求用户客户端开启传输加密以绕过运营商的检测策略。当然，从实际上来说 PT 站的运营、使用仍然是违背了各国版权法的。\n许多高清爱好者聚集在 PT 站，发布翻录的蓝光原盘、CD 资源以及录制的高清卫星电视讯号；得益于 Netflix、HBO、Apple TV 等高清流媒体在线视频平台的发展，近年也出现了一些 WEB-DL (Download from Web) 资源。\n目前国内使用的 PT 站源码大部分为基于浙江大学 xiazuojie 团队所开发的开源整站项目 NexusPHP，基于 PHP + MySQL + memcached。部分站点使用 Discuz! 进行二次开发。\n日前，@burpheart 基于上游项目，开发了新版的 NexuxPHP Safe。其修复了一些已知的安全漏洞，并加入了一些增强用户体验的小功能。\n2022 年更新：@burpheart 似乎逐步淡出了项目维护。目前项目迁移至 xiaomlove/nexusphp，由 @xiaomlove 为主的开发者继续维护。\n国内 PT 站可以划分为两个系别：教育网 PT 站 与 公网 PT 站。",
+  "keywords": [
+    "PT"
+  ],
+  "articleBody": "本文最后更新于 2022 年 2 月。PT 站的前世今生，新手入门指南和概念扫盲。\n专题文章目录  PT 下载从入门到养老篇一：站点介绍及生存指南 PT 下载从入门到养老篇二：隐匿的地下通讯 PT 下载从入门到养老篇三：NAS 存储服务器及硬盘选购  介绍 PT (Private Tracker) 是一种基于私有 BT Tracker 服务器的资源传播形式，经授权的用户使用受允许的客户端进行种子制作与下载。相较于传统 BT 和 emule，PT 站往往采取了严格的邀请制度以及免责制度来规避法律风险，同时要求用户客户端开启传输加密以绕过运营商的检测策略。当然，从实际上来说 PT 站的运营、使用仍然是违背了各国版权法的。\n许多高清爱好者聚集在 PT 站，发布翻录的蓝光原盘、CD 资源以及录制的高清卫星电视讯号；得益于 Netflix、HBO、Apple TV 等高清流媒体在线视频平台的发展，近年也出现了一些 WEB-DL (Download from Web) 资源。\n目前国内使用的 PT 站源码大部分为基于浙江大学 xiazuojie 团队所开发的开源整站项目 NexusPHP，基于 PHP + MySQL + memcached。部分站点使用 Discuz! 进行二次开发。\n日前，@burpheart 基于上游项目，开发了新版的 NexuxPHP Safe。其修复了一些已知的安全漏洞，并加入了一些增强用户体验的小功能。\n2022 年更新：@burpheart 似乎逐步淡出了项目维护。目前项目迁移至 xiaomlove/nexusphp，由 @xiaomlove 为主的开发者继续维护。\n国内 PT 站可以划分为两个系别：教育网 PT 站 与 公网 PT 站。\n教育网 PT 站点 以北邮人（北京邮电大学）、蒲公英（西北工业大学）、极速之星（北京理工大学）和六维空间（东北大学）为主。\n高校校园网提供的 IPv4 网络一般是有计费及限速策略的，由校方向电信、联通、移动、鹏博士等运营商采购带宽并在出口实施自动分流。而为了推广 IPv6 业务，各高校所接入的中国教育网（CERNET）的 IPv6 网络一般是不计费且不限速的，因此组建一个依托于 IPv6 的免费资源分享网络有着很大意义。\n一般来说，教育网 PT 站的原创影视资源较少，大部分为转载资源。Coursera、Udacity 等公开课资源（WEB-DL）、考研视频、电子书等内容较多，此外，北邮人等站点还提供一些诸如 Steam 游戏数据备份文件，这样学生就不用担心被几十个 G 的 Steam 游戏更新榨干网费了。\n目前来看教育网 PT 站或多或少获得了学校网络中心的技术和政策支持，所以才能存留至今。部分教育网 PT 站仅允许 IPv6 或仅归属于教育网 ASN 的 IPv6 访问，因此对于公众来说访问有些难度，可以通过 HE.net 提供的 IPv6 TunnelBroker 隧道，或者 IPv6 VPS 来中转流量。\n从分享率和发种规范来看，教育网 PT 十分宽松，但保种率可能不如公网 PT 站高，资源也没那么丰富。但对于追热门电影和美剧的轻度用户来说还是足够了。\n公网 PT 站点 传说中国有五大公网 PT 站：HDS、TTG、HDC、CHD、HDR，也有三大 PT 站的说法（即 CHDbits、HDChina、TTG）。后来经过世界版权日风波（即被称作“中国版权第一案”的思路网侵权案），HDStar（思路网）管理组被捕入狱，剩下的站点也多多少少受到了一些影响，有些直接关闭了，有的则隐没了。\n希望考古中国 PT 站历史的朋友可以查看这个帖子：国内外PT站点评。希望考古国际 PT 站的朋友，可以查看这个帖子：PT站点大全。历史比较悠久了，仅供参考。\n距离版权日风波已经过去了七八年，现在国内 PT 站又呈现出繁荣景象。一方面国内电视剧集的分级制度迟迟未推出，而 Netflix、HBO、Disney+、Apple TV+ 等境外流媒体业务的订阅费用也居高不下。另一方面，国内百兆、千兆家庭宽带已经覆盖到了三四线城市甚至是县城，养一个 PT 账号的成本已经相当低了。\n在此列出几个常见的站点，仅供参考。\n 目前以影视资源为主的有  HDChina 瓷器：近 10 年的老站，用户数据继承自原先的 HDWinG 和 HDStar。资源方面，官方制作组（HDCTV 和 HDChina）的 Netflix、HBO 剧集，原盘，录制的电视剧比较多。 CHDbits 彩虹岛：近 10 年的老站点，影视资源很丰富。 SSD (Spring Sunday)：2010 年创建的老站点，前身为 CMCT 触摸春天。 M-Team 馒头：有比较多的成人内容，官方提供付费邀请码购买渠道。 BT School 比特校园：2019 年刚创建的新站点，门槛相对比较低。 HD Time 高清时间：老站点，但是没什么名气。 52PT 我爱PT：新站点。 HDSky 天空：综合站点。 TTG：国内大站之一，2014 年末作为 TTG 出现。 Ourbits 我堡：算是国内大站了，没啥特色。 HDHome 家园：2015 年左右成立的 PT 站，没啥特色。 PTHome 铂金家：2018 年左右成立的新站，没啥特色。 HDCity 城市：2016 年底成立的新站（相对来说）。 NicePT 老师站：又成为小馒头（相对于 M-Team 来说），主要为成人内容。 CCFBits 精品高清：挺老的大站了，资源很丰富也很低调。 HDR (HDRoute)：前身为 HDRoad 思路高清，历史悠久。 LeagueHD 柠檬：小站中发展的还算不错的，2019 年成立。 Haidan 海胆之家：2020 年刚成立的小站。   教育网 PT，部分 tracker 可能仅允许教育网或 IPv6 连接。入站门槛较低，可以凭借 edu 教育域名的邮箱进行注册，也可以通过校内用户发起邀请。对分享率和种子规范的限制比较宽松。  NanyangPT 南洋：西安交通大学 PT 站 BYR 北邮人：北京邮电大学 PT 站，仅对 IPv6 开放 TJUPT 北洋园：天津大学 PT 站 葡萄PT：上海交通大学 PT 站 NPUPT 蒲公英：西北工业大学 PT 站 BITPT 极速之星：北京理工大学 PT 站 六维空间：东北大学 PT 站 NexusHD：浙江大学 PT 站，仅供校内用户访问。   以动漫资源为主的有  U2 动漫花园 幼儿园：老牌动漫 PT 站。各种上古资源都能找到。 Skyey Snow 天雪动漫：基于 Discuz! 构建的 PT 站点，相对来说新一些。   以音乐资源为主的有  OpenCD 皇后 PT：小体积种子比较多，基本靠攒魔力值来保号。    用户规范 对于用户，无论是公网 PT 站还是教育网 PT 站，往往都有以下要求：\n  上传、下载量：新手考核计划一般为一个月内 =50GB 的上传下载量。部分教育网 PT 站可能没有新手考核要求。\n  分享率（上传量/下载量）：PT 站的优质资源离不开各位用户的分享和做种。为了减少吸血鬼用户的影响，几乎所有 PT 站点都会要求用户的风险率超过一定值。除此之外，用户分享率与用户等级相关，如果风险率低于标准会自动回退到较低的用户等级。\n  魔力值（Bonus points，即积分，获得于用户赠送、活动奖励或做种）：魔力值可以用于兑换站内头衔、更改用户名、消除广告，甚至至博彩小游戏（例如赌球或 24 点，常见于世界杯期间）。\n  最小做种时间：为了保障种子活跃度，一些 PT 站严格禁止下完就跑（称为 H\u0026R, Hit and Run）的行为，要求用户至少持续做种一定时间）。摘录一段 OpenCD 的规则作为参考。\n在种子下载完成后，该种子需在 30 天内做种 36 小时，未达到此要求则记一次 H\u0026R。\rH\u0026R 满 10 次，即 ban。皇后及以上级别，包括 VIP，计算 HR 次数，但不 ban 号。\r消除已获得的 H\u0026R 的两种方式\r1. 获得 H\u0026R 的种子在 90 天内达到 300 小时做种时间则会自动消除该 H\u0026R\r2. 用魔力值兑换取消 H\u0026R 次数   生存指南 考核期 大部分站点都有邀请考核制度，需要在一个月时间内达成一定的上传量、下载量以及魔力值。部分站点考核由于不计算魔力值的兑换上传量，建议老老实实下载热门种子并做种。\n邀请者可以消耗数倍的魔力值来兑换一个无需新手考核的邀请码。被邀请人也可以付费捐赠（几百元不等）来免除新手考核。\n考核后 对于一些以影视作品为主的网站，尽可能的下载热门种子，这样能更快的获得上传量。可以使用 BT 客户端的 RSS 订阅功能，实现无人值守下载。 对于以小种为主的 PT 站，如 OpenCD 以及大部分教育网站点，则需要通过下载大量小体积种子并长时间做种以换取魔力值，再使用魔力值兑换上传。\n养老期 此时混 PT 只为偶尔下几个资源，而不是那么注重参与了，因此保持一个良好的分享率以备不时之需是很有必要的。\n部分站点可以通过捐赠获得终身 VIP 头衔，从此不再需要担心分享率问题。\n刷流量 想快速将上传、下载流量刷上去，最快的办法就是租用 Seedbox。Seedbox 即专用于跑 BT/PT 的服务器，一般位于海外（德国、罗马尼亚、荷兰）等地。\n可以通过 SeedBox 例如 FeralHosting 或 Seedbox.io 配合 RSS 订阅来实现无人值守下载。由于 Seedbox 带宽相对较大（普遍在 1-10Gbps 左右），盒子间互刷效果过于明显，部分 PT 站会有 seedbox 限制政策，例如限制上传、下载速度或者最大上传量。\n也可以通过 Hetzner、Kimsufi、OVHCloud 等云服务及托管商购买独立服务器（dedicated server，也称作独服、杜甫）。“大盘鸡”是坊间黑话，用以指代硬盘很大的服务器。\n当然，也可以自己搭建黑群晖或直接使用群晖 Synology、威联通 QNAP 等成品 NAS 或使用 OpenMediaVault、VMWare ESXi、UNRaid 搭建私人的 HTPC 平台。\nPT 下载客户端的选择 不同网站对于 BT 客户端的兼容性不同。尤其是 BitTorrent v2 协议推出后，与旧版本的客户端均不兼容。因此部分 PT 站会拒绝较新版本的 BT 软件。此外，普通的 PT 下载器如 Free Download Manager (FDM)、迅雷、Aria2c 以及 qBittorrent-enhanced 是被严格禁止的。\n 99.9% 的 seedbox 用户选择 Rtorrent/Rutorrent，因为有些 seedbox provider 只提供这些。 大部分 Windows 用户选择了 µTorrent (uTorrent)。但是 uTorrent 3.x/4.x 并不稳定，性能也不好，内置了浏览器、工具栏等奇怪的插件。另外一部分用户选择了 qBittorrent。 大部分群晖用户会选择 Synology Download Station；而由于糟糕的兼容性，大部分威联通用户会选择封装好的 qBittorrent。 Linux 用户可能会选择 libtorrent 或 qBittorrent-nox。  注意事项   除非在特定板块，不要在某个 PT 站提到其他 PT 站点的名字。 有些网站管理员非常介意用户流失，或者与其他站点发生过不愉快的事情，因此会对触犯此条例的用户执行封禁。\n  尽可能地尊重发布者，不要在评论区发表不积极的意见。 尊重资源发布者是一种美德。触犯此条例可能会获得警告信或者永久封禁。\n  遇到技术问题应先使用搜索引擎检索，而不是当伸手党。 网站管理员一般非常反感小白用户的问题。\n  不要作弊 由于圈子很小，可能会遭受连锁封禁（被多个站点同时封禁）。\n  不要持有小号（马甲）\n管理员一般会基于以下规则来判断马甲账号\n 用户的登录、注册 IP 用户客户端上报 Tracker 所使用的 IP 用户名及邮箱的命名规律 匿名举报    谨慎选择邀请人，不要随意向陌生人发送邀请。 部分站点对于违反某些规则的用户会采取连坐措施，封禁整个邀请链（树）。\n  不要在公共场合发送、索求邀请码，或者提到网站网址和名称。 这个“传统”已经持续近十年了，只不过是自我安慰。\n  ",
+  "wordCount" : "461",
+  "inLanguage": "en",
+  "datePublished": "2022-05-04T14:49:48+08:00",
+  "dateModified": "2022-05-04T14:49:48+08:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://10cks.top/posts/pt-%E4%B8%8B%E8%BD%BD%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%BB%E8%80%81%E7%AF%87%E4%B8%80%E7%AB%99%E7%82%B9%E4%BB%8B%E7%BB%8D%E5%8F%8A%E7%94%9F%E5%AD%98%E6%8C%87%E5%8D%97/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "10cks",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://10cks.top/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://10cks.top/" accesskey="h" title="10cks (Alt + H)">10cks</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://10cks.top/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/index.xml" title="Rss">
+                    <span>Rss</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://10cks.top/">Home</a>&nbsp;»&nbsp;<a href="https://10cks.top/posts/">Posts</a></div>
+    <h1 class="post-title">
+      PT 下载从入门到养老篇一：站点介绍及生存指南
+    </h1>
+    <div class="post-meta"><span title='2022-05-04 14:49:48 +0800 CST'>May 4, 2022</span>
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e4%b8%93%e9%a2%98%e6%96%87%e7%ab%a0%e7%9b%ae%e5%bd%95" aria-label="专题文章目录">专题文章目录</a></li>
+                    <li>
+                        <a href="#%e4%bb%8b%e7%bb%8d" aria-label="介绍">介绍</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%95%99%e8%82%b2%e7%bd%91-pt-%e7%ab%99%e7%82%b9" aria-label="教育网 PT 站点">教育网 PT 站点</a></li>
+                    <li>
+                        <a href="#%e5%85%ac%e7%bd%91-pt-%e7%ab%99%e7%82%b9" aria-label="公网 PT 站点">公网 PT 站点</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e7%94%a8%e6%88%b7%e8%a7%84%e8%8c%83" aria-label="用户规范">用户规范</a></li>
+                    <li>
+                        <a href="#%e7%94%9f%e5%ad%98%e6%8c%87%e5%8d%97" aria-label="生存指南">生存指南</a><ul>
+                            
+                    <li>
+                        <a href="#%e8%80%83%e6%a0%b8%e6%9c%9f" aria-label="考核期">考核期</a></li>
+                    <li>
+                        <a href="#%e8%80%83%e6%a0%b8%e5%90%8e" aria-label="考核后">考核后</a></li>
+                    <li>
+                        <a href="#%e5%85%bb%e8%80%81%e6%9c%9f" aria-label="养老期">养老期</a></li>
+                    <li>
+                        <a href="#%e5%88%b7%e6%b5%81%e9%87%8f" aria-label="刷流量">刷流量</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#pt-%e4%b8%8b%e8%bd%bd%e5%ae%a2%e6%88%b7%e7%ab%af%e7%9a%84%e9%80%89%e6%8b%a9" aria-label="PT 下载客户端的选择">PT 下载客户端的选择</a></li>
+                    <li>
+                        <a href="#%e6%b3%a8%e6%84%8f%e4%ba%8b%e9%a1%b9" aria-label="注意事项">注意事项</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content"><p>本文最后更新于 2022 年 2 月。PT 站的前世今生，新手入门指南和概念扫盲。</p>
+<h2 id="专题文章目录">专题文章目录<a hidden class="anchor" aria-hidden="true" href="#专题文章目录">#</a></h2>
+<ul>
+<li><a href="https://iecho.cc/2019/01/09/PT-%E4%B8%8B%E8%BD%BD%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%BB%E8%80%81/">PT 下载从入门到养老篇一：站点介绍及生存指南</a></li>
+<li><a href="https://iecho.cc/2019/06/01/beginners-guide-to-private-tracker-2/">PT 下载从入门到养老篇二：隐匿的地下通讯</a></li>
+<li><a href="https://iecho.cc/2022/02/06/beginners-guide-to-private-tracker-3/">PT 下载从入门到养老篇三：NAS 存储服务器及硬盘选购</a></li>
+</ul>
+<h2 id="介绍">介绍<a hidden class="anchor" aria-hidden="true" href="#介绍">#</a></h2>
+<p>PT (Private Tracker) 是一种基于私有 BT Tracker 服务器的资源传播形式，经授权的用户使用受允许的客户端进行种子制作与下载。相较于传统 BT 和 emule，PT 站往往采取了严格的邀请制度以及免责制度来规避法律风险，同时要求用户客户端开启传输加密以绕过运营商的检测策略。当然，从实际上来说 PT 站的运营、使用仍然是违背了各国版权法的。</p>
+<p>许多高清爱好者聚集在 PT 站，发布翻录的蓝光原盘、CD 资源以及录制的高清卫星电视讯号；得益于 Netflix、HBO、Apple TV 等高清流媒体在线视频平台的发展，近年也出现了一些 WEB-DL (Download from Web) 资源。</p>
+<p>目前国内使用的 PT 站源码大部分为基于浙江大学 <a href="mailto:xiazuojie@gmail.com">xiazuojie</a> 团队所开发的开源整站项目 <a href="https://sourceforge.net/projects/nexusphp/">NexusPHP</a>，基于 PHP + MySQL + memcached。部分站点使用 Discuz! 进行二次开发。</p>
+<p>日前，<a href="https://github.com/burpheart/">@burpheart</a> 基于上游项目，开发了新版的 <a href="https://github.com/burpheart/NexusPHP_safe">NexuxPHP Safe</a>。其修复了一些已知的安全漏洞，并加入了一些增强用户体验的小功能。</p>
+<p>2022 年更新：<a href="https://github.com/burpheart/">@burpheart</a> 似乎逐步淡出了项目维护。目前项目迁移至 <a href="https://github.com/xiaomlove/nexusphp">xiaomlove/nexusphp</a>，由 <a href="https://github.com/xiaomlove/">@xiaomlove</a> 为主的开发者继续维护。</p>
+<p>国内 PT 站可以划分为两个系别：<strong>教育网 PT 站</strong> 与 <strong>公网 PT 站</strong>。</p>
+<h3 id="教育网-pt-站点">教育网 PT 站点<a hidden class="anchor" aria-hidden="true" href="#教育网-pt-站点">#</a></h3>
+<p>以<a href="http://bt.byr.cn/">北邮人</a>（北京邮电大学）、<a href="https://npupt.com/">蒲公英</a>（西北工业大学）、<a href="http://bitpt.cn/">极速之星</a>（北京理工大学）和<a href="http://bt.neu6.edu.cn/">六维空间</a>（东北大学）为主。</p>
+<p>高校校园网提供的 IPv4 网络一般是有计费及限速策略的，由校方向电信、联通、移动、鹏博士等运营商采购带宽并在出口实施自动分流。而为了推广 IPv6 业务，各高校所接入的中国教育网（CERNET）的 IPv6 网络一般是不计费且不限速的，因此组建一个依托于 IPv6 的免费资源分享网络有着很大意义。</p>
+<p>一般来说，教育网 PT 站的原创影视资源较少，大部分为转载资源。Coursera、Udacity 等公开课资源（WEB-DL）、考研视频、电子书等内容较多，此外，北邮人等站点还提供一些诸如 Steam 游戏数据备份文件，这样学生就不用担心被几十个 G 的 Steam 游戏更新榨干网费了。</p>
+<p>目前来看教育网 PT 站或多或少获得了学校网络中心的技术和政策支持，所以才能存留至今。部分教育网 PT 站仅允许 IPv6 或仅归属于教育网 ASN 的 IPv6 访问，因此对于公众来说访问有些难度，可以通过 HE.net 提供的 IPv6 TunnelBroker 隧道，或者 IPv6 VPS 来中转流量。</p>
+<p>从分享率和发种规范来看，教育网 PT 十分宽松，但保种率可能不如公网 PT 站高，资源也没那么丰富。但对于追热门电影和美剧的轻度用户来说还是足够了。</p>
+<h3 id="公网-pt-站点">公网 PT 站点<a hidden class="anchor" aria-hidden="true" href="#公网-pt-站点">#</a></h3>
+<p>传说中国有五大公网 PT 站：HDS、TTG、HDC、CHD、HDR，也有三大 PT 站的说法（即 CHDbits、HDChina、TTG）。后来经过世界版权日风波（即被称作“中国版权第一案”的思路网侵权案），<a href="https://zh.wikipedia.org/wiki/%E6%80%9D%E8%B7%AF%E7%BD%91">HDStar（思路网）管理组被捕入狱</a>，剩下的站点也多多少少受到了一些影响，有些直接关闭了，有的则隐没了。</p>
+<p>希望考古中国 PT 站历史的朋友可以查看这个帖子：<a href="https://web.archive.org/web/20210404133244/https://www.douban.com/group/topic/27989385/">国内外PT站点评</a>。希望考古国际 PT 站的朋友，可以查看这个帖子：<a href="https://web.archive.org/web/20201121094012/https://www.douban.com/group/topic/32448115/">PT站点大全</a>。历史比较悠久了，仅供参考。</p>
+<p>距离版权日风波已经过去了七八年，现在国内 PT 站又呈现出繁荣景象。一方面国内电视剧集的分级制度迟迟未推出，而 Netflix、HBO、Disney+、Apple TV+ 等境外流媒体业务的订阅费用也居高不下。另一方面，国内百兆、千兆家庭宽带已经覆盖到了三四线城市甚至是县城，养一个 PT 账号的成本已经相当低了。</p>
+<p>在此列出几个常见的站点，仅供参考。</p>
+<ul>
+<li>目前以影视资源为主的有
+<ul>
+<li><a href="https://hdchina.org/">HDChina 瓷器</a>：近 10 年的老站，用户数据继承自原先的 HDWinG 和 HDStar。资源方面，官方制作组（HDCTV 和 HDChina）的 Netflix、HBO 剧集，原盘，录制的电视剧比较多。</li>
+<li><a href="https://chdbits.co/">CHDbits 彩虹岛</a>：近 10 年的老站点，影视资源很丰富。</li>
+<li><a href="https://springsunday.net/">SSD (Spring Sunday)</a>：2010 年创建的老站点，前身为 CMCT 触摸春天。</li>
+<li><a href="https://www.m-team.cc/">M-Team 馒头</a>：有比较多的成人内容，官方提供付费邀请码购买渠道。</li>
+<li><a href="https://pt.btschool.club/">BT School 比特校园</a>：2019 年刚创建的新站点，门槛相对比较低。</li>
+<li><a href="https://hdtime.org/">HD Time 高清时间</a>：老站点，但是没什么名气。</li>
+<li><a href="https://52pt.site/">52PT 我爱PT</a>：新站点。</li>
+<li><a href="https://hdsky.me/">HDSky 天空</a>：综合站点。</li>
+<li><a href="https://totheglory.im/upload.php">TTG</a>：国内大站之一，2014 年末作为 TTG 出现。</li>
+<li><a href="https://ourbits.club/">Ourbits 我堡</a>：算是国内大站了，没啥特色。</li>
+<li><a href="https://hdhome.org/">HDHome 家园</a>：2015 年左右成立的 PT 站，没啥特色。</li>
+<li><a href="http://www.pthome.net/">PTHome 铂金家</a>：2018 年左右成立的新站，没啥特色。</li>
+<li><a href="https://hdcity.city/">HDCity 城市</a>：2016 年底成立的新站（相对来说）。</li>
+<li><a href="https://www.nicept.net/">NicePT 老师站</a>：又成为小馒头（相对于 M-Team 来说），主要为成人内容。</li>
+<li><a href="http://ccfbits.org/">CCFBits 精品高清</a>：挺老的大站了，资源很丰富也很低调。</li>
+<li><a href="http://www.hdroute.org/">HDR (HDRoute)</a>：前身为 HDRoad 思路高清，历史悠久。</li>
+<li><a href="https://lemonhd.org/">LeagueHD 柠檬</a>：小站中发展的还算不错的，2019 年成立。</li>
+<li><a href="https://www.haidan.video/">Haidan 海胆之家</a>：2020 年刚成立的小站。</li>
+</ul>
+</li>
+<li>教育网 PT，部分 tracker 可能仅允许教育网或 IPv6 连接。入站门槛较低，可以凭借 edu 教育域名的邮箱进行注册，也可以通过校内用户发起邀请。对分享率和种子规范的限制比较宽松。
+<ul>
+<li><a href="https://nanyangpt.com/">NanyangPT 南洋</a>：西安交通大学 PT 站</li>
+<li><a href="https://byr.pt/">BYR 北邮人</a>：北京邮电大学 PT 站，仅对 IPv6 开放</li>
+<li><a href="https://www.tjupt.org/">TJUPT 北洋园</a>：天津大学 PT 站</li>
+<li><a href="https://pt.sjtu.edu.cn/">葡萄PT</a>：上海交通大学 PT 站</li>
+<li><a href="https://npupt.com/">NPUPT 蒲公英</a>：西北工业大学 PT 站</li>
+<li><a href="http://bitpt.cn/">BITPT 极速之星</a>：北京理工大学 PT 站</li>
+<li><a href="http://bt.neu6.edu.cn/">六维空间</a>：东北大学 PT 站</li>
+<li><a href="https://nexushd.org/">NexusHD</a>：浙江大学 PT 站，仅供校内用户访问。</li>
+</ul>
+</li>
+<li>以动漫资源为主的有
+<ul>
+<li><a href="https://u2.dmhy.org/">U2 动漫花园 幼儿园</a>：老牌动漫 PT 站。各种上古资源都能找到。</li>
+<li><a href="https://www.skyey2.com/">Skyey Snow 天雪动漫</a>：基于 Discuz! 构建的 PT 站点，相对来说新一些。</li>
+</ul>
+</li>
+<li>以音乐资源为主的有
+<ul>
+<li><a href="https://open.cd/">OpenCD 皇后 PT</a>：小体积种子比较多，基本靠攒魔力值来保号。</li>
+</ul>
+</li>
+</ul>
+<h2 id="用户规范">用户规范<a hidden class="anchor" aria-hidden="true" href="#用户规范">#</a></h2>
+<p>对于用户，无论是公网 PT 站还是教育网 PT 站，往往都有以下要求：</p>
+<ol>
+<li>
+<p>上传、下载量：新手考核计划一般为一个月内 <code>&gt;=50GB</code> 的上传下载量。部分教育网 PT 站可能没有新手考核要求。</p>
+</li>
+<li>
+<p>分享率（上传量/下载量）：PT 站的优质资源离不开各位用户的分享和做种。为了减少吸血鬼用户的影响，几乎所有 PT 站点都会要求用户的风险率超过一定值。除此之外，用户分享率与用户等级相关，如果风险率低于标准会自动回退到较低的用户等级。</p>
+</li>
+<li>
+<p>魔力值（Bonus points，即积分，获得于用户赠送、活动奖励或做种）：魔力值可以用于兑换站内头衔、更改用户名、消除广告，甚至至博彩小游戏（例如赌球或 24 点，常见于世界杯期间）。</p>
+</li>
+<li>
+<p>最小做种时间：为了保障种子活跃度，一些 PT 站严格禁止下完就跑（称为 H&amp;R, Hit and Run）的行为，要求用户至少持续做种一定时间）。摘录一段 OpenCD 的规则作为参考。</p>
+<pre tabindex="0"><code>在种子下载完成后，该种子需在 30 天内做种 36 小时，未达到此要求则记一次 H&amp;R。
+H&amp;R 满 10 次，即 ban。皇后及以上级别，包括 VIP，计算 HR 次数，但不 ban 号。
+
+消除已获得的 H&amp;R 的两种方式
+1. 获得 H&amp;R 的种子在 90 天内达到 300 小时做种时间则会自动消除该 H&amp;R
+2. 用魔力值兑换取消 H&amp;R 次数
+</code></pre></li>
+</ol>
+<h2 id="生存指南">生存指南<a hidden class="anchor" aria-hidden="true" href="#生存指南">#</a></h2>
+<h3 id="考核期">考核期<a hidden class="anchor" aria-hidden="true" href="#考核期">#</a></h3>
+<p>大部分站点都有邀请考核制度，需要在一个月时间内达成一定的上传量、下载量以及魔力值。部分站点考核由于不计算魔力值的兑换上传量，建议老老实实下载热门种子并做种。</p>
+<p>邀请者可以消耗数倍的魔力值来兑换一个无需新手考核的邀请码。被邀请人也可以付费捐赠（几百元不等）来免除新手考核。</p>
+<h3 id="考核后">考核后<a hidden class="anchor" aria-hidden="true" href="#考核后">#</a></h3>
+<p>对于一些以影视作品为主的网站，尽可能的下载热门种子，这样能更快的获得上传量。可以使用 BT 客户端的 RSS 订阅功能，实现无人值守下载。
+对于以小种为主的 PT 站，如 OpenCD 以及大部分教育网站点，则需要通过下载大量小体积种子并长时间做种以换取魔力值，再使用魔力值兑换上传。</p>
+<h3 id="养老期">养老期<a hidden class="anchor" aria-hidden="true" href="#养老期">#</a></h3>
+<p>此时混 PT 只为偶尔下几个资源，而不是那么注重参与了，因此保持一个良好的分享率以备不时之需是很有必要的。</p>
+<p>部分站点可以通过捐赠获得终身 VIP 头衔，从此不再需要担心分享率问题。</p>
+<h3 id="刷流量">刷流量<a hidden class="anchor" aria-hidden="true" href="#刷流量">#</a></h3>
+<p>想快速将上传、下载流量刷上去，最快的办法就是租用 Seedbox。Seedbox 即专用于跑 BT/PT 的服务器，一般位于海外（德国、罗马尼亚、荷兰）等地。</p>
+<p>可以通过 SeedBox 例如 <a href="https://feralhosting.com/">FeralHosting</a> 或 <a href="https://seedbox.io/">Seedbox.io</a> 配合 RSS 订阅来实现无人值守下载。由于 Seedbox 带宽相对较大（普遍在 1-10Gbps 左右），盒子间互刷效果过于明显，部分 PT 站会有 seedbox 限制政策，例如限制上传、下载速度或者最大上传量。</p>
+<p>也可以通过 <a href="https://www.hetzner.com/">Hetzner</a>、<a href="https://www.kimsufi.com/en/">Kimsufi</a>、<a href="https://www.ovhcloud.com/">OVHCloud</a> 等云服务及托管商购买独立服务器（dedicated server，也称作独服、杜甫）。“大盘鸡”是坊间黑话，用以指代硬盘很大的服务器。</p>
+<p>当然，也可以自己搭建黑群晖或直接使用群晖 Synology、威联通 QNAP 等成品 NAS 或使用 OpenMediaVault、VMWare ESXi、UNRaid 搭建私人的 HTPC 平台。</p>
+<h2 id="pt-下载客户端的选择">PT 下载客户端的选择<a hidden class="anchor" aria-hidden="true" href="#pt-下载客户端的选择">#</a></h2>
+<p>不同网站对于 BT 客户端的兼容性不同。尤其是 BitTorrent v2 协议推出后，与旧版本的客户端均不兼容。因此部分 PT 站会拒绝较新版本的 BT 软件。此外，普通的 PT 下载器如 Free Download Manager (FDM)、迅雷、Aria2c 以及 qBittorrent-enhanced 是被严格禁止的。</p>
+<ul>
+<li>99.9% 的 seedbox 用户选择 Rtorrent/Rutorrent，因为有些 seedbox provider 只提供这些。</li>
+<li>大部分 Windows 用户选择了 µTorrent (uTorrent)。但是 uTorrent 3.x/4.x 并不稳定，性能也不好，内置了浏览器、工具栏等奇怪的插件。另外一部分用户选择了 qBittorrent。</li>
+<li>大部分群晖用户会选择 Synology Download Station；而由于糟糕的兼容性，大部分威联通用户会选择封装好的 <a href="https://www.qnapclub.eu/en/qpkg/358">qBittorrent</a>。</li>
+<li>Linux 用户可能会选择 libtorrent 或 qBittorrent-nox。</li>
+</ul>
+<h2 id="注意事项">注意事项<a hidden class="anchor" aria-hidden="true" href="#注意事项">#</a></h2>
+<ul>
+<li>
+<p>除非在特定板块，不要在某个 PT 站提到其他 PT 站点的名字。
+有些网站管理员非常介意用户流失，或者与其他站点发生过不愉快的事情，因此会对触犯此条例的用户执行封禁。</p>
+</li>
+<li>
+<p>尽可能地尊重发布者，不要在评论区发表不积极的意见。
+尊重资源发布者是一种美德。触犯此条例可能会获得警告信或者永久封禁。</p>
+</li>
+<li>
+<p>遇到技术问题应先使用搜索引擎检索，而不是当伸手党。
+网站管理员一般非常反感小白用户的问题。</p>
+</li>
+<li>
+<p>不要作弊
+由于圈子很小，可能会遭受连锁封禁（被多个站点同时封禁）。</p>
+</li>
+<li>
+<p>不要持有小号（马甲）</p>
+<p>管理员一般会基于以下规则来判断马甲账号</p>
+<ol>
+<li>用户的登录、注册 IP</li>
+<li>用户客户端上报 Tracker 所使用的 IP</li>
+<li>用户名及邮箱的命名规律</li>
+<li>匿名举报</li>
+</ol>
+</li>
+<li>
+<p>谨慎选择邀请人，不要随意向陌生人发送邀请。
+部分站点对于违反某些规则的用户会采取连坐措施，封禁整个邀请链（树）。</p>
+</li>
+<li>
+<p>不要在公共场合发送、索求邀请码，或者提到网站网址和名称。
+这个“传统”已经持续近十年了，只不过是自我安慰。</p>
+</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <ul class="post-tags">
+      <li><a href="https://10cks.top/tags/pt/">PT</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://10cks.top/posts/%E7%AC%AC1%E7%AB%A0-%E6%A6%82%E8%BF%B0/">
+    <span class="title">Next Page »</span>
+    <br>
+    <span>第 1 章 概述</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://10cks.top/">10cks</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
+    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
+    crossorigin="anonymous"
+></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
+    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
+    crossorigin="anonymous"
+/>
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script>
+
+</body>
+
+</html>

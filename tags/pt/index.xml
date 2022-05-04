@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>PT on 10cks</title>
+    <link>https://10cks.top/tags/pt/</link>
+    <description>Recent content in PT on 10cks</description>
+    <image>
+      <url>https://10cks.top/papermod-cover.png</url>
+      <link>https://10cks.top/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 04 May 2022 14:49:48 +0800</lastBuildDate><atom:link href="https://10cks.top/tags/pt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PT 下载从入门到养老篇一：站点介绍及生存指南</title>
+      <link>https://10cks.top/posts/pt-%E4%B8%8B%E8%BD%BD%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%BB%E8%80%81%E7%AF%87%E4%B8%80%E7%AB%99%E7%82%B9%E4%BB%8B%E7%BB%8D%E5%8F%8A%E7%94%9F%E5%AD%98%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Wed, 04 May 2022 14:49:48 +0800</pubDate>
+      
+      <guid>https://10cks.top/posts/pt-%E4%B8%8B%E8%BD%BD%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%BB%E8%80%81%E7%AF%87%E4%B8%80%E7%AB%99%E7%82%B9%E4%BB%8B%E7%BB%8D%E5%8F%8A%E7%94%9F%E5%AD%98%E6%8C%87%E5%8D%97/</guid>
+      <description>本文最后更新于 2022 年 2 月。PT 站的前世今生，新手入门指南和概念扫盲。
+专题文章目录  PT 下载从入门到养老篇一：站点介绍及生存指南 PT 下载从入门到养老篇二：隐匿的地下通讯 PT 下载从入门到养老篇三：NAS 存储服务器及硬盘选购  介绍 PT (Private Tracker) 是一种基于私有 BT Tracker 服务器的资源传播形式，经授权的用户使用受允许的客户端进行种子制作与下载。相较于传统 BT 和 emule，PT 站往往采取了严格的邀请制度以及免责制度来规避法律风险，同时要求用户客户端开启传输加密以绕过运营商的检测策略。当然，从实际上来说 PT 站的运营、使用仍然是违背了各国版权法的。
+许多高清爱好者聚集在 PT 站，发布翻录的蓝光原盘、CD 资源以及录制的高清卫星电视讯号；得益于 Netflix、HBO、Apple TV 等高清流媒体在线视频平台的发展，近年也出现了一些 WEB-DL (Download from Web) 资源。
+目前国内使用的 PT 站源码大部分为基于浙江大学 xiazuojie 团队所开发的开源整站项目 NexusPHP，基于 PHP + MySQL + memcached。部分站点使用 Discuz! 进行二次开发。
+日前，@burpheart 基于上游项目，开发了新版的 NexuxPHP Safe。其修复了一些已知的安全漏洞，并加入了一些增强用户体验的小功能。
+2022 年更新：@burpheart 似乎逐步淡出了项目维护。目前项目迁移至 xiaomlove/nexusphp，由 @xiaomlove 为主的开发者继续维护。
+国内 PT 站可以划分为两个系别：教育网 PT 站 与 公网 PT 站。</description>
+    </item>
+    
+  </channel>
+</rss>
