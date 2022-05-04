@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head>
-	<meta name="generator" content="Hugo 0.96.0" /><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>10cks</title>
-
+<title>网络安全 | 10cks</title>
+<meta name="keywords" content="" />
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="canonical" href="https://10cks.top/" />
+<link rel="canonical" href="https://10cks.top/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.614c578e9f3a0d96e577bc6e656ce49997ce576f755a65caaa5defab0078a7b7.css" integrity="sha256-YUxXjp86DZbld7xuZWzkmZfOV291WmXKql3vqwB4p7c=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://10cks.top/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://10cks.top/favicon-16x16.png">
@@ -19,8 +18,7 @@
 <link rel="mask-icon" href="https://10cks.top/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://10cks.top/index.xml">
-<link rel="alternate" type="application/json" href="https://10cks.top/index.json">
+<link rel="alternate" type="application/rss+xml" href="https://10cks.top/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/index.xml">
 <script>
     (function(){
         if(''){
@@ -93,30 +91,17 @@
         if (document.readyState === "interactive") NProgress.inc(0.8);
         if (document.readyState === "complete") NProgress.done();
     });
-</script><meta property="og:title" content="10cks" />
+</script><meta property="og:title" content="网络安全" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://10cks.top/" /><meta property="og:image" content="https://10cks.top/papermod-cover.png"/>
+<meta property="og:url" content="https://10cks.top/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" /><meta property="og:image" content="https://10cks.top/papermod-cover.png"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://10cks.top/papermod-cover.png"/>
 
-<meta name="twitter:title" content="10cks"/>
+<meta name="twitter:title" content="网络安全"/>
 <meta name="twitter:description" content=""/>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "10cks",
-  "url": "https://10cks.top/",
-  "description": "",
-  "thumbnailUrl": "https://10cks.top/favicon.ico",
-  "sameAs": [
-      
-  ]
-}
-</script>
 </head>
 
 <body class="list" id="top">
@@ -193,64 +178,26 @@
     </nav>
 </header>
 <main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://10cks.top/">Home</a>&nbsp;»&nbsp;<a href="https://10cks.top/categories/">Categories</a></div>
+  <h1>网络安全</h1>
+</header>
 
-<article class="post-entry"> 
+<article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2>Hugo博客自定义shortcodes
+    <h2>CodeQL 编译 AOSP database
     </h2>
   </header>
   <section class="entry-content">
-    <p>hugo博客通过简码的方式插入ppt、bilibili、youtube等功能
-创建: 2022-04-16 | 更新: 2022-04-16 | 字数: 676字 | 时长: 2分钟 | 作者: Sulv | 标签:
-Hugo 、博客搭建
-1. 引入 ppt 功能 定位到 layouts/shortcodes目录，新建一个文件叫 ppt.html，放入如下代码：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31  &lt;!DOCTYPE HTML&gt; &lt;html lang=&#34;en&#34;&gt; &lt;head&gt; &lt;style type=&#34;text/css&#34;&gt; #googleslides_shortcodes { padding-bottom: 66%; position: relative; display: block; width: 100%; border-bottom: 5px solid; } #googleslides_shortcodes iframe { position: absolute; top: 0; left: 0 } &lt;/style&gt; &lt;title&gt;&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;div id=&#34;googleslides_shortcodes&#34;&gt; &lt;iframe id=&#34;googleSlideIframe&#34; width=&#34;100%&#34; height=&#34;100%&#34; src=&#34;{{ ....</p>
+    <p>build aosp   安装aosp需要的编译依赖 https://source.android.com/setup/build/initializing
+  下载源码 https://source.android.com/setup/build/downloading
+  sudo apt-get updatesudo apt-get install repomkdir aosp_workdircd aosp_workdirrepo init -u https://mirrors.tuna.tsinghua.edu.cn/git/AOSP/platform/manifest -b masterrepo sync 要下很久，可以用sudo iftop来看一下下载速度。
+ 编译aosp  source build/envsetup.shlunch aosp_x86_64-engmake -j32 build codeql database 到这里首先我们选择我们想看的目录，这里我选择frameworks/av/media，然后递归touch这个目录下的所有文件，这个作用是为了更新时间戳，这样make的时候，这部分文件就会重新被make
+➜ aosp_workdir cd frameworks/av/media ➜ media git:(011dbb4bf7) find ./ * -exec touch {} \; 然后设置一个环境变量，并编译db即可，这部分参考自葫芦娃的文章。
+export ALLOW_NINJA_ENV=truecodeql database create out/codeql-frameworks \--language=cpp \--command=&#34;`pwd`/build/soong/soong_ui....</p>
   </section>
-  <footer class="entry-footer"><span title='2022-04-01 14:41:48 +0800 CST'>April 1, 2022</span></footer>
-  <a class="entry-link" aria-label="post link to Hugo博客自定义shortcodes" href="https://10cks.top/posts/hugo%E5%8D%9A%E5%AE%A2%E8%87%AA%E5%AE%9A%E4%B9%89shortcodes/"></a>
+  <footer class="entry-footer"><span title='2022-05-04 18:41:48 +0800 CST'>May 4, 2022</span></footer>
+  <a class="entry-link" aria-label="post link to CodeQL 编译 AOSP database" href="https://10cks.top/posts/codeql-%E7%BC%96%E8%AF%91-aosp-database/"></a>
 </article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Github_page搭建指南
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>1 2 3 4 5  git init git add . git commit -m &#34;date&#34; git remote add origin https://github.com/10cks/10cks.github.io.git git push -u -f origin master   </p>
-  </section>
-  <footer class="entry-footer"><span title='2022-03-01 14:41:48 +0800 CST'>March 1, 2022</span></footer>
-  <a class="entry-link" aria-label="post link to Github_page搭建指南" href="https://10cks.top/posts/github_page%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>echarts测试
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>var myChart = echarts.init(document.getElementById(&#39;echarts500&#39;),);var option = JSON.parse(&#34;\r\n{\r\n \&#34;tooltip\&#34;: {\r\n \&#34;trigger\&#34;: \&#34;item\&#34;\r\n },\r\n \&#34;legend\&#34;: {\r\n \&#34;top\&#34;: \&#34;5%\&#34;,\r\n \&#34;left\&#34;: \&#34;center\&#34;,\r\n \&#34;textStyle\&#34;: {\r\n \&#34;color\&#34;: \&#34;yellow\&#34;\r\n }\r\n },\r\n \&#34;series\&#34;: [\r\n {\r\n \&#34;name\&#34;: \&#34;Access From\&#34;,\r\n \&#34;type\&#34;: \&#34;pie\&#34;,\r\n \&#34;radius\&#34;: [\r\n \&#34;40%\&#34;,\r\n \&#34;70%\&#34;\r\n ],\r\n \&#34;avoidLabelOverlap\&#34;: false,\r\n \&#34;itemStyle\&#34;: {\r\n \&#34;borderRadius\&#34;: 10,\r\n \&#34;borderColor\&#34;: \&#34;#fff\&#34;,\r\n \&#34;borderWidth\&#34;: 2\r\n },\r\n \&#34;label\&#34;: {\r\n \&#34;show\&#34;: false,\r\n \&#34;position\&#34;: \&#34;center\&#34;\r\n },\r\n \&#34;emphasis\&#34;: {\r\n \&#34;label\&#34;: {\r\n \&#34;show\&#34;: true,\r\n \&#34;fontSize\&#34;: \&#34;40\&#34;,\r\n \&#34;fontWeight\&#34;: \&#34;bold\&#34;\r\n }\r\n },\r\n \&#34;...</p>
-  </section>
-  <footer class="entry-footer"><span title='2022-02-01 14:41:48 +0800 CST'>February 1, 2022</span></footer>
-  <a class="entry-link" aria-label="post link to echarts测试" href="https://10cks.top/posts/echarts%E6%B5%8B%E8%AF%95/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>本博客使用的css
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>是针对footer.css 这个文件的修改
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92  ....</p>
-  </section>
-  <footer class="entry-footer"></footer>
-  <a class="entry-link" aria-label="post link to 本博客使用的css" href="https://10cks.top/posts/%E6%9C%AC%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E7%9A%84css/"></a>
-</article>
-<footer class="page-footer">
-  <nav class="pagination">
-    <a class="prev" href="https://10cks.top/page/2/">« Prev Page</a>
-  </nav>
-</footer>
     </main>
     
 <footer class="footer">

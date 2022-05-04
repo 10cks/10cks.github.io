@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>CodeQL 编译 AOSP database | 10cks</title>
+<meta name="keywords" content="CodeQL, 网络安全, Sakura" />
+<meta name="description" content="build aosp   安装aosp需要的编译依赖 https://source.android.com/setup/build/initializing
+  下载源码 https://source.android.com/setup/build/downloading
+  sudo apt-get updatesudo apt-get install repomkdir aosp_workdircd aosp_workdirrepo init -u https://mirrors.tuna.tsinghua.edu.cn/git/AOSP/platform/manifest -b masterrepo sync 要下很久，可以用sudo iftop来看一下下载速度。
+ 编译aosp  source build/envsetup.shlunch aosp_x86_64-engmake -j32 build codeql database 到这里首先我们选择我们想看的目录，这里我选择frameworks/av/media，然后递归touch这个目录下的所有文件，这个作用是为了更新时间戳，这样make的时候，这部分文件就会重新被make
+➜ aosp_workdir cd frameworks/av/media ➜ media git:(011dbb4bf7) find ./ * -exec touch {} \; 然后设置一个环境变量，并编译db即可，这部分参考自葫芦娃的文章。
+export ALLOW_NINJA_ENV=truecodeql database create out/codeql-frameworks \--language=cpp \--command=&#34;`pwd`/build/soong/soong_ui.">
+<meta name="author" content="">
+<link rel="canonical" href="https://10cks.top/posts/codeql-%E7%BC%96%E8%AF%91-aosp-database/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.614c578e9f3a0d96e577bc6e656ce49997ce576f755a65caaa5defab0078a7b7.css" integrity="sha256-YUxXjp86DZbld7xuZWzkmZfOV291WmXKql3vqwB4p7c=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.4dcb3c4f38462f66c6b6137227726f5543cb934cca9788f041c087e374491df2.js" integrity="sha256-Tcs8TzhGL2bGthNyJ3JvVUPLk0zKl4jwQcCH43RJHfI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://10cks.top/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://10cks.top/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://10cks.top/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://10cks.top/apple-touch-icon.png">
+<link rel="mask-icon" href="https://10cks.top/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+
+            }
+        }
+    })();
+</script>
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+            .post-entry:hover {
+				transition: transform 0.5s;
+				-webkit-transform: scale(1.2);
+				-moz-transform: scale(1.2);
+				-ms-transform: scale(1.2);
+				-o-transform: scale(1.2);
+				transform: scale(1.03) translateZ(0) translate3d(0, 0, 0) rotate(0.01deg);
+			}
+        }
+
+    </style>
+</noscript><link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css'>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
+    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
+    crossorigin="anonymous"
+></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
+    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
+    crossorigin="anonymous"
+/>
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script><meta property="og:title" content="CodeQL 编译 AOSP database" />
+<meta property="og:description" content="build aosp   安装aosp需要的编译依赖 https://source.android.com/setup/build/initializing
+  下载源码 https://source.android.com/setup/build/downloading
+  sudo apt-get updatesudo apt-get install repomkdir aosp_workdircd aosp_workdirrepo init -u https://mirrors.tuna.tsinghua.edu.cn/git/AOSP/platform/manifest -b masterrepo sync 要下很久，可以用sudo iftop来看一下下载速度。
+ 编译aosp  source build/envsetup.shlunch aosp_x86_64-engmake -j32 build codeql database 到这里首先我们选择我们想看的目录，这里我选择frameworks/av/media，然后递归touch这个目录下的所有文件，这个作用是为了更新时间戳，这样make的时候，这部分文件就会重新被make
+➜ aosp_workdir cd frameworks/av/media ➜ media git:(011dbb4bf7) find ./ * -exec touch {} \; 然后设置一个环境变量，并编译db即可，这部分参考自葫芦娃的文章。
+export ALLOW_NINJA_ENV=truecodeql database create out/codeql-frameworks \--language=cpp \--command=&#34;`pwd`/build/soong/soong_ui." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://10cks.top/posts/codeql-%E7%BC%96%E8%AF%91-aosp-database/" /><meta property="og:image" content="https://10cks.top/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-04T18:41:48&#43;08:00" />
+<meta property="article:modified_time" content="2022-05-04T18:41:48&#43;08:00" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://10cks.top/papermod-cover.png"/>
+
+<meta name="twitter:title" content="CodeQL 编译 AOSP database"/>
+<meta name="twitter:description" content="build aosp   安装aosp需要的编译依赖 https://source.android.com/setup/build/initializing
+  下载源码 https://source.android.com/setup/build/downloading
+  sudo apt-get updatesudo apt-get install repomkdir aosp_workdircd aosp_workdirrepo init -u https://mirrors.tuna.tsinghua.edu.cn/git/AOSP/platform/manifest -b masterrepo sync 要下很久，可以用sudo iftop来看一下下载速度。
+ 编译aosp  source build/envsetup.shlunch aosp_x86_64-engmake -j32 build codeql database 到这里首先我们选择我们想看的目录，这里我选择frameworks/av/media，然后递归touch这个目录下的所有文件，这个作用是为了更新时间戳，这样make的时候，这部分文件就会重新被make
+➜ aosp_workdir cd frameworks/av/media ➜ media git:(011dbb4bf7) find ./ * -exec touch {} \; 然后设置一个环境变量，并编译db即可，这部分参考自葫芦娃的文章。
+export ALLOW_NINJA_ENV=truecodeql database create out/codeql-frameworks \--language=cpp \--command=&#34;`pwd`/build/soong/soong_ui."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://10cks.top/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "CodeQL 编译 AOSP database",
+      "item": "https://10cks.top/posts/codeql-%E7%BC%96%E8%AF%91-aosp-database/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "CodeQL 编译 AOSP database",
+  "name": "CodeQL 编译 AOSP database",
+  "description": "build aosp   安装aosp需要的编译依赖 https://source.android.com/setup/build/initializing\n  下载源码 https://source.android.com/setup/build/downloading\n  sudo apt-get update\rsudo apt-get install repo\rmkdir aosp_workdir\rcd aosp_workdir\rrepo init -u https://mirrors.tuna.tsinghua.edu.cn/git/AOSP/platform/manifest -b master\rrepo sync 要下很久，可以用sudo iftop来看一下下载速度。\n 编译aosp  source build/envsetup.sh\rlunch aosp_x86_64-eng\rmake -j32 build codeql database 到这里首先我们选择我们想看的目录，这里我选择frameworks/av/media，然后递归touch这个目录下的所有文件，这个作用是为了更新时间戳，这样make的时候，这部分文件就会重新被make\n➜ aosp_workdir cd frameworks/av/media ➜ media git:(011dbb4bf7) find ./ * -exec touch {} \\; 然后设置一个环境变量，并编译db即可，这部分参考自葫芦娃的文章。\nexport ALLOW_NINJA_ENV=true\rcodeql database create out/codeql-frameworks \\\r--language=cpp \\\r--command=\u0026#34;`pwd`/build/soong/soong_ui.",
+  "keywords": [
+    "CodeQL", "网络安全", "Sakura"
+  ],
+  "articleBody": "build aosp   安装aosp需要的编译依赖 https://source.android.com/setup/build/initializing\n  下载源码 https://source.android.com/setup/build/downloading\n  sudo apt-get update\rsudo apt-get install repo\rmkdir aosp_workdir\rcd aosp_workdir\rrepo init -u https://mirrors.tuna.tsinghua.edu.cn/git/AOSP/platform/manifest -b master\rrepo sync 要下很久，可以用sudo iftop来看一下下载速度。\n 编译aosp  source build/envsetup.sh\rlunch aosp_x86_64-eng\rmake -j32 build codeql database 到这里首先我们选择我们想看的目录，这里我选择frameworks/av/media，然后递归touch这个目录下的所有文件，这个作用是为了更新时间戳，这样make的时候，这部分文件就会重新被make\n➜ aosp_workdir cd frameworks/av/media ➜ media git:(011dbb4bf7) find ./ * -exec touch {} \\; 然后设置一个环境变量，并编译db即可，这部分参考自葫芦娃的文章。\nexport ALLOW_NINJA_ENV=true\rcodeql database create out/codeql-frameworks \\\r--language=cpp \\\r--command=\"`pwd`/build/soong/soong_ui.bash --make-mode -j16\" ",
+  "wordCount" : "65",
+  "inLanguage": "en",
+  "datePublished": "2022-05-04T18:41:48+08:00",
+  "dateModified": "2022-05-04T18:41:48+08:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://10cks.top/posts/codeql-%E7%BC%96%E8%AF%91-aosp-database/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "10cks",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://10cks.top/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://10cks.top/" accesskey="h" title="10cks (Alt + H)">10cks</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://10cks.top/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/index.xml" title="Rss">
+                    <span>Rss</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://10cks.top/">Home</a>&nbsp;»&nbsp;<a href="https://10cks.top/posts/">Posts</a></div>
+    <h1 class="post-title">
+      CodeQL 编译 AOSP database
+    </h1>
+    <div class="post-meta"><span title='2022-05-04 18:41:48 +0800 CST'>May 4, 2022</span>
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#build-aosp" aria-label="build aosp">build aosp</a></li>
+                    <li>
+                        <a href="#build-codeql-database" aria-label="build codeql database">build codeql database</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content"><h2 id="build-aosp">build aosp<a hidden class="anchor" aria-hidden="true" href="#build-aosp">#</a></h2>
+<ul>
+<li>
+<p>安装aosp需要的编译依赖
+<a href="https://source.android.com/setup/build/initializing">https://source.android.com/setup/build/initializing</a></p>
+</li>
+<li>
+<p>下载源码
+<a href="https://source.android.com/setup/build/downloading">https://source.android.com/setup/build/downloading</a></p>
+</li>
+</ul>
+<pre tabindex="0"><code>sudo apt-get update
+sudo apt-get install repo
+mkdir aosp_workdir
+cd aosp_workdir
+repo init -u https://mirrors.tuna.tsinghua.edu.cn/git/AOSP/platform/manifest -b master
+repo sync
+</code></pre><p>要下很久，可以用<code>sudo iftop</code>来看一下下载速度。</p>
+<ul>
+<li>编译aosp</li>
+</ul>
+<pre tabindex="0"><code>source build/envsetup.sh
+lunch aosp_x86_64-eng
+make -j32
+</code></pre><h2 id="build-codeql-database">build codeql database<a hidden class="anchor" aria-hidden="true" href="#build-codeql-database">#</a></h2>
+<p>到这里首先我们选择我们想看的目录，这里我选择<code>frameworks/av/media</code>，然后递归touch这个目录下的所有文件，这个作用是为了更新时间戳，这样make的时候，这部分文件就会重新被make</p>
+<pre tabindex="0"><code>➜  aosp_workdir cd frameworks/av/media                  
+➜  media git:(011dbb4bf7) find ./ * -exec touch {} \;
+</code></pre><p>然后设置一个环境变量，并编译db即可，这部分参考自<a href="https://xz.aliyun.com/t/11080">葫芦娃的文章</a>。</p>
+<pre tabindex="0"><code>export ALLOW_NINJA_ENV=true
+codeql database create out/codeql-frameworks \
+        --language=cpp \
+        --command=&#34;`pwd`/build/soong/soong_ui.bash --make-mode -j16&#34;
+</code></pre>
+
+  </div>
+
+  <footer class="post-footer">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <ul class="post-tags">
+      <li><a href="https://10cks.top/tags/codeql/">CodeQL</a></li>
+      <li><a href="https://10cks.top/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li>
+      <li><a href="https://10cks.top/tags/sakura/">Sakura</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://10cks.top/posts/pt-%E4%B8%8B%E8%BD%BD%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%BB%E8%80%81%E7%AF%87%E4%B8%80%E7%AB%99%E7%82%B9%E4%BB%8B%E7%BB%8D%E5%8F%8A%E7%94%9F%E5%AD%98%E6%8C%87%E5%8D%97/">
+    <span class="title">Next Page »</span>
+    <br>
+    <span>PT 下载从入门到养老篇一：站点介绍及生存指南</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://10cks.top/">10cks</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
+    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
+    crossorigin="anonymous"
+></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
+    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
+    crossorigin="anonymous"
+/>
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script>
+
+</body>
+
+</html>

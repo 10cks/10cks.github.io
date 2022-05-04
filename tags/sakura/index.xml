@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Sakura on 10cks</title>
+    <link>https://10cks.top/tags/sakura/</link>
+    <description>Recent content in Sakura on 10cks</description>
+    <image>
+      <url>https://10cks.top/papermod-cover.png</url>
+      <link>https://10cks.top/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 04 May 2022 18:41:48 +0800</lastBuildDate><atom:link href="https://10cks.top/tags/sakura/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CodeQL 编译 AOSP database</title>
+      <link>https://10cks.top/posts/codeql-%E7%BC%96%E8%AF%91-aosp-database/</link>
+      <pubDate>Wed, 04 May 2022 18:41:48 +0800</pubDate>
+      
+      <guid>https://10cks.top/posts/codeql-%E7%BC%96%E8%AF%91-aosp-database/</guid>
+      <description>build aosp   安装aosp需要的编译依赖 https://source.android.com/setup/build/initializing
+  下载源码 https://source.android.com/setup/build/downloading
+  sudo apt-get updatesudo apt-get install repomkdir aosp_workdircd aosp_workdirrepo init -u https://mirrors.tuna.tsinghua.edu.cn/git/AOSP/platform/manifest -b masterrepo sync 要下很久，可以用sudo iftop来看一下下载速度。
+ 编译aosp  source build/envsetup.shlunch aosp_x86_64-engmake -j32 build codeql database 到这里首先我们选择我们想看的目录，这里我选择frameworks/av/media，然后递归touch这个目录下的所有文件，这个作用是为了更新时间戳，这样make的时候，这部分文件就会重新被make
+➜ aosp_workdir cd frameworks/av/media ➜ media git:(011dbb4bf7) find ./ * -exec touch {} \; 然后设置一个环境变量，并编译db即可，这部分参考自葫芦娃的文章。
+export ALLOW_NINJA_ENV=truecodeql database create out/codeql-frameworks \--language=cpp \--command=&amp;#34;`pwd`/build/soong/soong_ui.</description>
+    </item>
+    
+  </channel>
+</rss>
