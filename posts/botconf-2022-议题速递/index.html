@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Botconf 2022 议题速递 | 10cks</title>
+<meta name="keywords" content="网络安全" />
+<meta name="description" content="Botconf 2021/22 重新回到线下举办，并且回到了第一届的举办地——法国西海岸的南特。尽管是线下举办，但由于各国的政策要求不一，仍有部分议题的主讲人未能到场进行分享。作为一个在专业领域内比较受认可的会议，本届 Botconf 有来自世界各地的三百多名安全研究人员注册参加。此前，360 Netlab 与绿盟等国内安全公司也有议题在该会议上进行分享，本届也有一个来自阿里云的工作。
+下面只挑选部分议题进行介绍，感兴趣的同学可以去官网查看全部议题进一步了解。
+PS：Botconf 要求参与会议的人员不要录制视频，只有官方能够录制视频。并且每个主讲人都会对内容做出说明，如果表明是机密信息的情况下，请不要拍照或者对外进行相关内容的讨论。所以在遵守该要求的情况下，在公开议题中选取了部分议题进行简要介绍，完整、详细的内容请查看官网或者联系作者。
+监控多个 P2P 僵尸网络的经验见解 来自德国达姆施塔特工业大学、美国马里兰大学和马来西亚理科大学关于监控僵尸网络的研究。研究人员认为监控僵尸网络就像盲人摸象：
+P2P 僵尸网络的三个典型模式：非结构化、结构化、寄生。
+利用爬虫和传感器构建僵尸网络监控系统，以下是一些系统截图（公众号会对图片进行压缩，原图是非常清晰的）：
+该研究监控了 Mozi、Hajime、DDG 等比较大规模的 P2P 僵尸网络，跟踪失陷主机的相关统计信息（如国家、自治系统、地理分布等）。
+研究人员通过双队列并行两万个爬虫获取信息。
+后续研究人员还会增加对 Bot 生命周期的自动测量、对反监控的措施加以完善等其他功能，该项目也欢迎其他研究人员的合作。
+根据通信模式检测利用合法服务进行 C&amp;C 的失陷主机 来自 Akamai 的工作一向扎实。这次内容提到 Akamai 正在努力跟踪发现失陷痕迹，提醒相关用户存在可疑行为。因为很多犯罪分子都会使用合法的 Web 服务来进行攻击。例如 HAMMERTOSS 使用 Twitter、GitHub 和云存储服务进行 C&amp;C 通信。
+典型的三类恶意流量模式：Beacon、DGA 与多信道。
+研究人员发现，使用功率谱密度（PSD）将时域数据转向频域处理，可能会很有效果。清华在 CCS 2021 上也发表了一篇利用频域分析检测恶意流量的工作《Realtime Robust Malicious Traffic Detection via Frequency Domain Analysis》，利用频域分析可能是有潜力的工作方向，感兴趣的同学可以尝试研究。
+正常的设备流量模式与失陷主机的流量模式存在显著差异：
+Akamai 使用 DNS 数据来进行检测：
+在 Akamai 在应用中发现了许多正常情况下难以发现的恶意攻击，例如 uBlock 恶意插件（仿冒合法广告拦截插件的恶意插件）：
+KashmirBlack 僵尸网络的来龙去脉 Imperva 跟踪 PHPUnit 远程代码执行（CVE-2017-9841）漏洞的在野传播，该漏洞影响波及 Drupal、WordPress、PrestaShop 与 Magento 等知名框架。">
+<meta name="author" content="棱镜安全">
+<link rel="canonical" href="https://10cks.top/posts/botconf-2022-%E8%AE%AE%E9%A2%98%E9%80%9F%E9%80%92/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.e41bcb30238c59a508c54f0ef92fa4658fe90bf8a96b955c2f953c905801864c.css" integrity="sha256-5BvLMCOMWaUIxU8O&#43;S&#43;kZY/pC/ipa5VcL5U8kFgBhkw=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.4dcb3c4f38462f66c6b6137227726f5543cb934cca9788f041c087e374491df2.js" integrity="sha256-Tcs8TzhGL2bGthNyJ3JvVUPLk0zKl4jwQcCH43RJHfI="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://10cks.top/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://10cks.top/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://10cks.top/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://10cks.top/apple-touch-icon.png">
+<link rel="mask-icon" href="https://10cks.top/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+
+            }
+        }
+    })();
+</script>
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+            .post-entry:hover {
+				transition: transform 0.5s;
+				-webkit-transform: scale(1.2);
+				-moz-transform: scale(1.2);
+				-ms-transform: scale(1.2);
+				-o-transform: scale(1.2);
+				transform: scale(1.03) translateZ(0) translate3d(0, 0, 0) rotate(0.01deg);
+			}
+        }
+
+    </style>
+</noscript><link rel='stylesheet' href='//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css'>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
+    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
+    crossorigin="anonymous"
+></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
+    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
+    crossorigin="anonymous"
+/>
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script><meta property="og:title" content="Botconf 2022 议题速递" />
+<meta property="og:description" content="Botconf 2021/22 重新回到线下举办，并且回到了第一届的举办地——法国西海岸的南特。尽管是线下举办，但由于各国的政策要求不一，仍有部分议题的主讲人未能到场进行分享。作为一个在专业领域内比较受认可的会议，本届 Botconf 有来自世界各地的三百多名安全研究人员注册参加。此前，360 Netlab 与绿盟等国内安全公司也有议题在该会议上进行分享，本届也有一个来自阿里云的工作。
+下面只挑选部分议题进行介绍，感兴趣的同学可以去官网查看全部议题进一步了解。
+PS：Botconf 要求参与会议的人员不要录制视频，只有官方能够录制视频。并且每个主讲人都会对内容做出说明，如果表明是机密信息的情况下，请不要拍照或者对外进行相关内容的讨论。所以在遵守该要求的情况下，在公开议题中选取了部分议题进行简要介绍，完整、详细的内容请查看官网或者联系作者。
+监控多个 P2P 僵尸网络的经验见解 来自德国达姆施塔特工业大学、美国马里兰大学和马来西亚理科大学关于监控僵尸网络的研究。研究人员认为监控僵尸网络就像盲人摸象：
+P2P 僵尸网络的三个典型模式：非结构化、结构化、寄生。
+利用爬虫和传感器构建僵尸网络监控系统，以下是一些系统截图（公众号会对图片进行压缩，原图是非常清晰的）：
+该研究监控了 Mozi、Hajime、DDG 等比较大规模的 P2P 僵尸网络，跟踪失陷主机的相关统计信息（如国家、自治系统、地理分布等）。
+研究人员通过双队列并行两万个爬虫获取信息。
+后续研究人员还会增加对 Bot 生命周期的自动测量、对反监控的措施加以完善等其他功能，该项目也欢迎其他研究人员的合作。
+根据通信模式检测利用合法服务进行 C&amp;C 的失陷主机 来自 Akamai 的工作一向扎实。这次内容提到 Akamai 正在努力跟踪发现失陷痕迹，提醒相关用户存在可疑行为。因为很多犯罪分子都会使用合法的 Web 服务来进行攻击。例如 HAMMERTOSS 使用 Twitter、GitHub 和云存储服务进行 C&amp;C 通信。
+典型的三类恶意流量模式：Beacon、DGA 与多信道。
+研究人员发现，使用功率谱密度（PSD）将时域数据转向频域处理，可能会很有效果。清华在 CCS 2021 上也发表了一篇利用频域分析检测恶意流量的工作《Realtime Robust Malicious Traffic Detection via Frequency Domain Analysis》，利用频域分析可能是有潜力的工作方向，感兴趣的同学可以尝试研究。
+正常的设备流量模式与失陷主机的流量模式存在显著差异：
+Akamai 使用 DNS 数据来进行检测：
+在 Akamai 在应用中发现了许多正常情况下难以发现的恶意攻击，例如 uBlock 恶意插件（仿冒合法广告拦截插件的恶意插件）：
+KashmirBlack 僵尸网络的来龙去脉 Imperva 跟踪 PHPUnit 远程代码执行（CVE-2017-9841）漏洞的在野传播，该漏洞影响波及 Drupal、WordPress、PrestaShop 与 Magento 等知名框架。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://10cks.top/posts/botconf-2022-%E8%AE%AE%E9%A2%98%E9%80%9F%E9%80%92/" /><meta property="og:image" content="https://10cks.top/papermod-cover.png"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-05" />
+<meta property="article:modified_time" content="2022-05-05" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://10cks.top/papermod-cover.png"/>
+
+<meta name="twitter:title" content="Botconf 2022 议题速递"/>
+<meta name="twitter:description" content="Botconf 2021/22 重新回到线下举办，并且回到了第一届的举办地——法国西海岸的南特。尽管是线下举办，但由于各国的政策要求不一，仍有部分议题的主讲人未能到场进行分享。作为一个在专业领域内比较受认可的会议，本届 Botconf 有来自世界各地的三百多名安全研究人员注册参加。此前，360 Netlab 与绿盟等国内安全公司也有议题在该会议上进行分享，本届也有一个来自阿里云的工作。
+下面只挑选部分议题进行介绍，感兴趣的同学可以去官网查看全部议题进一步了解。
+PS：Botconf 要求参与会议的人员不要录制视频，只有官方能够录制视频。并且每个主讲人都会对内容做出说明，如果表明是机密信息的情况下，请不要拍照或者对外进行相关内容的讨论。所以在遵守该要求的情况下，在公开议题中选取了部分议题进行简要介绍，完整、详细的内容请查看官网或者联系作者。
+监控多个 P2P 僵尸网络的经验见解 来自德国达姆施塔特工业大学、美国马里兰大学和马来西亚理科大学关于监控僵尸网络的研究。研究人员认为监控僵尸网络就像盲人摸象：
+P2P 僵尸网络的三个典型模式：非结构化、结构化、寄生。
+利用爬虫和传感器构建僵尸网络监控系统，以下是一些系统截图（公众号会对图片进行压缩，原图是非常清晰的）：
+该研究监控了 Mozi、Hajime、DDG 等比较大规模的 P2P 僵尸网络，跟踪失陷主机的相关统计信息（如国家、自治系统、地理分布等）。
+研究人员通过双队列并行两万个爬虫获取信息。
+后续研究人员还会增加对 Bot 生命周期的自动测量、对反监控的措施加以完善等其他功能，该项目也欢迎其他研究人员的合作。
+根据通信模式检测利用合法服务进行 C&amp;C 的失陷主机 来自 Akamai 的工作一向扎实。这次内容提到 Akamai 正在努力跟踪发现失陷痕迹，提醒相关用户存在可疑行为。因为很多犯罪分子都会使用合法的 Web 服务来进行攻击。例如 HAMMERTOSS 使用 Twitter、GitHub 和云存储服务进行 C&amp;C 通信。
+典型的三类恶意流量模式：Beacon、DGA 与多信道。
+研究人员发现，使用功率谱密度（PSD）将时域数据转向频域处理，可能会很有效果。清华在 CCS 2021 上也发表了一篇利用频域分析检测恶意流量的工作《Realtime Robust Malicious Traffic Detection via Frequency Domain Analysis》，利用频域分析可能是有潜力的工作方向，感兴趣的同学可以尝试研究。
+正常的设备流量模式与失陷主机的流量模式存在显著差异：
+Akamai 使用 DNS 数据来进行检测：
+在 Akamai 在应用中发现了许多正常情况下难以发现的恶意攻击，例如 uBlock 恶意插件（仿冒合法广告拦截插件的恶意插件）：
+KashmirBlack 僵尸网络的来龙去脉 Imperva 跟踪 PHPUnit 远程代码执行（CVE-2017-9841）漏洞的在野传播，该漏洞影响波及 Drupal、WordPress、PrestaShop 与 Magento 等知名框架。"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://10cks.top/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Botconf 2022 议题速递",
+      "item": "https://10cks.top/posts/botconf-2022-%E8%AE%AE%E9%A2%98%E9%80%9F%E9%80%92/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Botconf 2022 议题速递",
+  "name": "Botconf 2022 议题速递",
+  "description": "Botconf 2021/22 重新回到线下举办，并且回到了第一届的举办地——法国西海岸的南特。尽管是线下举办，但由于各国的政策要求不一，仍有部分议题的主讲人未能到场进行分享。作为一个在专业领域内比较受认可的会议，本届 Botconf 有来自世界各地的三百多名安全研究人员注册参加。此前，360 Netlab 与绿盟等国内安全公司也有议题在该会议上进行分享，本届也有一个来自阿里云的工作。\n下面只挑选部分议题进行介绍，感兴趣的同学可以去官网查看全部议题进一步了解。\nPS：Botconf 要求参与会议的人员不要录制视频，只有官方能够录制视频。并且每个主讲人都会对内容做出说明，如果表明是机密信息的情况下，请不要拍照或者对外进行相关内容的讨论。所以在遵守该要求的情况下，在公开议题中选取了部分议题进行简要介绍，完整、详细的内容请查看官网或者联系作者。\n监控多个 P2P 僵尸网络的经验见解 来自德国达姆施塔特工业大学、美国马里兰大学和马来西亚理科大学关于监控僵尸网络的研究。研究人员认为监控僵尸网络就像盲人摸象：\nP2P 僵尸网络的三个典型模式：非结构化、结构化、寄生。\n利用爬虫和传感器构建僵尸网络监控系统，以下是一些系统截图（公众号会对图片进行压缩，原图是非常清晰的）：\n该研究监控了 Mozi、Hajime、DDG 等比较大规模的 P2P 僵尸网络，跟踪失陷主机的相关统计信息（如国家、自治系统、地理分布等）。\n研究人员通过双队列并行两万个爬虫获取信息。\n后续研究人员还会增加对 Bot 生命周期的自动测量、对反监控的措施加以完善等其他功能，该项目也欢迎其他研究人员的合作。\n根据通信模式检测利用合法服务进行 C\u0026amp;C 的失陷主机 来自 Akamai 的工作一向扎实。这次内容提到 Akamai 正在努力跟踪发现失陷痕迹，提醒相关用户存在可疑行为。因为很多犯罪分子都会使用合法的 Web 服务来进行攻击。例如 HAMMERTOSS 使用 Twitter、GitHub 和云存储服务进行 C\u0026amp;C 通信。\n典型的三类恶意流量模式：Beacon、DGA 与多信道。\n研究人员发现，使用功率谱密度（PSD）将时域数据转向频域处理，可能会很有效果。清华在 CCS 2021 上也发表了一篇利用频域分析检测恶意流量的工作《Realtime Robust Malicious Traffic Detection via Frequency Domain Analysis》，利用频域分析可能是有潜力的工作方向，感兴趣的同学可以尝试研究。\n正常的设备流量模式与失陷主机的流量模式存在显著差异：\nAkamai 使用 DNS 数据来进行检测：\n在 Akamai 在应用中发现了许多正常情况下难以发现的恶意攻击，例如 uBlock 恶意插件（仿冒合法广告拦截插件的恶意插件）：\nKashmirBlack 僵尸网络的来龙去脉 Imperva 跟踪 PHPUnit 远程代码执行（CVE-2017-9841）漏洞的在野传播，该漏洞影响波及 Drupal、WordPress、PrestaShop 与 Magento 等知名框架。",
+  "keywords": [
+    "网络安全"
+  ],
+  "articleBody": "Botconf 2021/22 重新回到线下举办，并且回到了第一届的举办地——法国西海岸的南特。尽管是线下举办，但由于各国的政策要求不一，仍有部分议题的主讲人未能到场进行分享。作为一个在专业领域内比较受认可的会议，本届 Botconf 有来自世界各地的三百多名安全研究人员注册参加。此前，360 Netlab 与绿盟等国内安全公司也有议题在该会议上进行分享，本届也有一个来自阿里云的工作。\n下面只挑选部分议题进行介绍，感兴趣的同学可以去官网查看全部议题进一步了解。\nPS：Botconf 要求参与会议的人员不要录制视频，只有官方能够录制视频。并且每个主讲人都会对内容做出说明，如果表明是机密信息的情况下，请不要拍照或者对外进行相关内容的讨论。所以在遵守该要求的情况下，在公开议题中选取了部分议题进行简要介绍，完整、详细的内容请查看官网或者联系作者。\n监控多个 P2P 僵尸网络的经验见解 来自德国达姆施塔特工业大学、美国马里兰大学和马来西亚理科大学关于监控僵尸网络的研究。研究人员认为监控僵尸网络就像盲人摸象：\nP2P 僵尸网络的三个典型模式：非结构化、结构化、寄生。\n利用爬虫和传感器构建僵尸网络监控系统，以下是一些系统截图（公众号会对图片进行压缩，原图是非常清晰的）：\n该研究监控了 Mozi、Hajime、DDG 等比较大规模的 P2P 僵尸网络，跟踪失陷主机的相关统计信息（如国家、自治系统、地理分布等）。\n研究人员通过双队列并行两万个爬虫获取信息。\n后续研究人员还会增加对 Bot 生命周期的自动测量、对反监控的措施加以完善等其他功能，该项目也欢迎其他研究人员的合作。\n根据通信模式检测利用合法服务进行 C\u0026C 的失陷主机 来自 Akamai 的工作一向扎实。这次内容提到 Akamai 正在努力跟踪发现失陷痕迹，提醒相关用户存在可疑行为。因为很多犯罪分子都会使用合法的 Web 服务来进行攻击。例如 HAMMERTOSS 使用 Twitter、GitHub 和云存储服务进行 C\u0026C 通信。\n典型的三类恶意流量模式：Beacon、DGA 与多信道。\n研究人员发现，使用功率谱密度（PSD）将时域数据转向频域处理，可能会很有效果。清华在 CCS 2021 上也发表了一篇利用频域分析检测恶意流量的工作《Realtime Robust Malicious Traffic Detection via Frequency Domain Analysis》，利用频域分析可能是有潜力的工作方向，感兴趣的同学可以尝试研究。\n正常的设备流量模式与失陷主机的流量模式存在显著差异：\nAkamai 使用 DNS 数据来进行检测：\n在 Akamai 在应用中发现了许多正常情况下难以发现的恶意攻击，例如 uBlock 恶意插件（仿冒合法广告拦截插件的恶意插件）：\nKashmirBlack 僵尸网络的来龙去脉 Imperva 跟踪 PHPUnit 远程代码执行（CVE-2017-9841）漏洞的在野传播，该漏洞影响波及 Drupal、WordPress、PrestaShop 与 Magento 等知名框架。\n整体流程如上所示，当然攻击者也利用了很多其他漏洞。\n该僵尸网络是根据 GitHub 的仓库名称命名的：\n最早从 2016 年该僵尸网络就开始活跃：\n早于 VirusTotal 在云上检测恶意软件 来自阿里云与达摩院的工作。依托阿里自己的云安全产品，利用 ssdeep 构建超过一亿文件的关系图。新发现的样本和已知的样本进行比对，升级得到样本标签：\n由于样本量很大，工程应用上的优化其实是核心。其中的 tips 如下所示：\n方法上也很明晰，和前人做的很多工作一脉相承。例如 Brian Wallace 在 Virus Bulletin 分享过应对大规模样本场景下高性能使用 ssdeep 的方法、Intezer 也分享过类似的工作。这部分在此前的文章中也提到过，可以进一步阅读。本项工作在各处都加以优化，希望在海量样本场景下提供更好的应用性能。\n 狩猎样本可用的哈希函数介绍\nAvenger，公众号：威胁棱镜狩猎样本的哈希游戏\n 有线索的情况下可以直接在图里查询，没有线索的情况下可以看聚类的情况。\n例如 21.1 万个 XorDDoS 样本，Avira 引擎能够检出 15.3 万，总有一些样本在 ViursTotal 上是不能被检出的，就可以通过这种方法发现。\n从大视角来看，勒索软件聚类：\n挖矿软件聚类：\nMirai 聚类：\nAgent Tesla 聚类：\n最后，研究人员指出，该方法并不局限于使用 ssdeep，其他算法也可以使用，原理是共通的。\nPS：这个报告因为超时一直被催促，比较遗憾最后由于时间原因取消了提问环节。\n恶意软件市场中私密论坛的形态研究 研究人员从 2020 年 6 月 1 日到 2021 年 2 月 10 日，跟踪了一个超过六万成员、100 万帖子的私密论坛和一个超过 18.5 万成员、34.5 万帖子的公开论坛。公开论坛中有 86 个恶意软件提供方、私密论坛中有 136 个恶意软件提供方。\n恶意软件中，控制类恶意软件占据了半壁江山。\n控制类恶意软件中，私密论坛上近四分之三都是远控：\n窃密类恶意软件中，私密论坛百花齐放，各种类型的窃密恶意软件都有一席之地。\n从目标上看，移动端仍然只是一小部分，计算机终端还是主流。\n恶意软件价格跨度极大，从免费到一万美元以上都有。\nQbot 进化之路 从 2007 年开始，Qbot 就持续活跃，是目前最活跃的恶意软件之一。\n研究人员分析了 Qbot 近十年的进化之路。\n内容十分硬核，本届 Botconf 其实还有一个议题是讲 Qbot 的《Behind The Scenes Of Qbot》，但该议题是 Amber 的，也没有对外放 PPT，就不做表述了。\n十五年来高级攻击者对气隙网络的觊觎 ESET 梳理了过往 15 年中 17 个针对气隙网络进行攻击的案例，发现攻击的一些特点，例如所有的恶意软件框架都使用 USB 设备作为物理介质将数据摆渡出目标网络中。\n去年 ESET 披露的白皮书已经讲了很多，感兴趣可以参考查看。\n ESET 分析白皮书\nhttps://www.welivesecurity.com/wp-content/uploads/2021/12/eset_jumping_the_air_gap_wp.pdf\n  ESET 博客内容\nhttps://www.welivesecurity.com/2021/12/01/jumping-air-gap-15-years-nation-state-effort/\n 安天此前也对外分享过关于《高级威胁组织渗透隔离网络能力与年度案例》，感兴趣可以自行查阅。\n针对赌博行业攻击的犯罪团伙 趋势科技的研究人员发现了一个专门攻击赌博网站的 APT 组织 GamblingPuppet。该组织全平台通吃，Windows、Linux 和 macOS 都不放过。\n该攻击组织被认为是一个说中文的团伙，使用了 PlugX、Gh0st RAT 等被认为是与中文攻击者有关的恶意软件，从很多攻击基础设施的命名中也可以发现（实在是太脏，打了码 … …）。\n趋势科技也在陆续披露相关研究内容，六月末在 FIRST 2022 上也要讲这一议题。\n 趋势科技博客内容\nhttps://www.trendmicro.com/en_hk/research/22/d/new-apt-group-earth-berberoka-targets-gambling-websites-with-old.html\n 期望 Yara 性能再提升 Yara 目前在分析应用中已经越来越普及，当样本量一大，性能又会变成问题。Avast 的研究人员举了一个例子，一个耗时 45 分钟的 Yara 规则优化后甚至可以提升至 3 秒钟，不好的 Yara 规则对系统资源的占用是巨大的。\nAvast 在 Yara 上下了许多功夫，例如开发了将 Yara 规则解析为 AST 的工具 yaramod。还改进了字符串的模式匹配方案，比特币地址匹配可以提速十倍，普通场景下也能提升超过四分之一，这个 PR 日后应该也会被合并进来。\n为了提高效率，尽可能快地得到匹配结果，在性能上有一些需要注意的问题。例如：\n 尽量不要使用正则表达式，消耗大量内存而且拖慢性能 必须要使用正则表达式，避免使用贪婪匹配，且尽量确定匹配上限 元数据也占内存，如果内存并不宽裕，尽量缩减元数据  比较完整的表述可以查看 Neo23x0 大神的文章作为参考。笔者以前翻过旧版本的没有发，日后应该也会把更新过的版本翻出来发在公众号上，着急的同学则可以自行查看原文。\n Yara 性能指南\nhttps://github.com/Neo23x0/YARA-Performance-Guidelines/\n PS：Twitter 上今年年初开启了一个名为 #100DaysofYARA 的话题，本来进行的如火如荼，可惜俄乌冲突后大家都无心看这个了，后续应该也会整理一下这个话题有什么值得分享的内容。 水坑 RTM 僵尸网络 Group-IB 针对 RTM 僵尸网络的分析与水坑方式的介绍。RTM 僵尸网络的攻击概览如下：\n攻击者甚至把 C\u0026C 服务器的地址藏在了比特币交易里：\n研究人员仍然通过极其精巧的方式进行了水坑：\n持续跟踪了受害者的情况，为执法机关的处置提供了依据：\n",
+  "wordCount" : "264",
+  "inLanguage": "en",
+  "datePublished": "2022-05-05T00:00:00Z",
+  "dateModified": "2022-05-05T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "棱镜安全"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://10cks.top/posts/botconf-2022-%E8%AE%AE%E9%A2%98%E9%80%9F%E9%80%92/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "10cks",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://10cks.top/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://10cks.top/" accesskey="h" title="10cks (Alt + H)">10cks</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://10cks.top/archives" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/search/" title="Search (Alt &#43; /)" accesskey=/>
+                    <span>Search</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/about/" title="About">
+                    <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/index.xml" title="Rss">
+                    <span>Rss</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://10cks.top/">Home</a>&nbsp;»&nbsp;<a href="https://10cks.top/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Botconf 2022 议题速递
+    </h1>
+    <div class="post-meta"><span title='2022-05-05 00:00:00 +0000 UTC'>2022.05.05</span>&nbsp;·&nbsp;棱镜安全
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details >
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e7%9b%91%e6%8e%a7%e5%a4%9a%e4%b8%aa-p2p-%e5%83%b5%e5%b0%b8%e7%bd%91%e7%bb%9c%e7%9a%84%e7%bb%8f%e9%aa%8c%e8%a7%81%e8%a7%a3" aria-label="监控多个 P2P 僵尸网络的经验见解">监控多个 P2P 僵尸网络的经验见解</a></li>
+                    <li>
+                        <a href="#%e6%a0%b9%e6%8d%ae%e9%80%9a%e4%bf%a1%e6%a8%a1%e5%bc%8f%e6%a3%80%e6%b5%8b%e5%88%a9%e7%94%a8%e5%90%88%e6%b3%95%e6%9c%8d%e5%8a%a1%e8%bf%9b%e8%a1%8c-cc-%e7%9a%84%e5%a4%b1%e9%99%b7%e4%b8%bb%e6%9c%ba" aria-label="根据通信模式检测利用合法服务进行 C&amp;amp;C 的失陷主机">根据通信模式检测利用合法服务进行 C&amp;C 的失陷主机</a></li>
+                    <li>
+                        <a href="#kashmirblack-%e5%83%b5%e5%b0%b8%e7%bd%91%e7%bb%9c%e7%9a%84%e6%9d%a5%e9%be%99%e5%8e%bb%e8%84%89" aria-label="KashmirBlack 僵尸网络的来龙去脉">KashmirBlack 僵尸网络的来龙去脉</a></li>
+                    <li>
+                        <a href="#%e6%97%a9%e4%ba%8e-virustotal-%e5%9c%a8%e4%ba%91%e4%b8%8a%e6%a3%80%e6%b5%8b%e6%81%b6%e6%84%8f%e8%bd%af%e4%bb%b6" aria-label="早于 VirusTotal 在云上检测恶意软件">早于 VirusTotal 在云上检测恶意软件</a></li>
+                    <li>
+                        <a href="#%e6%81%b6%e6%84%8f%e8%bd%af%e4%bb%b6%e5%b8%82%e5%9c%ba%e4%b8%ad%e7%a7%81%e5%af%86%e8%ae%ba%e5%9d%9b%e7%9a%84%e5%bd%a2%e6%80%81%e7%a0%94%e7%a9%b6" aria-label="恶意软件市场中私密论坛的形态研究">恶意软件市场中私密论坛的形态研究</a></li>
+                    <li>
+                        <a href="#qbot-%e8%bf%9b%e5%8c%96%e4%b9%8b%e8%b7%af" aria-label="Qbot 进化之路">Qbot 进化之路</a></li>
+                    <li>
+                        <a href="#%e5%8d%81%e4%ba%94%e5%b9%b4%e6%9d%a5%e9%ab%98%e7%ba%a7%e6%94%bb%e5%87%bb%e8%80%85%e5%af%b9%e6%b0%94%e9%9a%99%e7%bd%91%e7%bb%9c%e7%9a%84%e8%a7%8a%e8%a7%8e" aria-label="十五年来高级攻击者对气隙网络的觊觎">十五年来高级攻击者对气隙网络的觊觎</a></li>
+                    <li>
+                        <a href="#%e9%92%88%e5%af%b9%e8%b5%8c%e5%8d%9a%e8%a1%8c%e4%b8%9a%e6%94%bb%e5%87%bb%e7%9a%84%e7%8a%af%e7%bd%aa%e5%9b%a2%e4%bc%99" aria-label="针对赌博行业攻击的犯罪团伙">针对赌博行业攻击的犯罪团伙</a></li>
+                    <li>
+                        <a href="#%e6%9c%9f%e6%9c%9b-yara-%e6%80%a7%e8%83%bd%e5%86%8d%e6%8f%90%e5%8d%87" aria-label="期望 Yara 性能再提升">期望 Yara 性能再提升</a></li>
+                    <li>
+                        <a href="#pstwitter-%e4%b8%8a%e4%bb%8a%e5%b9%b4%e5%b9%b4%e5%88%9d%e5%bc%80%e5%90%af%e4%ba%86%e4%b8%80%e4%b8%aa%e5%90%8d%e4%b8%ba-100daysofyara-%e7%9a%84%e8%af%9d%e9%a2%98%e6%9c%ac%e6%9d%a5%e8%bf%9b%e8%a1%8c%e7%9a%84%e5%a6%82%e7%81%ab%e5%a6%82%e8%8d%bc%e5%8f%af%e6%83%9c%e4%bf%84%e4%b9%8c%e5%86%b2%e7%aa%81%e5%90%8e%e5%a4%a7%e5%ae%b6%e9%83%bd%e6%97%a0%e5%bf%83%e7%9c%8b%e8%bf%99%e4%b8%aa%e4%ba%86%e5%90%8e%e7%bb%ad%e5%ba%94%e8%af%a5%e4%b9%9f%e4%bc%9a%e6%95%b4%e7%90%86%e4%b8%80%e4%b8%8b%e8%bf%99%e4%b8%aa%e8%af%9d%e9%a2%98%e6%9c%89%e4%bb%80%e4%b9%88%e5%80%bc%e5%be%97%e5%88%86%e4%ba%ab%e7%9a%84%e5%86%85%e5%ae%b9" aria-label="PS：Twitter 上今年年初开启了一个名为 #100DaysofYARA 的话题，本来进行的如火如荼，可惜俄乌冲突后大家都无心看这个了，后续应该也会整理一下这个话题有什么值得分享的内容。">PS：Twitter 上今年年初开启了一个名为 <code>#100DaysofYARA</code> 的话题，本来进行的如火如荼，可惜俄乌冲突后大家都无心看这个了，后续应该也会整理一下这个话题有什么值得分享的内容。</a></li>
+                    <li>
+                        <a href="#%e6%b0%b4%e5%9d%91-rtm-%e5%83%b5%e5%b0%b8%e7%bd%91%e7%bb%9c" aria-label="水坑 RTM 僵尸网络">水坑 RTM 僵尸网络</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content"><p>Botconf 2021/22 重新回到线下举办，并且回到了第一届的举办地——法国西海岸的南特。尽管是线下举办，但由于各国的政策要求不一，仍有部分议题的主讲人未能到场进行分享。作为一个在专业领域内比较受认可的会议，本届 Botconf 有来自世界各地的三百多名安全研究人员注册参加。此前，360 Netlab 与绿盟等国内安全公司也有议题在该会议上进行分享，本届也有一个来自阿里云的工作。</p>
+<p>下面只挑选部分议题进行介绍，感兴趣的同学可以去官网查看全部议题进一步了解。</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559124.png" alt="图片"  />
+</p>
+<p>PS：Botconf 要求参与会议的人员不要录制视频，只有官方能够录制视频。并且每个主讲人都会对内容做出说明，如果表明是机密信息的情况下，请不要拍照或者对外进行相关内容的讨论。所以在遵守该要求的情况下，在公开议题中选取了部分议题进行简要介绍，完整、详细的内容请查看官网或者联系作者。</p>
+<h2 id="监控多个-p2p-僵尸网络的经验见解">监控多个 P2P 僵尸网络的经验见解<a hidden class="anchor" aria-hidden="true" href="#监控多个-p2p-僵尸网络的经验见解">#</a></h2>
+<p>来自德国达姆施塔特工业大学、美国马里兰大学和马来西亚理科大学关于监控僵尸网络的研究。研究人员认为监控僵尸网络就像盲人摸象：</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559104.png" alt="图片"  />
+</p>
+<p>P2P 僵尸网络的三个典型模式：非结构化、结构化、寄生。</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051600397.png" alt="图片"  />
+</p>
+<p>利用爬虫和传感器构建僵尸网络监控系统，以下是一些系统截图（公众号会对图片进行压缩，原图是非常清晰的）：</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559012.png" alt="图片"  />
+</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559182.png" alt="图片"  />
+</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559035.png" alt="图片"  />
+</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559213.png" alt="图片"  />
+</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559327.png" alt="图片"  />
+</p>
+<p>该研究监控了 Mozi、Hajime、DDG 等比较大规模的 P2P 僵尸网络，跟踪失陷主机的相关统计信息（如国家、自治系统、地理分布等）。</p>
+<p>研究人员通过双队列并行两万个爬虫获取信息。</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559782.png" alt="图片"  />
+</p>
+<p>后续研究人员还会增加对 Bot 生命周期的自动测量、对反监控的措施加以完善等其他功能，该项目也欢迎其他研究人员的合作。</p>
+<h2 id="根据通信模式检测利用合法服务进行-cc-的失陷主机">根据通信模式检测利用合法服务进行 C&amp;C 的失陷主机<a hidden class="anchor" aria-hidden="true" href="#根据通信模式检测利用合法服务进行-cc-的失陷主机">#</a></h2>
+<p>来自 Akamai 的工作一向扎实。这次内容提到 Akamai 正在努力跟踪发现失陷痕迹，提醒相关用户存在可疑行为。因为很多犯罪分子都会使用合法的 Web 服务来进行攻击。例如 HAMMERTOSS 使用 Twitter、GitHub 和云存储服务进行 C&amp;C 通信。</p>
+<p>典型的三类恶意流量模式：Beacon、DGA 与多信道。</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051600725.png" alt="图片"  />
+</p>
+<p>研究人员发现，使用功率谱密度（PSD）将时域数据转向频域处理，可能会很有效果。清华在 CCS 2021 上也发表了一篇利用频域分析检测恶意流量的工作《Realtime Robust Malicious Traffic Detection via Frequency Domain Analysis》，利用频域分析可能是有潜力的工作方向，感兴趣的同学可以尝试研究。</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559907.png" alt="图片"  />
+</p>
+<p>正常的设备流量模式与失陷主机的流量模式存在显著差异：</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559658.png" alt="图片"  />
+</p>
+<p>Akamai 使用 DNS 数据来进行检测：</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051600791.png" alt="图片"  />
+</p>
+<p>在 Akamai 在应用中发现了许多正常情况下难以发现的恶意攻击，例如 uBlock 恶意插件（仿冒合法广告拦截插件的恶意插件）：</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051601011.png" alt="图片"  />
+</p>
+<h2 id="kashmirblack-僵尸网络的来龙去脉">KashmirBlack 僵尸网络的来龙去脉<a hidden class="anchor" aria-hidden="true" href="#kashmirblack-僵尸网络的来龙去脉">#</a></h2>
+<p>Imperva 跟踪 PHPUnit 远程代码执行（CVE-2017-9841）漏洞的在野传播，该漏洞影响波及 Drupal、WordPress、PrestaShop 与 Magento 等知名框架。</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051601421.png" alt="图片"  />
+</p>
+<p>整体流程如上所示，当然攻击者也利用了很多其他漏洞。</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559074.png" alt="图片"  />
+</p>
+<p>该僵尸网络是根据 GitHub 的仓库名称命名的：</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559997.png" alt="图片"  />
+</p>
+<p>最早从 2016 年该僵尸网络就开始活跃：</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559539.png" alt="图片"  />
+</p>
+<h2 id="早于-virustotal-在云上检测恶意软件">早于 VirusTotal 在云上检测恶意软件<a hidden class="anchor" aria-hidden="true" href="#早于-virustotal-在云上检测恶意软件">#</a></h2>
+<p>来自阿里云与达摩院的工作。依托阿里自己的云安全产品，利用 ssdeep 构建超过一亿文件的关系图。新发现的样本和已知的样本进行比对，升级得到样本标签：</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559498.png" alt="图片"  />
+</p>
+<p>由于样本量很大，工程应用上的优化其实是核心。其中的 tips 如下所示：</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559525.png" alt="图片"  />
+</p>
+<p>方法上也很明晰，和前人做的很多工作一脉相承。例如 Brian Wallace 在 Virus Bulletin 分享过应对大规模样本场景下高性能使用 ssdeep 的方法、Intezer 也分享过类似的工作。这部分在此前的文章中也提到过，可以进一步阅读。本项工作在各处都加以优化，希望在海量样本场景下提供更好的应用性能。</p>
+<blockquote>
+<p>狩猎样本可用的哈希函数介绍</p>
+<p>Avenger，公众号：威胁棱镜<a href="http://mp.weixin.qq.com/s?__biz=MzkyMzE5ODExNQ==&amp;mid=2247484765&amp;idx=1&amp;sn=f55783098994f614b78b20a250ac9b7e&amp;chksm=c1e9f291f69e7b8732b25c419fa5e5b0bb7925a79dfedecc27acdc3afad8616e4d21bbbec3e3#rd">狩猎样本的哈希游戏</a></p>
+</blockquote>
+<p>有线索的情况下可以直接在图里查询，没有线索的情况下可以看聚类的情况。</p>
+<p>例如 21.1 万个 XorDDoS 样本，Avira 引擎能够检出 15.3 万，总有一些样本在 ViursTotal 上是不能被检出的，就可以通过这种方法发现。</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559627.png" alt="图片"  />
+</p>
+<p>从大视角来看，勒索软件聚类：</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559488.png" alt="图片"  />
+</p>
+<p>挖矿软件聚类：</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559584.png" alt="图片"  />
+</p>
+<p>Mirai 聚类：</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051601947.png" alt="图片"  />
+</p>
+<p>Agent Tesla 聚类：</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051601277.png" alt="图片"  />
+</p>
+<p>最后，研究人员指出，该方法并不局限于使用 ssdeep，其他算法也可以使用，原理是共通的。</p>
+<p>PS：这个报告因为超时一直被催促，比较遗憾最后由于时间原因取消了提问环节。</p>
+<h2 id="恶意软件市场中私密论坛的形态研究">恶意软件市场中私密论坛的形态研究<a hidden class="anchor" aria-hidden="true" href="#恶意软件市场中私密论坛的形态研究">#</a></h2>
+<p>研究人员从 2020 年 6 月 1 日到 2021 年 2 月 10 日，跟踪了一个超过六万成员、100 万帖子的私密论坛和一个超过 18.5 万成员、34.5 万帖子的公开论坛。公开论坛中有 86 个恶意软件提供方、私密论坛中有 136 个恶意软件提供方。</p>
+<p>恶意软件中，控制类恶意软件占据了半壁江山。</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559715.png" alt="图片"  />
+</p>
+<p>控制类恶意软件中，私密论坛上近四分之三都是远控：</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559230.png" alt="图片"  />
+</p>
+<p>窃密类恶意软件中，私密论坛百花齐放，各种类型的窃密恶意软件都有一席之地。</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559309.png" alt="图片"  />
+</p>
+<p>从目标上看，移动端仍然只是一小部分，计算机终端还是主流。</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559437.png" alt="图片"  />
+</p>
+<p>恶意软件价格跨度极大，从免费到一万美元以上都有。</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559166.png" alt="图片"  />
+</p>
+<h2 id="qbot-进化之路">Qbot 进化之路<a hidden class="anchor" aria-hidden="true" href="#qbot-进化之路">#</a></h2>
+<p>从 2007 年开始，Qbot 就持续活跃，是目前最活跃的恶意软件之一。</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559306.png" alt="图片"  />
+</p>
+<p>研究人员分析了 Qbot 近十年的进化之路。</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051601176.png" alt="图片"  />
+</p>
+<p>内容十分硬核，本届 Botconf 其实还有一个议题是讲 Qbot 的《Behind The Scenes Of Qbot》，但该议题是 Amber 的，也没有对外放 PPT，就不做表述了。</p>
+<h2 id="十五年来高级攻击者对气隙网络的觊觎">十五年来高级攻击者对气隙网络的觊觎<a hidden class="anchor" aria-hidden="true" href="#十五年来高级攻击者对气隙网络的觊觎">#</a></h2>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559170.png" alt="图片"  />
+</p>
+<p>ESET 梳理了过往 15 年中 17 个针对气隙网络进行攻击的案例，发现攻击的一些特点，例如所有的恶意软件框架都使用 USB 设备作为物理介质将数据摆渡出目标网络中。</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559629.png" alt="图片"  />
+</p>
+<p>去年 ESET 披露的白皮书已经讲了很多，感兴趣可以参考查看。</p>
+<blockquote>
+<p>ESET 分析白皮书</p>
+<p><a href="https://www.welivesecurity.com/wp-content/uploads/2021/12/eset_jumping_the_air_gap_wp.pdf">https://www.welivesecurity.com/wp-content/uploads/2021/12/eset_jumping_the_air_gap_wp.pdf</a></p>
+</blockquote>
+<blockquote>
+<p>ESET 博客内容</p>
+<p><a href="https://www.welivesecurity.com/2021/12/01/jumping-air-gap-15-years-nation-state-effort/">https://www.welivesecurity.com/2021/12/01/jumping-air-gap-15-years-nation-state-effort/</a></p>
+</blockquote>
+<p>安天此前也对外分享过关于《高级威胁组织渗透隔离网络能力与年度案例》，感兴趣可以自行查阅。</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559930.png" alt="图片"  />
+</p>
+<h2 id="针对赌博行业攻击的犯罪团伙">针对赌博行业攻击的犯罪团伙<a hidden class="anchor" aria-hidden="true" href="#针对赌博行业攻击的犯罪团伙">#</a></h2>
+<p>趋势科技的研究人员发现了一个专门攻击赌博网站的 APT 组织 GamblingPuppet。该组织全平台通吃，Windows、Linux 和 macOS 都不放过。</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559727.png" alt="图片"  />
+</p>
+<p>该攻击组织被认为是一个说中文的团伙，使用了 PlugX、Gh0st RAT 等被认为是与中文攻击者有关的恶意软件，从很多攻击基础设施的命名中也可以发现（实在是太脏，打了码 &hellip; &hellip;）。</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559022.png" alt="图片"  />
+</p>
+<p>趋势科技也在陆续披露相关研究内容，六月末在 FIRST 2022 上也要讲这一议题。</p>
+<blockquote>
+<p>趋势科技博客内容</p>
+<p><a href="https://www.trendmicro.com/en_hk/research/22/d/new-apt-group-earth-berberoka-targets-gambling-websites-with-old.html">https://www.trendmicro.com/en_hk/research/22/d/new-apt-group-earth-berberoka-targets-gambling-websites-with-old.html</a></p>
+</blockquote>
+<h2 id="期望-yara-性能再提升">期望 Yara 性能再提升<a hidden class="anchor" aria-hidden="true" href="#期望-yara-性能再提升">#</a></h2>
+<p>Yara 目前在分析应用中已经越来越普及，当样本量一大，性能又会变成问题。Avast 的研究人员举了一个例子，一个耗时 45 分钟的 Yara 规则优化后甚至可以提升至 3 秒钟，不好的 Yara 规则对系统资源的占用是巨大的。</p>
+<p>Avast 在 Yara 上下了许多功夫，例如开发了将 Yara 规则解析为 AST 的工具 yaramod。还改进了字符串的模式匹配方案，比特币地址匹配可以提速十倍，普通场景下也能提升超过四分之一，这个 PR 日后应该也会被合并进来。</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559378.png" alt="图片"  />
+</p>
+<p>为了提高效率，尽可能快地得到匹配结果，在性能上有一些需要注意的问题。例如：</p>
+<ul>
+<li>尽量不要使用正则表达式，消耗大量内存而且拖慢性能</li>
+<li>必须要使用正则表达式，避免使用贪婪匹配，且尽量确定匹配上限</li>
+<li>元数据也占内存，如果内存并不宽裕，尽量缩减元数据</li>
+</ul>
+<p>比较完整的表述可以查看 Neo23x0 大神的文章作为参考。笔者以前翻过旧版本的没有发，日后应该也会把更新过的版本翻出来发在公众号上，着急的同学则可以自行查看原文。</p>
+<blockquote>
+<p>Yara 性能指南</p>
+<p><a href="https://github.com/Neo23x0/YARA-Performance-Guidelines/">https://github.com/Neo23x0/YARA-Performance-Guidelines/</a></p>
+</blockquote>
+<h2 id="pstwitter-上今年年初开启了一个名为-100daysofyara-的话题本来进行的如火如荼可惜俄乌冲突后大家都无心看这个了后续应该也会整理一下这个话题有什么值得分享的内容">PS：Twitter 上今年年初开启了一个名为 <code>#100DaysofYARA</code> 的话题，本来进行的如火如荼，可惜俄乌冲突后大家都无心看这个了，后续应该也会整理一下这个话题有什么值得分享的内容。<a hidden class="anchor" aria-hidden="true" href="#pstwitter-上今年年初开启了一个名为-100daysofyara-的话题本来进行的如火如荼可惜俄乌冲突后大家都无心看这个了后续应该也会整理一下这个话题有什么值得分享的内容">#</a></h2>
+<h2 id="水坑-rtm-僵尸网络">水坑 RTM 僵尸网络<a hidden class="anchor" aria-hidden="true" href="#水坑-rtm-僵尸网络">#</a></h2>
+<p>Group-IB 针对 RTM 僵尸网络的分析与水坑方式的介绍。RTM 僵尸网络的攻击概览如下：</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559359.png" alt="图片"  />
+</p>
+<p>攻击者甚至把 C&amp;C 服务器的地址藏在了比特币交易里：</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559635.png" alt="图片"  />
+</p>
+<p>研究人员仍然通过极其精巧的方式进行了水坑：</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559906.png" alt="图片"  />
+</p>
+<p>持续跟踪了受害者的情况，为执法机关的处置提供了依据：</p>
+<p><img loading="lazy" src="https://raw.githubusercontent.com/10cks/picture/main/img/202205051559072.png" alt="图片"  />
+</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <ul class="post-tags">
+      <li><a href="https://10cks.top/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://10cks.top/posts/codeql-%E7%BC%96%E8%AF%91-aosp-database/">
+    <span class="title">Next Page »</span>
+    <br>
+    <span>CodeQL 编译 AOSP database</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://10cks.top/">10cks</a></span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+<script
+    src="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/js/nprogress.min.js"
+    integrity="sha384-bHDlAEUFxsRI7JfULv3DTpL2IXbbgn4JHQJibgo5iiXSK6Iu8muwqHANhun74Cqg"
+    crossorigin="anonymous"
+></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/zhixuan2333/gh-blog@v0.1.0/css/nprogress.css"
+    integrity="sha384-KJyhr2syt5+4M9Pz5dipCvTrtvOmLk/olWVdfhAp858UCa64Ia5GFpTN7+G4BWpE"
+    crossorigin="anonymous"
+/>
+<script>
+    NProgress.start();
+    document.addEventListener("readystatechange", () => {
+        if (document.readyState === "interactive") NProgress.inc(0.8);
+        if (document.readyState === "complete") NProgress.done();
+    });
+</script>
+
+</body>
+
+</html>

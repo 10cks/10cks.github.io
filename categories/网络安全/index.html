@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="canonical" href="https://10cks.top/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.55da57d7e72670b0ab36b055e34ad034a9ce9ee39a7447313674026f658c36c6.css" integrity="sha256-VdpX1&#43;cmcLCrNrBV40rQNKnOnuOadEcxNnQCb2WMNsY=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.e41bcb30238c59a508c54f0ef92fa4658fe90bf8a96b955c2f953c905801864c.css" integrity="sha256-5BvLMCOMWaUIxU8O&#43;S&#43;kZY/pC/ipa5VcL5U8kFgBhkw=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://10cks.top/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://10cks.top/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://10cks.top/favicon-32x32.png">
@@ -184,6 +184,33 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2>Botconf 2022 议题速递
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Botconf 2021/22 重新回到线下举办，并且回到了第一届的举办地——法国西海岸的南特。尽管是线下举办，但由于各国的政策要求不一，仍有部分议题的主讲人未能到场进行分享。作为一个在专业领域内比较受认可的会议，本届 Botconf 有来自世界各地的三百多名安全研究人员注册参加。此前，360 Netlab 与绿盟等国内安全公司也有议题在该会议上进行分享，本届也有一个来自阿里云的工作。
+下面只挑选部分议题进行介绍，感兴趣的同学可以去官网查看全部议题进一步了解。
+PS：Botconf 要求参与会议的人员不要录制视频，只有官方能够录制视频。并且每个主讲人都会对内容做出说明，如果表明是机密信息的情况下，请不要拍照或者对外进行相关内容的讨论。所以在遵守该要求的情况下，在公开议题中选取了部分议题进行简要介绍，完整、详细的内容请查看官网或者联系作者。
+监控多个 P2P 僵尸网络的经验见解 来自德国达姆施塔特工业大学、美国马里兰大学和马来西亚理科大学关于监控僵尸网络的研究。研究人员认为监控僵尸网络就像盲人摸象：
+P2P 僵尸网络的三个典型模式：非结构化、结构化、寄生。
+利用爬虫和传感器构建僵尸网络监控系统，以下是一些系统截图（公众号会对图片进行压缩，原图是非常清晰的）：
+该研究监控了 Mozi、Hajime、DDG 等比较大规模的 P2P 僵尸网络，跟踪失陷主机的相关统计信息（如国家、自治系统、地理分布等）。
+研究人员通过双队列并行两万个爬虫获取信息。
+后续研究人员还会增加对 Bot 生命周期的自动测量、对反监控的措施加以完善等其他功能，该项目也欢迎其他研究人员的合作。
+根据通信模式检测利用合法服务进行 C&amp;C 的失陷主机 来自 Akamai 的工作一向扎实。这次内容提到 Akamai 正在努力跟踪发现失陷痕迹，提醒相关用户存在可疑行为。因为很多犯罪分子都会使用合法的 Web 服务来进行攻击。例如 HAMMERTOSS 使用 Twitter、GitHub 和云存储服务进行 C&amp;C 通信。
+典型的三类恶意流量模式：Beacon、DGA 与多信道。
+研究人员发现，使用功率谱密度（PSD）将时域数据转向频域处理，可能会很有效果。清华在 CCS 2021 上也发表了一篇利用频域分析检测恶意流量的工作《Realtime Robust Malicious Traffic Detection via Frequency Domain Analysis》，利用频域分析可能是有潜力的工作方向，感兴趣的同学可以尝试研究。
+正常的设备流量模式与失陷主机的流量模式存在显著差异：
+Akamai 使用 DNS 数据来进行检测：
+在 Akamai 在应用中发现了许多正常情况下难以发现的恶意攻击，例如 uBlock 恶意插件（仿冒合法广告拦截插件的恶意插件）：
+KashmirBlack 僵尸网络的来龙去脉 Imperva 跟踪 PHPUnit 远程代码执行（CVE-2017-9841）漏洞的在野传播，该漏洞影响波及 Drupal、WordPress、PrestaShop 与 Magento 等知名框架。...</p>
+  </section>
+  <footer class="entry-footer"><span title='2022-05-05 00:00:00 +0000 UTC'>2022.05.05</span>&nbsp;·&nbsp;棱镜安全</footer>
+  <a class="entry-link" aria-label="post link to Botconf 2022 议题速递" href="https://10cks.top/posts/botconf-2022-%E8%AE%AE%E9%A2%98%E9%80%9F%E9%80%92/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2>CodeQL 编译 AOSP database
     </h2>
   </header>
@@ -195,7 +222,7 @@
 ➜ aosp_workdir cd frameworks/av/media ➜ media git:(011dbb4bf7) find ./ * -exec touch {} \; 然后设置一个环境变量，并编译db即可，这部分参考自葫芦娃的文章。
 export ALLOW_NINJA_ENV=truecodeql database create out/codeql-frameworks \--language=cpp \--command=&#34;`pwd`/build/soong/soong_ui....</p>
   </section>
-  <footer class="entry-footer"><span title='2022-05-04 18:41:48 +0800 CST'>May 4, 2022</span></footer>
+  <footer class="entry-footer"><span title='2022-05-04 18:41:48 +0800 CST'>2022.05.04</span>&nbsp;·&nbsp;Sakura</footer>
   <a class="entry-link" aria-label="post link to CodeQL 编译 AOSP database" href="https://10cks.top/posts/codeql-%E7%BC%96%E8%AF%91-aosp-database/"></a>
 </article>
     </main>

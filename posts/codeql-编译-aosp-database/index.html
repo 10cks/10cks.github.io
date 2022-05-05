@@ -13,9 +13,9 @@
  编译aosp  source build/envsetup.shlunch aosp_x86_64-engmake -j32 build codeql database 到这里首先我们选择我们想看的目录，这里我选择frameworks/av/media，然后递归touch这个目录下的所有文件，这个作用是为了更新时间戳，这样make的时候，这部分文件就会重新被make
 ➜ aosp_workdir cd frameworks/av/media ➜ media git:(011dbb4bf7) find ./ * -exec touch {} \; 然后设置一个环境变量，并编译db即可，这部分参考自葫芦娃的文章。
 export ALLOW_NINJA_ENV=truecodeql database create out/codeql-frameworks \--language=cpp \--command=&#34;`pwd`/build/soong/soong_ui.">
-<meta name="author" content="">
+<meta name="author" content="Sakura">
 <link rel="canonical" href="https://10cks.top/posts/codeql-%E7%BC%96%E8%AF%91-aosp-database/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.55da57d7e72670b0ab36b055e34ad034a9ce9ee39a7447313674026f658c36c6.css" integrity="sha256-VdpX1&#43;cmcLCrNrBV40rQNKnOnuOadEcxNnQCb2WMNsY=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.e41bcb30238c59a508c54f0ef92fa4658fe90bf8a96b955c2f953c905801864c.css" integrity="sha256-5BvLMCOMWaUIxU8O&#43;S&#43;kZY/pC/ipa5VcL5U8kFgBhkw=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.4dcb3c4f38462f66c6b6137227726f5543cb934cca9788f041c087e374491df2.js" integrity="sha256-Tcs8TzhGL2bGthNyJ3JvVUPLk0zKl4jwQcCH43RJHfI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://10cks.top/favicon.ico">
@@ -106,8 +106,8 @@ export ALLOW_NINJA_ENV=truecodeql database create out/codeql-frameworks \--lan
 export ALLOW_NINJA_ENV=truecodeql database create out/codeql-frameworks \--language=cpp \--command=&#34;`pwd`/build/soong/soong_ui." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://10cks.top/posts/codeql-%E7%BC%96%E8%AF%91-aosp-database/" /><meta property="og:image" content="https://10cks.top/papermod-cover.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-05-04T18:41:48&#43;08:00" />
-<meta property="article:modified_time" content="2022-05-04T18:41:48&#43;08:00" />
+<meta property="article:published_time" content="2022-05-04" />
+<meta property="article:modified_time" content="2022-05-04" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://10cks.top/papermod-cover.png"/>
@@ -156,6 +156,10 @@ export ALLOW_NINJA_ENV=truecodeql database create out/codeql-frameworks \--lan
   "inLanguage": "en",
   "datePublished": "2022-05-04T18:41:48+08:00",
   "dateModified": "2022-05-04T18:41:48+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Sakura"
+  },
   "mainEntityOfPage": {
     "@type": "WebPage",
     "@id": "https://10cks.top/posts/codeql-%E7%BC%96%E8%AF%91-aosp-database/"
@@ -253,12 +257,12 @@ export ALLOW_NINJA_ENV=truecodeql database create out/codeql-frameworks \--lan
     <h1 class="post-title">
       CodeQL 编译 AOSP database
     </h1>
-    <div class="post-meta"><span title='2022-05-04 18:41:48 +0800 CST'>May 4, 2022</span>
+    <div class="post-meta"><span title='2022-05-04 18:41:48 +0800 CST'>2022.05.04</span>&nbsp;·&nbsp;Sakura
 
 </div>
   </header> <aside id="toc-container" class="toc-container wide">
     <div class="toc">
-        <details  open>
+        <details >
             <summary accesskey="c" title="(Alt + C)">
                 <span class="details">Table of Contents</span>
             </summary>
@@ -378,6 +382,11 @@ codeql database create out/codeql-frameworks \
       <li><a href="https://10cks.top/tags/sakura/">Sakura</a></li>
     </ul>
 <nav class="paginav">
+  <a class="prev" href="https://10cks.top/posts/botconf-2022-%E8%AE%AE%E9%A2%98%E9%80%9F%E9%80%92/">
+    <span class="title">« Prev Page</span>
+    <br>
+    <span>Botconf 2022 议题速递</span>
+  </a>
   <a class="next" href="https://10cks.top/posts/pt-%E4%B8%8B%E8%BD%BD%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%BB%E8%80%81%E7%AF%87%E4%B8%80%E7%AB%99%E7%82%B9%E4%BB%8B%E7%BB%8D%E5%8F%8A%E7%94%9F%E5%AD%98%E6%8C%87%E5%8D%97/">
     <span class="title">Next Page »</span>
     <br>
