@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>考研s on 10cks</title>
+    <link>https://10cks.top/%E8%80%83%E7%A0%94/</link>
+    <description>Recent content in 考研s on 10cks</description>
+    <image>
+      <url>https://10cks.top/papermod-cover.png</url>
+      <link>https://10cks.top/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://10cks.top/%E8%80%83%E7%A0%94/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://10cks.top/%E8%80%83%E7%A0%94/%E9%AB%98%E6%95%B0/%E5%87%BD%E6%95%B0%E6%9E%81%E9%99%90%E8%BF%9E%E7%BB%AD/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://10cks.top/%E8%80%83%E7%A0%94/%E9%AB%98%E6%95%B0/%E5%87%BD%E6%95%B0%E6%9E%81%E9%99%90%E8%BF%9E%E7%BB%AD/</guid>
+      <description>反函数 函数有反函数的充要条件：不同等x等于不同的y。
+求一个函数的反函数，例如$y=f(x)$，实质上就是把x与y的值对调，然后再求$y=f(x)$。
+初等函数与基本初等函数 由常数和基本初等函数经过有限次的加减乘除和复合所得到且能用一个解析式表示的函数，称为初等函数。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://10cks.top/%E8%80%83%E7%A0%94/%E9%AB%98%E6%95%B0/%E5%9F%BA%E7%A1%80%E5%85%AC%E5%BC%8F/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://10cks.top/%E8%80%83%E7%A0%94/%E9%AB%98%E6%95%B0/%E5%9F%BA%E7%A1%80%E5%85%AC%E5%BC%8F/</guid>
+      <description>求一元二次方程组的解 $$ {\begin{array}{*{20}{l}} {\text{对}\text{于}\text{如}\text{下}\text{形}\text{式}\text{的}\text{一}\text{元}\text{二}\text{次}\text{方}\text{程}\text{：}}\ {a\mathop{{x}}\nolimits^{{2}}+bx+c=0}\ {\text{则}\text{方}\text{程}\text{的}\text{两}\text{根}\text{为}\text{：}}\ {\mathop{{x}}\nolimits_{{1}}=\frac{{-b+\sqrt{{\mathop{{b}}\nolimits^{{2}}-4ac}}}}{{2a}}}\ {\mathop{{x}}\nolimits_{{2}}=\frac{{-b-\sqrt{{\mathop{{b}}\nolimits^{{2}}-4ac}}}}{{2a}}} \end{array}} $$
+求根公式 $$ \begin{array}{{20}{l}} {a\mathop{{x}}\nolimits^{{2}}+bx+c=0}\ { \Delta =\mathop{{b}}\nolimits^{{2}}-4ac}\ { \left{ \begin{array}{{20}{c}} { \Delta &amp;gt; 0\text{方}\text{程}\text{有}\text{两}\text{个}\text{相}\text{等}\text{的}\text{实}\text{根}}\ { \Delta =0\text{方}\text{程}\text{有}\text{两}\text{个}\text{相}\text{等}\text{的}\text{实}\text{根}}\ { \Delta &amp;lt; 0\text{方}\text{程}\text{有}\text{两}\text{个}\text{相}\text{等}\text{的}\text{实}\text{根}} \end{array}\right. }\ {\mathop{{x}}\nolimits_{{1,2}}=\frac{{-b \pm \sqrt{{\mathop{{b}}\nolimits^{{2}}-4ac}}}}{{2a}}}\ {\mathop{{x}}\nolimits_{{1}}+\mathop{{x}}\nolimits_{{2}}=-\frac{{b}}{{a}}}\ {\mathop{{x}}\nolimits_{{1}}\mathop{{x}}\nolimits_{{2}}=\frac{{c}}{{a}}} \end{array} $$
+Latex公式网</description>
+    </item>
+    
+  </channel>
+</rss>

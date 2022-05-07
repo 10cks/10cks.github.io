@@ -9,7 +9,18 @@
       <link>https://10cks.top/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 05 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://10cks.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 07 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://10cks.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Termux使用指南</title>
+      <link>https://10cks.top/posts/termux%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Sat, 07 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://10cks.top/posts/termux%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
+      <description>前言 很久之前就用过安卓的termux，最近在使用Telegam的API，想做一个追踪丢失手机的功能。不过在我的小米8（root）上从Google Play下载的termux无法进行pkg update，会出现502报错，百思不得其解。
+后来在官方论坛找到原因，Google Play上的termux已经好久没有更新了，现在要从F-Droid上下载最新版本。我也懒得更换源了，换源的话就直接按照清华源的教程操作即可。如下：
+1 2  sed -i &amp;#39;s@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@&amp;#39; $PREFIX/etc/apt/sources.list apt update &amp;amp;&amp;amp; apt upgrade   </description>
+    </item>
+    
     <item>
       <title>Botconf 2022 议题速递</title>
       <link>https://10cks.top/posts/botconf-2022-%E8%AE%AE%E9%A2%98%E9%80%9F%E9%80%92/</link>

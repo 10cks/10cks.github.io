@@ -5,17 +5,23 @@
     <loc>https://10cks.top/</loc>
     <lastmod>3050-05-03T14:41:48+08:00</lastmod>
   </url><url>
-    <loc>https://10cks.top/posts/botconf-2022-%E8%AE%AE%E9%A2%98%E9%80%9F%E9%80%92/</loc>
-    <lastmod>2022-05-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://10cks.top/categories/</loc>
-    <lastmod>3050-05-03T14:41:48+08:00</lastmod>
+    <loc>https://10cks.top/tags/android/</loc>
+    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://10cks.top/posts/</loc>
     <lastmod>3050-05-03T14:41:48+08:00</lastmod>
   </url><url>
     <loc>https://10cks.top/tags/</loc>
+    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://10cks.top/posts/termux%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</loc>
+    <lastmod>2022-05-07T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://10cks.top/posts/botconf-2022-%E8%AE%AE%E9%A2%98%E9%80%9F%E9%80%92/</loc>
     <lastmod>2022-05-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://10cks.top/categories/</loc>
+    <lastmod>3050-05-03T14:41:48+08:00</lastmod>
   </url><url>
     <loc>https://10cks.top/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/</loc>
     <lastmod>2022-05-05T00:00:00+00:00</lastmod>
@@ -77,14 +83,22 @@
     <loc>https://10cks.top/posts/github_page%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/</loc>
     <lastmod>2022-03-01T14:41:48+08:00</lastmod>
   </url><url>
+    <loc>https://10cks.top/%E8%80%83%E7%A0%94/%E9%AB%98%E6%95%B0/%E5%87%BD%E6%95%B0%E6%9E%81%E9%99%90%E8%BF%9E%E7%BB%AD/</loc>
+  </url><url>
+    <loc>https://10cks.top/%E8%80%83%E7%A0%94/%E9%AB%98%E6%95%B0/%E5%9F%BA%E7%A1%80%E5%85%AC%E5%BC%8F/</loc>
+  </url><url>
     <loc>https://10cks.top/about/</loc>
   </url><url>
     <loc>https://10cks.top/archives/</loc>
+  </url><url>
+    <loc>https://10cks.top/list/</loc>
   </url><url>
     <loc>https://10cks.top/search/</loc>
   </url><url>
     <loc>https://10cks.top/series/</loc>
   </url><url>
     <loc>https://10cks.top/posts/%E6%9C%AC%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E7%9A%84css/</loc>
+  </url><url>
+    <loc>https://10cks.top/%E8%80%83%E7%A0%94/</loc>
   </url>
 </urlset>

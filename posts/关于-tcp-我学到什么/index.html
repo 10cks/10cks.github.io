@@ -15,7 +15,7 @@
 乱序和冗余  字节编号机制：建立连接时，发送方和接收方各自初始化一个seq(Seq...) 值，并且让对方知道，这就是为什么 TCP 连接时需要三次握手。发送方每次发送数据，都是在自己前一次的 seq 值上加本报文的 data 字节数，得到本报文的 seq 值。接收方接收到多个报文后，按 seq 的值对所有数据包进行升序排列，就能得到有序的报文。并且接收方可以判断接收的数据包之间是否有间隔或冗余。  数据丢失  确认应答机制：接收方收到发送方的报文后，将 ack(Ack) 传递给对方，ack 的值表示接收方期望收到的下一次 seq 值。ack 的计算与发送方报文的 ack，ACK 无关(对&quot;确认&quot;进行再确认无意义，在不可靠的信道上，双方不可能达成一致性确认，两军问题)，这下再看 TCP 三次握手的图就清晰多了。 超时重传机制：报文在信道中丢失了，发送方就收不到对方的 ack。发送方在发送报文后，启用定时器(RTO)。一定时间没有返回就重传报文，就要知道报文在两方的往返时间(RTT)，根据 RTT 设计 RTO。而 RTT 实际上是波动的，当 RTO &lt; RTT 时，就造成了数据冗余。 快速重传机制：以数据驱动重传，例如发送方发送了 seq=1、 seq=2、 seq=3、 seq=4 的报文，其中 seq=1 的报文丢失了，发送方会收到三个连续的 ack=1，此时就触发快速重传机制，重传 seq=1。  基本可靠 上面的设计在简单场景中是基本可靠的，即确保了字节流在通信双方完全相同。在复杂的场景中，TCP 还有很多其他的机制来实现可靠性。例如，造成数据丢失的原因有很多：">
 <meta name="author" content="">
 <link rel="canonical" href="https://10cks.top/posts/%E5%85%B3%E4%BA%8E-tcp-%E6%88%91%E5%AD%A6%E5%88%B0%E4%BB%80%E4%B9%88/" />
-<link crossorigin="anonymous" href="/assets/css/stylesheet.min.e41bcb30238c59a508c54f0ef92fa4658fe90bf8a96b955c2f953c905801864c.css" integrity="sha256-5BvLMCOMWaUIxU8O&#43;S&#43;kZY/pC/ipa5VcL5U8kFgBhkw=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.242075b29caa07ce3add2970fad29fefd91a0a156d0ea24cd3ff0493bcafea27.css" integrity="sha256-JCB1spyqB8463Slw&#43;tKf79kaChVtDqJM0/8Ek7yv6ic=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.4dcb3c4f38462f66c6b6137227726f5543cb934cca9788f041c087e374491df2.js" integrity="sha256-Tcs8TzhGL2bGthNyJ3JvVUPLk0zKl4jwQcCH43RJHfI="
     onload="hljs.initHighlightingOnLoad();"></script>
 <link rel="icon" href="https://10cks.top/favicon.ico">
@@ -223,18 +223,23 @@
                 </a>
             </li>
             <li>
-                <a href="https://10cks.top/categories/" title="Categories">
-                    <span>Categories</span>
-                </a>
-            </li>
-            <li>
                 <a href="https://10cks.top/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
             <li>
+                <a href="https://10cks.top/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
                 <a href="https://10cks.top/about/" title="About">
                     <span>About</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://10cks.top/list/" title="List">
+                    <span>List</span>
                 </a>
             </li>
             <li>
