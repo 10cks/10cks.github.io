@@ -204,6 +204,18 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>第 5 章 运输层
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>第 5 章 运输层 运输层协议概述 进程之间的通信  运输层向它上面的应用层提供通信服务，它属于面向通信部分的最高层，同时也是用户功能中的最低层。 两个主机进行通信实际上就是两个主机中的应用进程互相通信。 应用进程之间的通信又称为端到端的通信。 运输层协议和网络层协议的主要区别  运输层的两个主要协议  (1) 用户数据报协议 UDP(User Datagram Protocol)  UDP 传送的数据单位协议是 UDP 报文或用户数据报。   (2) 传输控制协议 TCP(Transmission Control Protocol)  TCP 传送的数据单位协议是 TCP 报文段(segment)    运输层的端口  软件端口与硬件端口  在协议栈层间的抽象的协议端口是软件端口。 路由器或交换机上的端口是硬件端口。   三类端口  熟知端口，数值一般为 0~1023。 登记端口号，数值为1024~49151，为没有熟知端口号的应用程序使用的。使用这个范围的端口号必须在 IANA 登记，以防止重复。 客户端口号或短暂端口号，数值为49152~65535，留给客户进程选择暂时使用。当服务器进程收到客户进程的报文时，就知道了客户进程所使用的动态端口号。通信结束后，这个端口号可供其他客户进程以后使用。    用户数据报协议 UDP UDP 概述  用户数据报协议 UDP（User Datagram Protocol）是无连接的，尽最大可能交付，没有拥塞控制，面向报文（对于应用程序传下来的报文不合并也不拆分，只是添加 UDP 首部），支持一对一、一对多、多对一和多对多的交互通信。  UDP 的首部格式 传输控制协议 TCP 概述 TCP 最主要的特点  传输控制协议 TCP（Transmission Control Protocol）是面向连接的，提供可靠交付，有流量控制，拥塞控制，提供全双工通信，面向字节流（把应用层传下来的报文看成字节流，把字节流组织成大小不等的数据块），每一条 TCP 连接只能是点对点的（一对一）。  TCP 的连接  TCP 连接的端点叫做套接字(socket)或插口。  套接字 socket = (IP地址: 端口号)    可靠传输的工作原理 停止等待协议 连续 ARQ 协议 TCP 报文段的首部格式 序号 ：用于对字节流进行编号，例如序号为 301，表示第一个字节的编号为 301，如果携带的数据长度为 100 字节，那么下一个报文段的序号应为 401。 确认号 ：期望收到的下一个报文段的序号。例如 B 正确收到 A 发送来的一个报文段，序号为 501，携带的数据长度为 200 字节，因此 B 期望下一个报文段的序号为 701，B 发送给 A 的确认报文段中确认号就为 701。 数据偏移 ：指的是数据部分距离报文段起始处的偏移量，实际上指的是首部的长度。 确认 ACK ：当 ACK=1 时确认号字段有效，否则无效。TCP 规定，在连接建立后所有传送的报文段都必须把 ACK 置 1。 同步 SYN ：在连接建立时用来同步序号。当 SYN=1，ACK=0 时表示这是一个连接请求报文段。若对方同意建立连接，则响应报文中 SYN=1，ACK=1。 终止 FIN ：用来释放一个连接，当 FIN=1 时，表示此报文段的发送方的数据已发送完毕，并要求释放连接。 窗口 ：窗口值作为接收方让发送方设置其发送窗口的依据。之所以要有这个限制，是因为接收方的数据缓存空间是有限的。 TCP 可靠传输的实现 以字节为单位的滑动窗口  窗口是缓存的一部分，用来暂时存放字节流。发送方和接收方各有一个窗口，接收方通过 TCP 报文段中的窗口字段告诉发送方自己的窗口大小，发送方根据这个值和其它信息设置自己的窗口大小。  发送窗口内的字节都允许被发送，接收窗口内的字节都允许被接收。如果发送窗口左部的字节已经发送并且收到了确认，那么就将发送窗口向右滑动一定距离，直到左部第一个字节不是已发送并且已确认的状态；接收窗口的滑动类似，接收窗口左部字节已经发送确认并交付主机，就向右滑动接收窗口。...</p>
+  </section>
+  <footer class="entry-footer"><span title='2022-05-03 14:41:48 +0800 CST'>2022.05.03</span></footer>
+  <a class="entry-link" aria-label="post link to 第 5 章 运输层" href="https://10cks.top/posts/%E7%AC%AC5%E7%AB%A0-%E8%BF%90%E8%BE%93%E5%B1%82/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>第 6 章 应用层
     </h2>
   </header>
@@ -258,22 +270,10 @@ Hugo 、博客搭建
   <footer class="entry-footer"><span title='2022-03-01 14:41:48 +0800 CST'>2022.03.01</span></footer>
   <a class="entry-link" aria-label="post link to Github_page搭建指南" href="https://10cks.top/posts/github_page%E6%90%AD%E5%BB%BA%E6%8C%87%E5%8D%97/"></a>
 </article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>本博客使用的css
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>是针对footer.css 这个文件的修改
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92  ....</p>
-  </section>
-  <footer class="entry-footer"></footer>
-  <a class="entry-link" aria-label="post link to 本博客使用的css" href="https://10cks.top/posts/%E6%9C%AC%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E7%9A%84css/"></a>
-</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="https://10cks.top/posts/page/2/">« Prev Page</a>
+    <a class="next" href="https://10cks.top/posts/page/4/">Next Page »</a>
   </nav>
 </footer>
     </main>

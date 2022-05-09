@@ -9,7 +9,8 @@
 <meta name="keywords" content="Android" />
 <meta name="description" content="前言 很久之前就用过安卓的termux，最近在使用Telegam的API，想做一个追踪丢失手机的功能。不过在我的小米8（root）上从Google Play下载的termux无法进行pkg update，会出现502报错，百思不得其解。
 后来在官方论坛找到原因，Google Play上的termux已经好久没有更新了，现在要从F-Droid上下载最新版本。我也懒得更换源了，换源的话就直接按照清华源的教程操作即可。如下：
-1 2  sed -i &#39;s@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@&#39; $PREFIX/etc/apt/sources.list apt update &amp;&amp; apt upgrade   ">
+1 2  sed -i &#39;s@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@&#39; $PREFIX/etc/apt/sources.list apt update &amp;&amp; apt upgrade   目标 开发一款APP，能够实现强制打开GPS并根据telegram指令定时发送GPS数据到指定用户。
+实施 ">
 <meta name="author" content="">
 <link rel="canonical" href="https://10cks.top/posts/termux%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.242075b29caa07ce3add2970fad29fefd91a0a156d0ea24cd3ff0493bcafea27.css" integrity="sha256-JCB1spyqB8463Slw&#43;tKf79kaChVtDqJM0/8Ek7yv6ic=" rel="preload stylesheet" as="style">
@@ -97,7 +98,8 @@
 </script><meta property="og:title" content="Termux使用指南" />
 <meta property="og:description" content="前言 很久之前就用过安卓的termux，最近在使用Telegam的API，想做一个追踪丢失手机的功能。不过在我的小米8（root）上从Google Play下载的termux无法进行pkg update，会出现502报错，百思不得其解。
 后来在官方论坛找到原因，Google Play上的termux已经好久没有更新了，现在要从F-Droid上下载最新版本。我也懒得更换源了，换源的话就直接按照清华源的教程操作即可。如下：
-1 2  sed -i &#39;s@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@&#39; $PREFIX/etc/apt/sources.list apt update &amp;&amp; apt upgrade   " />
+1 2  sed -i &#39;s@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@&#39; $PREFIX/etc/apt/sources.list apt update &amp;&amp; apt upgrade   目标 开发一款APP，能够实现强制打开GPS并根据telegram指令定时发送GPS数据到指定用户。
+实施 " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://10cks.top/posts/termux%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" /><meta property="og:image" content="https://10cks.top/papermod-cover.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-05-07" />
@@ -109,7 +111,8 @@
 <meta name="twitter:title" content="Termux使用指南"/>
 <meta name="twitter:description" content="前言 很久之前就用过安卓的termux，最近在使用Telegam的API，想做一个追踪丢失手机的功能。不过在我的小米8（root）上从Google Play下载的termux无法进行pkg update，会出现502报错，百思不得其解。
 后来在官方论坛找到原因，Google Play上的termux已经好久没有更新了，现在要从F-Droid上下载最新版本。我也懒得更换源了，换源的话就直接按照清华源的教程操作即可。如下：
-1 2  sed -i &#39;s@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@&#39; $PREFIX/etc/apt/sources.list apt update &amp;&amp; apt upgrade   "/>
+1 2  sed -i &#39;s@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@&#39; $PREFIX/etc/apt/sources.list apt update &amp;&amp; apt upgrade   目标 开发一款APP，能够实现强制打开GPS并根据telegram指令定时发送GPS数据到指定用户。
+实施 "/>
 
 
 <script type="application/ld+json">
@@ -138,12 +141,12 @@
   "@type": "BlogPosting",
   "headline": "Termux使用指南",
   "name": "Termux使用指南",
-  "description": "前言 很久之前就用过安卓的termux，最近在使用Telegam的API，想做一个追踪丢失手机的功能。不过在我的小米8（root）上从Google Play下载的termux无法进行pkg update，会出现502报错，百思不得其解。\n后来在官方论坛找到原因，Google Play上的termux已经好久没有更新了，现在要从F-Droid上下载最新版本。我也懒得更换源了，换源的话就直接按照清华源的教程操作即可。如下：\n1 2  sed -i \u0026#39;s@^\\(deb.*stable main\\)$@#\\1\\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@\u0026#39; $PREFIX/etc/apt/sources.list apt update \u0026amp;\u0026amp; apt upgrade   ",
+  "description": "前言 很久之前就用过安卓的termux，最近在使用Telegam的API，想做一个追踪丢失手机的功能。不过在我的小米8（root）上从Google Play下载的termux无法进行pkg update，会出现502报错，百思不得其解。\n后来在官方论坛找到原因，Google Play上的termux已经好久没有更新了，现在要从F-Droid上下载最新版本。我也懒得更换源了，换源的话就直接按照清华源的教程操作即可。如下：\n1 2  sed -i \u0026#39;s@^\\(deb.*stable main\\)$@#\\1\\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@\u0026#39; $PREFIX/etc/apt/sources.list apt update \u0026amp;\u0026amp; apt upgrade   目标 开发一款APP，能够实现强制打开GPS并根据telegram指令定时发送GPS数据到指定用户。\n实施 ",
   "keywords": [
     "Android"
   ],
-  "articleBody": "前言 很久之前就用过安卓的termux，最近在使用Telegam的API，想做一个追踪丢失手机的功能。不过在我的小米8（root）上从Google Play下载的termux无法进行pkg update，会出现502报错，百思不得其解。\n后来在官方论坛找到原因，Google Play上的termux已经好久没有更新了，现在要从F-Droid上下载最新版本。我也懒得更换源了，换源的话就直接按照清华源的教程操作即可。如下：\n1 2  sed -i 's@^\\(deb.*stable main\\)$@#\\1\\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@' $PREFIX/etc/apt/sources.list apt update \u0026\u0026 apt upgrade   ",
-  "wordCount" : "21",
+  "articleBody": "前言 很久之前就用过安卓的termux，最近在使用Telegam的API，想做一个追踪丢失手机的功能。不过在我的小米8（root）上从Google Play下载的termux无法进行pkg update，会出现502报错，百思不得其解。\n后来在官方论坛找到原因，Google Play上的termux已经好久没有更新了，现在要从F-Droid上下载最新版本。我也懒得更换源了，换源的话就直接按照清华源的教程操作即可。如下：\n1 2  sed -i 's@^\\(deb.*stable main\\)$@#\\1\\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@' $PREFIX/etc/apt/sources.list apt update \u0026\u0026 apt upgrade   目标 开发一款APP，能够实现强制打开GPS并根据telegram指令定时发送GPS数据到指定用户。\n实施 ",
+  "wordCount" : "24",
   "inLanguage": "en",
   "datePublished": "2022-05-07T00:00:00Z",
   "dateModified": "2022-05-07T00:00:00Z",
@@ -260,7 +263,11 @@
             </summary>
             <div class="inner"><ul>
                     <li>
-                        <a href="#%e5%89%8d%e8%a8%80" aria-label="前言">前言</a>
+                        <a href="#%e5%89%8d%e8%a8%80" aria-label="前言">前言</a></li>
+                    <li>
+                        <a href="#%e7%9b%ae%e6%a0%87" aria-label="目标">目标</a></li>
+                    <li>
+                        <a href="#%e5%ae%9e%e6%96%bd" aria-label="实施">实施</a>
                     </li>
                 </ul>
             </div>
@@ -340,7 +347,11 @@
 </span></span><span class="line"><span class="cl">apt update <span class="o">&amp;&amp;</span> apt upgrade
 </span></span></code></pre></td></tr></table>
 </div>
-</div>
+</div><h1 id="目标">目标<a hidden class="anchor" aria-hidden="true" href="#目标">#</a></h1>
+<p>开发一款APP，能够实现强制打开GPS并根据telegram指令定时发送GPS数据到指定用户。</p>
+<img src="termux使用指南.assets/webp.webp" alt="img" style="zoom:50%;" />
+<h1 id="实施">实施<a hidden class="anchor" aria-hidden="true" href="#实施">#</a></h1>
+
 
   </div>
 
@@ -350,6 +361,11 @@
       <li><a href="https://10cks.top/tags/android/">Android</a></li>
     </ul>
 <nav class="paginav">
+  <a class="prev" href="https://10cks.top/posts/linux-%E5%86%85%E6%A0%B8%E7%9B%91%E6%8E%A7%E5%9C%A8-android-%E6%94%BB%E9%98%B2%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/">
+    <span class="title">« Prev Page</span>
+    <br>
+    <span>Linux 内核监控在 Android 攻防中的应用</span>
+  </a>
   <a class="next" href="https://10cks.top/posts/botconf-2022-%E8%AE%AE%E9%A2%98%E9%80%9F%E9%80%92/">
     <span class="title">Next Page »</span>
     <br>

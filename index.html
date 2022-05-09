@@ -201,13 +201,33 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>Linux 内核监控在 Android 攻防中的应用
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>在日常分析外部软件时，遇到的反调试/反注入防护已经越来越多，之前使用的基于 frida 的轻量级沙盒已经无法满足这类攻防水位的需要，因此需要有一种更加深入且通用的方式来对 APP 进行全面的监测和绕过。本文即为对这类方案的一些探索和实践。
+背景 为了实现对安卓 APP 的全面监控，需要知道目标应用访问/打开了哪些文件，执行了哪些操作，并且可以修改控制这些操作的返回结果。一个直观的想法是通过 libc 作为统一收口来对应用行为进行收集，比如接管 open/openat/faccess/fstatat 实现文件访问监控以及进一步的文件重定向。
+然而，现今许多聪明的加固 APP 都使用了内联系统调用汇编来绕过 libc 实现暗度陈仓，在 binary 层再加上控制流混淆、花指令、代码加密甚至是 VMP 等成熟的防御措施，使得识别这类隐藏调用变得十分困难。某不知名安全研究员曾经说过:
+ Never to wrestle with a pig. You get dirty, and besides, the pig likes it.
+ 因此，我们不应该在应用层上和加固厂商做对抗，而是寻找其他突破点，以四两拨千斤的方式实现目的。当然，如果只是为了练手，那手撕虚拟机也是可以的 :)
+现有方案 在介绍内核监控技术之前，我们先来看看目前已有的一些方案，以及它们的不足之处。
+strace strace 是 Linux 中一个知名的用户态系统调用跟踪工具，可以输入目标进程所执行的系统调用的名称以及参数，常用于快速的应用调试和诊断。strace 的示例输出如下所示:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30  $ strace echo evilpan execve(&#34;/usr/bin/echo&#34;, [&#34;echo&#34;, &#34;evilpan&#34;], 0x7fe55d5d18 /* 56 vars */) = 0 brk(NULL) = 0x57b1bd2000 faccessat(AT_FDCWD, &#34;/etc/ld....</p>
+  </section>
+  <footer class="entry-footer"><span title='2022-05-09 00:00:00 +0000 UTC'>2022.05.09</span>&nbsp;·&nbsp;evilpan</footer>
+  <a class="entry-link" aria-label="post link to Linux 内核监控在 Android 攻防中的应用" href="https://10cks.top/posts/linux-%E5%86%85%E6%A0%B8%E7%9B%91%E6%8E%A7%E5%9C%A8-android-%E6%94%BB%E9%98%B2%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Termux使用指南
     </h2>
   </header>
   <section class="entry-content">
     <p>前言 很久之前就用过安卓的termux，最近在使用Telegam的API，想做一个追踪丢失手机的功能。不过在我的小米8（root）上从Google Play下载的termux无法进行pkg update，会出现502报错，百思不得其解。
 后来在官方论坛找到原因，Google Play上的termux已经好久没有更新了，现在要从F-Droid上下载最新版本。我也懒得更换源了，换源的话就直接按照清华源的教程操作即可。如下：
-1 2  sed -i &#39;s@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@&#39; $PREFIX/etc/apt/sources.list apt update &amp;&amp; apt upgrade   </p>
+1 2  sed -i &#39;s@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@&#39; $PREFIX/etc/apt/sources.list apt update &amp;&amp; apt upgrade   目标 开发一款APP，能够实现强制打开GPS并根据telegram指令定时发送GPS数据到指定用户。
+实施 </p>
   </section>
   <footer class="entry-footer"><span title='2022-05-07 00:00:00 +0000 UTC'>2022.05.07</span></footer>
   <a class="entry-link" aria-label="post link to Termux使用指南" href="https://10cks.top/posts/termux%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"></a>
@@ -273,23 +293,6 @@ export ALLOW_NINJA_ENV=truecodeql database create out/codeql-frameworks \--lan
   </section>
   <footer class="entry-footer"><span title='2022-05-04 14:49:48 +0800 CST'>2022.05.04</span></footer>
   <a class="entry-link" aria-label="post link to PT 下载从入门到养老篇一：站点介绍及生存指南" href="https://10cks.top/posts/pt-%E4%B8%8B%E8%BD%BD%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%BB%E8%80%81%E7%AF%87%E4%B8%80%E7%AB%99%E7%82%B9%E4%BB%8B%E7%BB%8D%E5%8F%8A%E7%94%9F%E5%AD%98%E6%8C%87%E5%8D%97/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>关于TCP我学到了什么
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>TCP 在不可靠的 IP 协议之上实现了可靠性，使得我们在开发上层应用时，不必关注网络传输的种种复杂性。可靠，指的是采用一系列技术来保障数据在发送方和接收方是一致的。我们了解下 TCP 如何实现可靠性。
-信道不可靠 需要解决的问题是，数据在信道上传输时，不总是符合预期，例如出现以下情况：
- 损坏：发送 10，11，接收到 10，10 乱序：发送 10，11，接收到 11，10 丢失：发送 10，11，只接收到 10 ……  我们看 TCP 是怎么解决这些问题的，学习它的做法，这可以作为一类问题的处理思路。
-解决问题的办法其实写在了 TCP 报文头上，下面具体分析：
-数据损坏  检验和机制：Checksum 用于校验报文是否在传输过程中发生了变化，计算方法：  1.将报文中的 Checksum 置零 2.基于整个报文(头部 &#43; 数据部分)计算出 Checksum    接收方收到报文后，计算出 Checksum 并与报文中的 Checksum 对比。若一致，数据没有损坏。不一致，数据损坏，丢掉数据包。
-乱序和冗余  字节编号机制：建立连接时，发送方和接收方各自初始化一个seq(Seq...) 值，并且让对方知道，这就是为什么 TCP 连接时需要三次握手。发送方每次发送数据，都是在自己前一次的 seq 值上加本报文的 data 字节数，得到本报文的 seq 值。接收方接收到多个报文后，按 seq 的值对所有数据包进行升序排列，就能得到有序的报文。并且接收方可以判断接收的数据包之间是否有间隔或冗余。  数据丢失  确认应答机制：接收方收到发送方的报文后，将 ack(Ack) 传递给对方，ack 的值表示接收方期望收到的下一次 seq 值。ack 的计算与发送方报文的 ack，ACK 无关(对&#34;确认&#34;进行再确认无意义，在不可靠的信道上，双方不可能达成一致性确认，两军问题)，这下再看 TCP 三次握手的图就清晰多了。 超时重传机制：报文在信道中丢失了，发送方就收不到对方的 ack。发送方在发送报文后，启用定时器(RTO)。一定时间没有返回就重传报文，就要知道报文在两方的往返时间(RTT)，根据 RTT 设计 RTO。而 RTT 实际上是波动的，当 RTO &lt; RTT 时，就造成了数据冗余。 快速重传机制：以数据驱动重传，例如发送方发送了 seq=1、 seq=2、 seq=3、 seq=4 的报文，其中 seq=1 的报文丢失了，发送方会收到三个连续的 ack=1，此时就触发快速重传机制，重传 seq=1。  基本可靠 上面的设计在简单场景中是基本可靠的，即确保了字节流在通信双方完全相同。在复杂的场景中，TCP 还有很多其他的机制来实现可靠性。例如，造成数据丢失的原因有很多：...</p>
-  </section>
-  <footer class="entry-footer"><span title='2022-05-04 14:49:48 +0800 CST'>2022.05.04</span></footer>
-  <a class="entry-link" aria-label="post link to 关于TCP我学到了什么" href="https://10cks.top/posts/%E5%85%B3%E4%BA%8E-tcp-%E6%88%91%E5%AD%A6%E5%88%B0%E4%BB%80%E4%B9%88/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

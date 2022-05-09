@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Android | 10cks</title>
+<title>Posts | 10cks</title>
 <meta name="keywords" content="" />
-<meta name="description" content="">
+<meta name="description" content="Posts - 10cks">
 <meta name="author" content="">
-<link rel="canonical" href="https://10cks.top/tags/android/" />
+<link rel="canonical" href="https://10cks.top/posts/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.242075b29caa07ce3add2970fad29fefd91a0a156d0ea24cd3ff0493bcafea27.css" integrity="sha256-JCB1spyqB8463Slw&#43;tKf79kaChVtDqJM0/8Ek7yv6ic=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://10cks.top/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://10cks.top/favicon-16x16.png">
@@ -18,7 +18,7 @@
 <link rel="mask-icon" href="https://10cks.top/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://10cks.top/tags/android/index.xml">
+<link rel="alternate" type="application/rss+xml" href="https://10cks.top/posts/index.xml">
 <script>
     (function(){
         if(''){
@@ -91,17 +91,32 @@
         if (document.readyState === "interactive") NProgress.inc(0.8);
         if (document.readyState === "complete") NProgress.done();
     });
-</script><meta property="og:title" content="Android" />
+</script><meta property="og:title" content="Posts" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://10cks.top/tags/android/" /><meta property="og:image" content="https://10cks.top/papermod-cover.png"/>
+<meta property="og:url" content="https://10cks.top/posts/" /><meta property="og:image" content="https://10cks.top/papermod-cover.png"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://10cks.top/papermod-cover.png"/>
 
-<meta name="twitter:title" content="Android"/>
+<meta name="twitter:title" content="Posts"/>
 <meta name="twitter:description" content=""/>
 
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://10cks.top/posts/"
+    }
+  ]
+}
+</script>
 </head>
 
 <body class="list" id="top">
@@ -183,43 +198,27 @@
     </nav>
 </header>
 <main class="main"> 
-<header class="page-header"><div class="breadcrumbs"><a href="https://10cks.top/">Home</a>&nbsp;»&nbsp;<a href="https://10cks.top/tags/">Tags</a></div>
-  <h1>Android</h1>
+<header class="page-header"><div class="breadcrumbs"><a href="https://10cks.top/">Home</a></div>
+  <h1>Posts</h1>
 </header>
 
-<article class="post-entry tag-entry"> 
+<article class="post-entry"> 
   <header class="entry-header">
-    <h2>Linux 内核监控在 Android 攻防中的应用
+    <h2>本博客使用的css
     </h2>
   </header>
   <section class="entry-content">
-    <p>在日常分析外部软件时，遇到的反调试/反注入防护已经越来越多，之前使用的基于 frida 的轻量级沙盒已经无法满足这类攻防水位的需要，因此需要有一种更加深入且通用的方式来对 APP 进行全面的监测和绕过。本文即为对这类方案的一些探索和实践。
-背景 为了实现对安卓 APP 的全面监控，需要知道目标应用访问/打开了哪些文件，执行了哪些操作，并且可以修改控制这些操作的返回结果。一个直观的想法是通过 libc 作为统一收口来对应用行为进行收集，比如接管 open/openat/faccess/fstatat 实现文件访问监控以及进一步的文件重定向。
-然而，现今许多聪明的加固 APP 都使用了内联系统调用汇编来绕过 libc 实现暗度陈仓，在 binary 层再加上控制流混淆、花指令、代码加密甚至是 VMP 等成熟的防御措施，使得识别这类隐藏调用变得十分困难。某不知名安全研究员曾经说过:
- Never to wrestle with a pig. You get dirty, and besides, the pig likes it.
- 因此，我们不应该在应用层上和加固厂商做对抗，而是寻找其他突破点，以四两拨千斤的方式实现目的。当然，如果只是为了练手，那手撕虚拟机也是可以的 :)
-现有方案 在介绍内核监控技术之前，我们先来看看目前已有的一些方案，以及它们的不足之处。
-strace strace 是 Linux 中一个知名的用户态系统调用跟踪工具，可以输入目标进程所执行的系统调用的名称以及参数，常用于快速的应用调试和诊断。strace 的示例输出如下所示:
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30  $ strace echo evilpan execve(&#34;/usr/bin/echo&#34;, [&#34;echo&#34;, &#34;evilpan&#34;], 0x7fe55d5d18 /* 56 vars */) = 0 brk(NULL) = 0x57b1bd2000 faccessat(AT_FDCWD, &#34;/etc/ld....</p>
+    <p>是针对footer.css 这个文件的修改
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92  ....</p>
   </section>
-  <footer class="entry-footer"><span title='2022-05-09 00:00:00 +0000 UTC'>2022.05.09</span>&nbsp;·&nbsp;evilpan</footer>
-  <a class="entry-link" aria-label="post link to Linux 内核监控在 Android 攻防中的应用" href="https://10cks.top/posts/linux-%E5%86%85%E6%A0%B8%E7%9B%91%E6%8E%A7%E5%9C%A8-android-%E6%94%BB%E9%98%B2%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/"></a>
+  <footer class="entry-footer"></footer>
+  <a class="entry-link" aria-label="post link to 本博客使用的css" href="https://10cks.top/posts/%E6%9C%AC%E5%8D%9A%E5%AE%A2%E4%BD%BF%E7%94%A8%E7%9A%84css/"></a>
 </article>
-
-<article class="post-entry tag-entry"> 
-  <header class="entry-header">
-    <h2>Termux使用指南
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>前言 很久之前就用过安卓的termux，最近在使用Telegam的API，想做一个追踪丢失手机的功能。不过在我的小米8（root）上从Google Play下载的termux无法进行pkg update，会出现502报错，百思不得其解。
-后来在官方论坛找到原因，Google Play上的termux已经好久没有更新了，现在要从F-Droid上下载最新版本。我也懒得更换源了，换源的话就直接按照清华源的教程操作即可。如下：
-1 2  sed -i &#39;s@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@&#39; $PREFIX/etc/apt/sources.list apt update &amp;&amp; apt upgrade   目标 开发一款APP，能够实现强制打开GPS并根据telegram指令定时发送GPS数据到指定用户。
-实施 </p>
-  </section>
-  <footer class="entry-footer"><span title='2022-05-07 00:00:00 +0000 UTC'>2022.05.07</span></footer>
-  <a class="entry-link" aria-label="post link to Termux使用指南" href="https://10cks.top/posts/termux%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"></a>
-</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://10cks.top/posts/page/3/">« Prev Page</a>
+  </nav>
+</footer>
     </main>
     
 <footer class="footer">

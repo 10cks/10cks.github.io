@@ -9,7 +9,23 @@
       <link>https://10cks.top/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 05 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://10cks.top/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://10cks.top/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux 内核监控在 Android 攻防中的应用</title>
+      <link>https://10cks.top/posts/linux-%E5%86%85%E6%A0%B8%E7%9B%91%E6%8E%A7%E5%9C%A8-android-%E6%94%BB%E9%98%B2%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</link>
+      <pubDate>Mon, 09 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://10cks.top/posts/linux-%E5%86%85%E6%A0%B8%E7%9B%91%E6%8E%A7%E5%9C%A8-android-%E6%94%BB%E9%98%B2%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/</guid>
+      <description>在日常分析外部软件时，遇到的反调试/反注入防护已经越来越多，之前使用的基于 frida 的轻量级沙盒已经无法满足这类攻防水位的需要，因此需要有一种更加深入且通用的方式来对 APP 进行全面的监测和绕过。本文即为对这类方案的一些探索和实践。
+背景 为了实现对安卓 APP 的全面监控，需要知道目标应用访问/打开了哪些文件，执行了哪些操作，并且可以修改控制这些操作的返回结果。一个直观的想法是通过 libc 作为统一收口来对应用行为进行收集，比如接管 open/openat/faccess/fstatat 实现文件访问监控以及进一步的文件重定向。
+然而，现今许多聪明的加固 APP 都使用了内联系统调用汇编来绕过 libc 实现暗度陈仓，在 binary 层再加上控制流混淆、花指令、代码加密甚至是 VMP 等成熟的防御措施，使得识别这类隐藏调用变得十分困难。某不知名安全研究员曾经说过:
+ Never to wrestle with a pig. You get dirty, and besides, the pig likes it.
+ 因此，我们不应该在应用层上和加固厂商做对抗，而是寻找其他突破点，以四两拨千斤的方式实现目的。当然，如果只是为了练手，那手撕虚拟机也是可以的 :)
+现有方案 在介绍内核监控技术之前，我们先来看看目前已有的一些方案，以及它们的不足之处。
+strace strace 是 Linux 中一个知名的用户态系统调用跟踪工具，可以输入目标进程所执行的系统调用的名称以及参数，常用于快速的应用调试和诊断。strace 的示例输出如下所示:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30  $ strace echo evilpan execve(&amp;#34;/usr/bin/echo&amp;#34;, [&amp;#34;echo&amp;#34;, &amp;#34;evilpan&amp;#34;], 0x7fe55d5d18 /* 56 vars */) = 0 brk(NULL) = 0x57b1bd2000 faccessat(AT_FDCWD, &amp;#34;/etc/ld.</description>
+    </item>
+    
     <item>
       <title>Botconf 2022 议题速递</title>
       <link>https://10cks.top/posts/botconf-2022-%E8%AE%AE%E9%A2%98%E9%80%9F%E9%80%92/</link>
