@@ -204,6 +204,24 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>PT 下载从入门到养老篇一：站点介绍及生存指南
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>本文最后更新于 2022 年 2 月。PT 站的前世今生，新手入门指南和概念扫盲。
+专题文章目录  PT 下载从入门到养老篇一：站点介绍及生存指南 PT 下载从入门到养老篇二：隐匿的地下通讯 PT 下载从入门到养老篇三：NAS 存储服务器及硬盘选购  介绍 PT (Private Tracker) 是一种基于私有 BT Tracker 服务器的资源传播形式，经授权的用户使用受允许的客户端进行种子制作与下载。相较于传统 BT 和 emule，PT 站往往采取了严格的邀请制度以及免责制度来规避法律风险，同时要求用户客户端开启传输加密以绕过运营商的检测策略。当然，从实际上来说 PT 站的运营、使用仍然是违背了各国版权法的。
+许多高清爱好者聚集在 PT 站，发布翻录的蓝光原盘、CD 资源以及录制的高清卫星电视讯号；得益于 Netflix、HBO、Apple TV 等高清流媒体在线视频平台的发展，近年也出现了一些 WEB-DL (Download from Web) 资源。
+目前国内使用的 PT 站源码大部分为基于浙江大学 xiazuojie 团队所开发的开源整站项目 NexusPHP，基于 PHP &#43; MySQL &#43; memcached。部分站点使用 Discuz! 进行二次开发。
+日前，@burpheart 基于上游项目，开发了新版的 NexuxPHP Safe。其修复了一些已知的安全漏洞，并加入了一些增强用户体验的小功能。
+2022 年更新：@burpheart 似乎逐步淡出了项目维护。目前项目迁移至 xiaomlove/nexusphp，由 @xiaomlove 为主的开发者继续维护。
+国内 PT 站可以划分为两个系别：教育网 PT 站 与 公网 PT 站。...</p>
+  </section>
+  <footer class="entry-footer"><span title='2022-05-04 14:49:48 +0800 CST'>2022.05.04</span></footer>
+  <a class="entry-link" aria-label="post link to PT 下载从入门到养老篇一：站点介绍及生存指南" href="https://10cks.top/posts/pt-%E4%B8%8B%E8%BD%BD%E4%BB%8E%E5%85%A5%E9%97%A8%E5%88%B0%E5%85%BB%E8%80%81%E7%AF%87%E4%B8%80%E7%AB%99%E7%82%B9%E4%BB%8B%E7%BB%8D%E5%8F%8A%E7%94%9F%E5%AD%98%E6%8C%87%E5%8D%97/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>关于TCP我学到了什么
     </h2>
   </header>
@@ -270,18 +288,6 @@
   </section>
   <footer class="entry-footer"><span title='2022-05-03 14:41:48 +0800 CST'>2022.05.03</span></footer>
   <a class="entry-link" aria-label="post link to 第 3 章  数据链路层" href="https://10cks.top/posts/%E7%AC%AC3%E7%AB%A0-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>第 4 章 网络层
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>网络层提供的两种服务 虚电路服务 数据报服务 概要: 虚电路服务与数据报服务的对比 网际协议 IP 网际协议 IP 是 TCP/IP 体系中两个最主要的协议之一。与 IP 协议配套使用的还有四个协议：  地址解析协议 ARP (Address Resolution Protocol) 逆地址解析协议 RARP (Reverse Address Resolution Protocol) 网际控制报文协议 ICMP (Internet Control Message Protocol) 网际组管理协议 IGMP (Internet Group Management Protocol) 概要: 示意图  虚拟互连网络  网络互相连接起来要使用一些中间设备  物理层中继系统：转发器(repeater)。 数据链路层中继系统：网桥或桥接器(bridge)。 网络层中继系统：路由器(router)。 网桥和路由器的混合物：桥路器(brouter)。 网络层以上的中继系统：网关(gateway)。    IP 数据报的格式  版本 : 有 4（IPv4）和 6（IPv6）两个值； 首部长度 : 占 4 位，因此最大值为 15。值为 1 表示的是 1 个 32 位字的长度，也就是 4 字节。因为固定部分长度为 20 字节，因此该值最小为 5。如果可选字段的长度不是 4 字节的整数倍，就用尾部的填充部分来填充。 区分服务 : 用来获得更好的服务，一般情况下不使用。 总长度 : 包括首部长度和数据部分长度。 生存时间 ：TTL，它的存在是为了防止无法交付的数据报在互联网中不断兜圈子。以路由器跳数为单位，当 TTL 为 0 时就丢弃数据报。 协议 ：指出携带的数据应该上交给哪个协议进行处理，例如 ICMP、TCP、UDP 等。 首部检验和 ：因为数据报每经过一个路由器，都要重新计算检验和，因此检验和不包含数据部分可以减少计算的工作量。 标识 : 在数据报长度过长从而发生分片的情况下，相同数据报的不同分片具有相同的标识符。 片偏移 : 和标识符一起，用于发生分片的情况。片偏移的单位为 8 字节。  IP数据报分片   概要: 示意图  分类的 IP 地址  IP 地址的编址方式经历了三个历史阶段：  分类  由两部分组成，网络号和主机号，其中不同分类具有不同的网络号长度，并且是固定的。 IP 地址 ::= {&lt; 网络号 &gt;, &lt; 主机号 &gt;}  示意图     子网划分  通过在主机号字段中拿一部分作为子网号，把两级 IP 地址划分为三级 IP 地址。      IP 地址 ::= {&lt; 网络号 &gt;, &lt; 子网号 &gt;, &lt; 主机号 &gt;}...</p>
-  </section>
-  <footer class="entry-footer"><span title='2022-05-03 14:41:48 +0800 CST'>2022.05.03</span></footer>
-  <a class="entry-link" aria-label="post link to 第 4 章 网络层" href="https://10cks.top/posts/%E7%AC%AC4%E7%AB%A0-%E7%BD%91%E7%BB%9C%E5%B1%82/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
