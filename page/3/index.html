@@ -201,6 +201,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>第 3 章  数据链路层
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>使用点对点信道的数据链路层 数据链路和帧  数据链路层使用的信道主要有以下两种类型：  点对点信道。这种信道使用一对一的点对点通信方式。 广播信道。这种信道使用一对多的广播通信方式，因此过程比较复杂。广播信道上连接的主机很多，因此必须使用专用的共享信道协议来协调这些主机的数据发   数据链路层模型 链路(link)是一条无源的点到点的物理线路段，中间没有任何其他的交换结点。 数据链路(data link) 除了物理线路外，还必须有通信协议来控制这些数据的传输。若把实现这些协议的硬件和软件加到链路上，就构成了数据链路。 数据链路层传送的是帧  三个基本问题  (1) 封装成帧  将网络层传下来的分组添加首部和尾部，用于标记帧的开始和结束。 *   (2) 透明传输  透明表示一个实际存在的事物看起来好像不存在一样。 帧使用首部和尾部进行定界，如果帧的数据部分含有和首部尾部相同的内容，那么帧的开始和结束位置就会被错误的判定。需要在数据部分出现首部尾部相同的内容前面插入转义字符。如果数据部分出现转义字符，那么就在转义字符前面再加个转义字符。在接收端进行处理之后可以还原出原始数据。这个过程透明传输的内容是转义字符，用户察觉不到转义字符的存在。 *   (3) 差错控制   循环冗余检验 CRC 目前数据链路层广泛使用了循环冗余检验（CRC）来检查比特差错。
+  帧检验序列 FCS 在数据后面添加上的冗余码称为帧检验序列 FCS (Frame Check Sequence)。
+  冗余码的计算
+ 例子： 现在 k = 6, M = 101001。 设 n = 3, 除数 P = 1101， 被除数是 2^nM = 101001000。 模 2 运算的结果是：商 Q = 110101， 余数 R = 001。 把余数 R 作为冗余码添加在数据 M 的后面发送出去。发送的数据是：2^nM &#43; R 即：101001001，共 (k &#43; n) 位。    概要: CRC 是一种常用的检错方法，而 FCS 是添加在数据后面的冗余码。 FCS 可以用 CRC 这种方法得出，但 CRC 并非用来获得 FCS 的唯一方法。...</p>
+  </section>
+  <footer class="entry-footer"><span title='2022-05-03 14:41:48 +0800 CST'>2022.05.03</span></footer>
+  <a class="entry-link" aria-label="post link to 第 3 章  数据链路层" href="https://10cks.top/posts/%E7%AC%AC3%E7%AB%A0-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>第 4 章 网络层
     </h2>
   </header>
@@ -250,22 +265,6 @@
   </section>
   <footer class="entry-footer"><span title='2022-04-01 14:49:48 +0800 CST'>2022.04.01</span></footer>
   <a class="entry-link" aria-label="post link to markdown里写代码块" href="https://10cks.top/posts/markdown%E9%87%8C%E5%86%99%E4%BB%A3%E7%A0%81%E5%9D%97/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Hugo博客自定义shortcodes
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>hugo博客通过简码的方式插入ppt、bilibili、youtube等功能
-创建: 2022-04-16 | 更新: 2022-04-16 | 字数: 676字 | 时长: 2分钟 | 作者: Sulv | 标签:
-Hugo 、博客搭建
-1. 引入 ppt 功能 定位到 layouts/shortcodes目录，新建一个文件叫 ppt.html，放入如下代码：
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31  &lt;!DOCTYPE HTML&gt; &lt;html lang=&#34;en&#34;&gt; &lt;head&gt; &lt;style type=&#34;text/css&#34;&gt; #googleslides_shortcodes { padding-bottom: 66%; position: relative; display: block; width: 100%; border-bottom: 5px solid; } #googleslides_shortcodes iframe { position: absolute; top: 0; left: 0 } &lt;/style&gt; &lt;title&gt;&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;div id=&#34;googleslides_shortcodes&#34;&gt; &lt;iframe id=&#34;googleSlideIframe&#34; width=&#34;100%&#34; height=&#34;100%&#34; src=&#34;{{ ....</p>
-  </section>
-  <footer class="entry-footer"><span title='2022-04-01 14:41:48 +0800 CST'>2022.04.01</span></footer>
-  <a class="entry-link" aria-label="post link to Hugo博客自定义shortcodes" href="https://10cks.top/posts/hugo%E5%8D%9A%E5%AE%A2%E8%87%AA%E5%AE%9A%E4%B9%89shortcodes/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

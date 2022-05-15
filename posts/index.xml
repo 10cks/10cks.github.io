@@ -9,7 +9,20 @@
       <link>https://10cks.top/papermod-cover.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 12 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://10cks.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 15 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://10cks.top/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rime输入法使用指南</title>
+      <link>https://10cks.top/posts/%E6%96%B0%E5%BB%BA%E6%96%87%E6%9C%AC%E6%96%87%E6%A1%A3/</link>
+      <pubDate>Sun, 15 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://10cks.top/posts/%E6%96%B0%E5%BB%BA%E6%96%87%E6%9C%AC%E6%96%87%E6%A1%A3/</guid>
+      <description>Rime 输入法  1.1. 基础配置 XNOM. 30分钟搞定 自由输入法RIME简明配置指南
+ Rime 的各种配置，均是由 .yaml 文件所定义。yaml 是一种标记语言。.yaml 文件实际上是文本文档。可使用记事本、或 Emeditor 等进行编辑。 对 Rime 进行自定义，是通过对 .custom.yaml 文件修改达成。不同的 .custom.yaml 文件，控制不同的功能实现。.custom.yaml 实际上是相当于对 .yaml 文件打补丁，在重新部署后，会将 .custom.yaml 中的内容写入 .yaml 文件中，完成自定。  例一：weasel.yaml 是常规设置，主要控制托盘图标、候选词横竖排列、界面配色等等功能。那么，我们需要定制界面配色，只需在 weasel.custom.yaml 中修改，重新部署后就可实现。 例二：default.yaml 是默认设置，主要控制快捷键、按键上屏等等。同样，作修改就编辑 default.custom.yaml 文件即可。 例三：以上是全局设置，亦即不论使用何种输入方案，均起作用。double_pinyin_flypy.custom.yaml 这种则是输入法方案设置。主要实现特殊标点符号、词库等功能。是针对特定输入方案的配置。    可见，我们绝大部分的自定，都只需修改对应的 .custom.yaml 文件即可。
+ 所有自定修改，都必须重新部署。在开始菜单可以找到【小狼毫】重新部署。  1.2. 皮肤设置 XNOM. 30分钟搞定 自由输入法RIME简明配置指南
+打开 weasel.custom.yaml 文件，若没有，则新建。所有自定义项均在 patch: 下，注意缩进
+1 2 3 4 5 6 7 8 9 10 11 12 13  customization:distribution_code_name:Weaseldistribution_version:0.</description>
+    </item>
+    
     <item>
       <title>使用 ECDSA 替换 RSA 生成 SSH Key</title>
       <link>https://10cks.top/posts/%E4%BD%BF%E7%94%A8-ecdsa-%E6%9B%BF%E6%8D%A2-rsa-%E7%94%9F%E6%88%90-ssh-key/</link>

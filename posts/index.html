@@ -204,6 +204,22 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>Rime输入法使用指南
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Rime 输入法  1.1. 基础配置 XNOM. 30分钟搞定 自由输入法RIME简明配置指南
+ Rime 的各种配置，均是由 .yaml 文件所定义。yaml 是一种标记语言。.yaml 文件实际上是文本文档。可使用记事本、或 Emeditor 等进行编辑。 对 Rime 进行自定义，是通过对 .custom.yaml 文件修改达成。不同的 .custom.yaml 文件，控制不同的功能实现。.custom.yaml 实际上是相当于对 .yaml 文件打补丁，在重新部署后，会将 .custom.yaml 中的内容写入 .yaml 文件中，完成自定。  例一：weasel.yaml 是常规设置，主要控制托盘图标、候选词横竖排列、界面配色等等功能。那么，我们需要定制界面配色，只需在 weasel.custom.yaml 中修改，重新部署后就可实现。 例二：default.yaml 是默认设置，主要控制快捷键、按键上屏等等。同样，作修改就编辑 default.custom.yaml 文件即可。 例三：以上是全局设置，亦即不论使用何种输入方案，均起作用。double_pinyin_flypy.custom.yaml 这种则是输入法方案设置。主要实现特殊标点符号、词库等功能。是针对特定输入方案的配置。    可见，我们绝大部分的自定，都只需修改对应的 .custom.yaml 文件即可。
+ 所有自定修改，都必须重新部署。在开始菜单可以找到【小狼毫】重新部署。  1.2. 皮肤设置 XNOM. 30分钟搞定 自由输入法RIME简明配置指南
+打开 weasel.custom.yaml 文件，若没有，则新建。所有自定义项均在 patch: 下，注意缩进
+1 2 3 4 5 6 7 8 9 10 11 12 13  customization:distribution_code_name:Weaseldistribution_version:0....</p>
+  </section>
+  <footer class="entry-footer"><span title='2022-05-15 00:00:00 +0000 UTC'>2022.05.15</span>&nbsp;·&nbsp;sirlis</footer>
+  <a class="entry-link" aria-label="post link to Rime输入法使用指南" href="https://10cks.top/posts/%E6%96%B0%E5%BB%BA%E6%96%87%E6%9C%AC%E6%96%87%E6%A1%A3/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>使用 ECDSA 替换 RSA 生成 SSH Key
     </h2>
   </header>
@@ -281,23 +297,6 @@ KashmirBlack 僵尸网络的来龙去脉 Imperva 跟踪 PHPUnit 远程代码执�
   </section>
   <footer class="entry-footer"><span title='2022-05-05 00:00:00 +0000 UTC'>2022.05.05</span>&nbsp;·&nbsp;棱镜安全</footer>
   <a class="entry-link" aria-label="post link to Botconf 2022 议题速递" href="https://10cks.top/posts/botconf-2022-%E8%AE%AE%E9%A2%98%E9%80%9F%E9%80%92/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>CodeQL 编译 AOSP database
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>build aosp   安装aosp需要的编译依赖 https://source.android.com/setup/build/initializing
-  下载源码 https://source.android.com/setup/build/downloading
-  sudo apt-get updatesudo apt-get install repomkdir aosp_workdircd aosp_workdirrepo init -u https://mirrors.tuna.tsinghua.edu.cn/git/AOSP/platform/manifest -b masterrepo sync 要下很久，可以用sudo iftop来看一下下载速度。
- 编译aosp  source build/envsetup.shlunch aosp_x86_64-engmake -j32 build codeql database 到这里首先我们选择我们想看的目录，这里我选择frameworks/av/media，然后递归touch这个目录下的所有文件，这个作用是为了更新时间戳，这样make的时候，这部分文件就会重新被make
-➜ aosp_workdir cd frameworks/av/media ➜ media git:(011dbb4bf7) find ./ * -exec touch {} \; 然后设置一个环境变量，并编译db即可，这部分参考自葫芦娃的文章。
-export ALLOW_NINJA_ENV=truecodeql database create out/codeql-frameworks \--language=cpp \--command=&#34;`pwd`/build/soong/soong_ui....</p>
-  </section>
-  <footer class="entry-footer"><span title='2022-05-04 18:41:48 +0800 CST'>2022.05.04</span>&nbsp;·&nbsp;Sakura</footer>
-  <a class="entry-link" aria-label="post link to CodeQL 编译 AOSP database" href="https://10cks.top/posts/codeql-%E7%BC%96%E8%AF%91-aosp-database/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
