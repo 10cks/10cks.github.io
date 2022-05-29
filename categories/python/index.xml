@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>python on 10cks</title>
+    <link>https://10cks.top/categories/python/</link>
+    <description>Recent content in python on 10cks</description>
+    <image>
+      <url>https://10cks.top/papermod-cover.png</url>
+      <link>https://10cks.top/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 29 May 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://10cks.top/categories/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title> Django使用指南</title>
+      <link>https://10cks.top/posts/django%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</link>
+      <pubDate>Tue, 29 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://10cks.top/posts/django%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</guid>
+      <description>Django架站有两种架构，一是MVC架构，二是MTV架构。 Django的MTV模式本质上与MVC模式没有什么差别，也是各组件之间为了保持松耦合关系，只是定义上有些许不同. 包含系统中的数据内容，通常以数据库的形式来存储，如果数据有变动，则通知View实时改变现实的内容，还有一些处理数据的程序逻辑也在这里。
+MVC是三个单词的首字母缩写，它们是Model（模型）、View（视图）和Controller（控制） 从结构上看，可以分成三层, 1）最上面的一层，是直接面向最终用户的&amp;quot;视图层&amp;quot;（View）。它是提供给用户的操作界面，是程序的外壳。 2）最底下的一层，是核心的&amp;quot;数据层&amp;quot;（Model），也就是程序需要操作的数据或信息。 3）中间的一层，就是&amp;quot;控制层&amp;quot;（Controller），它负责根据用户从&amp;quot;视图层&amp;quot;输入的指令，选取&amp;quot;数据层&amp;quot;中的数据，然后对其进行相应的操作，产生最终结果。
+教程：django-tutorial
+创建APP 1 2  python manage.py startapp musics # 创建后要将APP加入setting.py的INSTALLED_APPS里面   1 2 3 4 5 6 7 8 9  INSTALLED_APPS = [ &amp;#39;django.contrib.admin&amp;#39;, &amp;#39;django.contrib.auth&amp;#39;, &amp;#39;django.contrib.contenttypes&amp;#39;, &amp;#39;django.contrib.sessions&amp;#39;, &amp;#39;django.contrib.messages&amp;#39;, &amp;#39;django.contrib.staticfiles&amp;#39;, &amp;#39;musics&amp;#39;, ]   生成目录结构为：
+1 2 3 4 5 6 7 8 9  C:. ├─.idea │ └─inspectionProfiles ├─djangoProject │ └─__pycache__ ├─musics │ └─migrations ├─templates └─__pycache__   创建超级用户 1 2 3  # 创建超级用户前要进行migrate：将新生成的迁移脚本，映射到数据库中，创建新的表或者修改表的结构 python manage.</description>
+    </item>
+    
+  </channel>
+</rss>
