@@ -199,6 +199,23 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>markdown里写代码块
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>markdown 里写代码块 这部分用直观的对照一个一个例子来呈现，先展示代码块渲染在页面上的样子，紧接着展示 markdown 源码怎么写。
+1. 最普通的用法 渲染效果：
+1 2 3  fn main(){println!(&#34;Hello, world!&#34;);}  markdown 写法：
+1 2 3 4 5  ```rust fn main() { println!(&#34;Hello, world!&#34;); } ```   对于不带行号的代码块，默认的样式布局可能会显得有些局促，调整一下文章的 CSS：
+1 2 3 4 5  /* 不带行号的代码块 */ .highlight&gt;pre { padding: 10px; /* 适当留出边距 */ overflow: auto; /* 代码行太长向右滚动 */ }   2. 带行号的 渲染效果：
+1 2 3  fn main(){println!(&#34;Hello, world!&#34;);}  对应的 markdown 写法：...</p>
+  </section>
+  <footer class="entry-footer"><span title='2022-04-01 14:49:48 +0800 CST'>2022.04.01</span></footer>
+  <a class="entry-link" aria-label="post link to markdown里写代码块" href="https://10cks.top/posts/markdown%E9%87%8C%E5%86%99%E4%BB%A3%E7%A0%81%E5%9D%97/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Hugo博客自定义shortcodes
     </h2>
   </header>

