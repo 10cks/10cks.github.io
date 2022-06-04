@@ -199,6 +199,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>Termux使用指南
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>前言 很久之前就用过安卓的termux，最近在使用Telegam的API，想做一个追踪丢失手机的功能。不过在我的小米8（root）上从Google Play下载的termux无法进行pkg update，会出现502报错，百思不得其解。
+后来在官方论坛找到原因，Google Play上的termux已经好久没有更新了，现在要从F-Droid上下载最新版本。我也懒得更换源了，换源的话就直接按照清华源的教程操作即可。如下：
+1 2  sed -i &#39;s@^\(deb.*stable main\)$@#\1\ndeb https://mirrors.tuna.tsinghua.edu.cn/termux/apt/termux-main stable main@&#39; $PREFIX/etc/apt/sources.list apt update &amp;&amp; apt upgrade   目标 开发一款APP，能够实现强制打开GPS并根据telegram指令定时发送GPS数据到指定用户。
+实施 </p>
+  </section>
+  <footer class="entry-footer"><span title='2022-05-07 00:00:00 +0000 UTC'>2022.05.07</span></footer>
+  <a class="entry-link" aria-label="post link to Termux使用指南" href="https://10cks.top/posts/termux%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Botconf 2022 议题速递
     </h2>
   </header>
@@ -274,23 +289,6 @@ export ALLOW_NINJA_ENV=truecodeql database create out/codeql-frameworks \--lan
   </section>
   <footer class="entry-footer"><span title='2022-05-04 14:49:48 +0800 CST'>2022.05.04</span></footer>
   <a class="entry-link" aria-label="post link to 关于TCP我学到了什么" href="https://10cks.top/posts/%E5%85%B3%E4%BA%8E-tcp-%E6%88%91%E5%AD%A6%E5%88%B0%E4%BB%80%E4%B9%88/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>markdown里写代码块
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>markdown 里写代码块 这部分用直观的对照一个一个例子来呈现，先展示代码块渲染在页面上的样子，紧接着展示 markdown 源码怎么写。
-1. 最普通的用法 渲染效果：
-1 2 3  fn main(){println!(&#34;Hello, world!&#34;);}  markdown 写法：
-1 2 3 4 5  ```rust fn main() { println!(&#34;Hello, world!&#34;); } ```   对于不带行号的代码块，默认的样式布局可能会显得有些局促，调整一下文章的 CSS：
-1 2 3 4 5  /* 不带行号的代码块 */ .highlight&gt;pre { padding: 10px; /* 适当留出边距 */ overflow: auto; /* 代码行太长向右滚动 */ }   2. 带行号的 渲染效果：
-1 2 3  fn main(){println!(&#34;Hello, world!&#34;);}  对应的 markdown 写法：...</p>
-  </section>
-  <footer class="entry-footer"><span title='2022-04-01 14:49:48 +0800 CST'>2022.04.01</span></footer>
-  <a class="entry-link" aria-label="post link to markdown里写代码块" href="https://10cks.top/posts/markdown%E9%87%8C%E5%86%99%E4%BB%A3%E7%A0%81%E5%9D%97/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
